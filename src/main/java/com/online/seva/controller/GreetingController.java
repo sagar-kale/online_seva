@@ -1,4 +1,4 @@
-package hello;
+package com.online.seva.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

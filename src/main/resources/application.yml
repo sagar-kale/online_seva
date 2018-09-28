@@ -1,0 +1,87 @@
+server.port: 8080
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
+    org.apache.http: DEBUG
+
+spring:
+  profiles:
+    active: mysql
+  messages.basename: validation
+  #devtools:
+   # livereload.enabled: true
+    #restart.exclude: static/**,public/**
+    #reload.trigger-file: .html
+  thymeleaf.cache: false
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        show_sql: true
+        type: trace
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+---
+spring:
+  profiles: mysql
+  datasource:
+    url: "jdbc:mysql://localhost:3306/online_seva?verifyServerCertificate=false&useSSL=true"
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+
+---
+spring:
+  profiles: postgres
+  datasource:
+    url: "postgres://https://tlhjpzrd:yIIfrJfypN3nvNVsmkwf0arULefly-e4@elmer.db.elephantsql.com:5432/tlhjpzrd"
+    driver-class-name: org.postgresql.Driver
+    username: tlhjpzrd
+    password: yIIfrJfypN3nvNVsmkwf0arULefly-e4
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.ProgressDialect
+---
+spring:
+  profiles: errorlogs
+  jpa:
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+        show_sql: false
+    hibernate:
+      ddl-auto: update
+    generate-ddl: false
+    show-sql: false
+  messages:
+    basename: validation
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    org.springframework.web: error
+    org.hibernate: error
+    org.apache.http: error
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

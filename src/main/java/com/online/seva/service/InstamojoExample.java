@@ -1,0 +1,206 @@
+package com.online.seva.service;
+
+import com.instamojo.wrapper.api.Instamojo;
+import com.instamojo.wrapper.api.InstamojoImpl;
+import com.instamojo.wrapper.exception.ConnectionException;
+import com.instamojo.wrapper.exception.InvalidPaymentOrderException;
+import com.instamojo.wrapper.model.PaymentOrder;
+import com.instamojo.wrapper.response.CreatePaymentOrderResponse;
+import com.online.seva.util.ConfigConstants;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class InstamojoExample {
+
+    private static final Logger LOGGER = Logger.getLogger(InstamojoExample.class.getName());
+
+    public static void main(String args[]) {
+
+        /*
+         * Create a new payment order **************************************
+         */
+
+        PaymentOrder order = new PaymentOrder();
+
+        order.setId("12345678909h");
+        order.setName("John Smith");
+        order.setEmail("sagarrk.kale@gmail.com");
+        order.setPhone("9561609535");
+        order.setCurrency("INR");
+        order.setAmount(9D);
+        order.setDescription("This is a test transaction.");
+        order.setRedirectUrl("http://www.someexample.com");
+        order.setWebhookUrl("http://www.someurl.com/");
+        order.setTransactionId("dxg23476");
+
+        Instamojo api = null;
+
+        try {
+            // gets the reference to the instamojo api
+            api = InstamojoImpl.getApi(ConfigConstants.TEST_CLIENT_ID, ConfigConstants.TEST_CLIENT_SECRET, ConfigConstants.INSTAMOJO_TEST_API_ENDPOINT, ConfigConstants.INSTAMOJO_TEST_AUTH_ENDPOINT);
+        } catch (ConnectionException e) {
+            LOGGER.log(Level.SEVERE, e.toString(), e);
+        }
+
+        boolean isOrderValid = order.validate();
+
+        if (isOrderValid) {
+            try {
+                CreatePaymentOrderResponse createPaymentOrderResponse = api.createNewPaymentOrder(order);
+                // print the status of the payment order.
+                System.out.println("Payment link #1 ::: " + createPaymentOrderResponse.getPaymentOptions().getPaymentUrl());
+                System.out.println("Payment link #2 ::: " + createPaymentOrderResponse.getPaymentOrder().getRedirectUrl());
+                System.out.println("Payment link #3 ::: " + createPaymentOrderResponse.getPaymentOrder().getWebhookUrl());
+                System.out.println(createPaymentOrderResponse.getPaymentOrder().getStatus());
+            } catch (InvalidPaymentOrderException e) {
+                LOGGER.log(Level.SEVERE, e.toString(), e);
+
+                if (order.isTransactionIdInvalid()) {
+                    System.out.println("Transaction id is invalid. This is mostly due to duplicate transaction id.");
+                }
+                if (order.isCurrencyInvalid()) {
+                    System.out.println("Currency is invalid.");
+                }
+            } catch (ConnectionException e) {
+                LOGGER.log(Level.SEVERE, e.toString(), e);
+            }
+        } else {
+            // inform validation errors to the user.
+            if (order.isTransactionIdInvalid()) {
+                System.out.println("Transaction id is invalid.");
+            }
+            if (order.isAmountInvalid()) {
+                System.out.println("Amount can not be less than 9.00.");
+            }
+            if (order.isCurrencyInvalid()) {
+                System.out.println("Please provide the currency.");
+            }
+            if (order.isDescriptionInvalid()) {
+                System.out.println("Description can not be greater than 255 characters.");
+            }
+            if (order.isEmailInvalid()) {
+                System.out.println("Please provide valid Email Address.");
+            }
+            if (order.isNameInvalid()) {
+                System.out.println("Name can not be greater than 100 characters.");
+            }
+            if (order.isPhoneInvalid()) {
+                System.out.println("Phone is invalid.");
+            }
+            if (order.isRedirectUrlInvalid()) {
+                System.out.println("Please provide valid Redirect url.");
+            }
+
+            if (order.isWebhookInvalid()) {
+                System.out.println("Provide a valid webhook url");
+            }
+        }
+
+        /*
+         * Get details of payment order when order id is given
+         */
+
+/*
+
+        try {
+            PaymentOrderDetailsResponse paymentOrderDetailsResponse = api.getPaymentOrderDetails(order.getId());
+
+            if (paymentOrderDetailsResponse.getId() != null) {
+                // print the status of the payment order.
+                System.out.println(paymentOrderDetailsResponse.getStatus());
+            } else {
+                System.out.println("Please enter valid order id.");
+            }
+        } catch (ConnectionException e) {
+            LOGGER.log(Level.SEVERE, e.toString(), e);
+        }
+
+
+        */
+/*
+         * Get details of payment order when transaction id is given
+         *//*
+
+
+        try {
+            PaymentOrderDetailsResponse paymentOrderDetailsResponse = api.getPaymentOrderDetailsByTransactionId(order.getTransactionId());
+            ;
+            if (paymentOrderDetailsResponse.getId() != null) {
+                // print the status of the payment order.
+                System.out.println(paymentOrderDetailsResponse.getStatus());
+            } else {
+                System.out.println("Please enter valid transaction id.");
+            }
+        } catch (ConnectionException e) {
+            LOGGER.log(Level.SEVERE, e.toString(), e);
+        }
+
+        */
+/*
+         * Get list of all payment orders
+         *//*
+
+
+        try {
+            PaymentOrderFilter paymentOrderFilter = new PaymentOrderFilter();
+
+            PaymentOrderListResponse paymentOrderListResponse = api.getPaymentOrderList(paymentOrderFilter);
+
+            // Loop over all of the payment orders and print status of each
+            // payment order.
+            for (PaymentOrder paymentOrder : paymentOrderListResponse.getPaymentOrders()) {
+                System.out.println("Result = " + paymentOrder.getStatus());
+            }
+            System.out.println(paymentOrderListResponse.getPaymentOrders());
+        } catch (ConnectionException e) {
+            LOGGER.log(Level.SEVERE, e.toString(), e);
+        }
+*/
+
+
+		/*
+		 Create a new refund **************************************
+		 */
+/*
+        Refund refund = new Refund();
+        refund.setPaymentId(order.getId());
+        refund.setStatus("refunded");
+        refund.setType("RFD");
+        refund.setBody("This is a test refund.");
+        refund.setRefundAmount(9D);
+        refund.setTotalAmount(10D);
+
+        boolean isRefundValid = refund.validate();
+
+        if (isRefundValid) {
+            try {
+                CreateRefundResponse createRefundResponse = api.createNewRefund(refund);
+                // print the status of the refund.
+                System.out.println(createRefundResponse.getRefund().getStatus());
+            } catch (InvalidRefundException e) {
+                LOGGER.log(Level.SEVERE, e.toString(), e);
+
+                if (refund.isTypeInvalid()) {
+                    System.out.println("type is invalid.");
+                }
+            } catch (ConnectionException e) {
+                LOGGER.log(Level.SEVERE, e.toString(), e);
+            }
+        } else {
+            // inform validation errors to the user.
+            if (refund.isPaymentIdInvalid()) {
+                System.out.println("Payment id is invalid.");
+            }
+            if (refund.isTypeInvalid()) {
+                System.out.println("Type is invalid.");
+            }
+            if (refund.isBodyInvalid()) {
+                System.out.println("Body is invalid.");
+            }
+            if (refund.isRefundAmountInvalid()) {
+                System.out.println("Refund amount is invalid.");
+            }
+        }*/
+    }
+}
