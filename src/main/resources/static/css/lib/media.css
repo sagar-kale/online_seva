@@ -1,0 +1,973 @@
+@media only screen and (max-width:1250px) {
+    .bunit_contributed_app, .bunit_contributor,.bunit_absolute_tab{
+        width: 17%;
+    }
+}
+@media only screen and (max-width:991px) {
+    .relatedAppsWidth{
+        width: 25%;
+    }
+body {
+        font-size: 12px;
+    }
+    h4{
+        font-size: 16px;
+    }
+    .form-control{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-height: 585px) {
+.bunit_body1{
+    min-height: calc(100vh - 50px - -36px) !important;
+}
+}
+/*@media only screen and (max-width:1251px) and (min-width:1245px){*/
+@media only screen and (max-height: 630px) and (min-height: 586px) {
+.bunit_body1{
+    min-height: calc(100vh - 50px - 0px) !important;
+}
+}
+/*Landing page media queries starts here*/
+@media only screen and (max-width:1024px) {
+
+  /*  .icons_header {
+   
+        width:20%;
+    }*/
+    .appPOCSol1 .div1 {
+       
+        padding: 8px 0px;
+    }
+    .appPOCSol2 .div1 {
+       
+        padding: 8px 0px;
+    }
+    .appPOCSol3 .div1 {
+       
+        padding: 8px 0px;
+    }
+   
+    .appPOCSol1 .div1 {
+    font-size: 1.5em;
+   
+    }
+     .appPOCSol2 .div1 {
+    font-size: 1.5em;
+   
+    }
+     .appPOCSol3 .div1 {
+    font-size: 1.5em;
+   
+    }
+    .search-form .has-feedback .form-control {
+        padding-right:0px !important;
+        width: 80% !important;
+    }
+
+    .sliderViewBottomPanel_myBasket{
+        right:42%;
+    }
+    .fileInfobasket button {      
+     margin-top: -9px; 
+     margin-left: -16px;
+    }
+   /* .pareentContainer{
+        height:12vh;
+    }*/ 
+    
+
+}
+@media only screen and (max-width:1251px) and (min-width:1245px){
+    .search-form {
+
+        width: 325px;
+    }
+
+} 
+@media only screen and (max-width:991px) {
+    
+    .left_contr div{
+        clear:both;
+        text-align: center;
+    }
+    .left_contr i {
+        width: 100%;
+        text-align: center;
+    }
+    .searchParent input{
+        width: 60%;
+    }
+    .carousel-indicators {
+        
+        bottom: -25%;
+        
+    }
+    .separator{
+        margin-left: 0px;
+    }
+    .odometer_wrapper {
+        width:auto;
+    }
+   
+}
+@media only screen and (max-width:991px) {
+    /*.left_title_top h4 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }*/
+    .left_title_top img{
+        margin-top:0px !important;
+    }
+    header .media{
+        margin-right: 35px;
+    }
+    .header_search{
+        width:100px !important;
+        padding: 0px 10px;
+    }
+}
+
+@media only screen and (max-width:1245px) {
+    .separator{
+            margin-left: 0px;
+    }
+    .search-form {
+
+     width:45% !important;
+    }
+}
+@media only screen and (max-width:1123px) {
+
+    .search-form {
+
+     width:43% !important;
+    }
+} 
+@media only screen and (max-width:1089px) and (min-width:992px) {
+   
+    .search-form {
+    
+        width:40% !important;
+    }
+    .odometer_wrapper {
+        margin-top: 8px;
+    }
+}
+@media only screen and (max-width:991px){
+   
+    .search-form {
+    
+        width:38% !important;
+    }
+    .odometer_wrapper {
+        margin-top: 11px;
+    }
+    .odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-car .odometer-digit .odometer-value{
+        line-height: 1.12em;
+        font-size: 1.8em;
+    }
+}
+@media only screen and (max-width:1111px){
+   
+    #checkboxes {
+     min-width: 130px;
+     max-width: 200px;
+        font-size: 0.7em;
+    }
+}
+@media only screen and (max-width:880px){
+   .odometer_wrapper{
+        width: 20%;
+        text-align: center;
+        margin-top: 0;
+   }
+   .odometer_label{
+        width: 100%;
+   }
+}
+
+@media only screen and (max-width:850px){
+    .left_title_top h4 {
+
+        font-size: 1.2em;
+    }
+    .problem_stmt h4 {
+
+        font-size: 1.2em;
+    }
+} 
+/*Landing page media queries ends here*/
+
+/*CROWD source page media queries start here*/
+
+@media only screen and (max-width:1042px){
+    .crowdRows {
+        width: 25%;
+    }
+
+
+}
+@media only screen and (max-width:1024px){
+
+    .prblmLine{
+        max-height: none; 
+        overflow: hidden;
+        min-height:none;
+    }
+
+}
+@media only screen and (max-width:865px){
+
+    .crowdRows {
+        width: 33%;
+    }
+
+}
+/*CROWD source page media queries ends here*/
+@media only screen and (max-width:1030px){
+.person_name {
+
+    max-width: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+}
+@media only screen and (max-width:1140px){
+   .parentRowHome {
+        width: 25%;
+    }
+    .bunit_contributed_app, .bunit_contributor,.bunit_absolute_tab{
+        width: 19%;
+    }
+
+}
+@media only screen and (max-width:991px){
+   .parentRowHome {
+        width: 33%;
+    }
+
+}
+@media only screen and (max-width:767px){
+   .parentRowHome {
+        width:50%;
+    }    
+
+} 
+@media only screen and (max-width:868px){
+   .shiftdiv {
+    float: left;
+    width: 10.5%;
+}
+.assetsParentDiv{
+    width: 79%;
+}
+}
+
+/*landing page top contributor image responsiveness starts*/
+@media only screen and (max-width:1340px){
+
+    .contributorPhoto {
+        height:40px;
+        width:40px;
+    }
+}
+@media only screen and (max-width:1100px){
+
+    .contributorPhoto {
+        height:38px;
+        width:38px;
+    }
+}
+@media only screen and (max-width:1050px){
+
+    .contributorPhoto {
+        height:35px;
+        width:35px;
+    }
+}
+@media only screen and (max-width:980px){
+
+    .contributorPhoto {
+        height:30px;
+        width:30px;
+    }
+}
+@media only screen and (max-width:860px){
+
+    .contributorPhoto {
+        height:28px;
+        width:28px;
+    }
+}
+@media only screen and (max-width:810px){
+
+    .contributorPhoto {
+        height:26px;
+        width:26px;
+    }
+}
+/*landing page top contributor image responsiveness end*/
+
+
+/*top contributors page starts here*/
+@media only screen and (max-width:1024px){
+    .topContributorsPage {
+        width: 20%;
+    }
+    .myprofilePage{
+        width: 25%;
+    } 
+    .top_contrubutorImg{
+        height: 100px;
+        width: 100px;
+
+    }
+    .contributor_rating {
+
+        bottom: 0px;
+        height: 30px;
+        width: 30px;
+        line-height: 27px;
+
+    }
+    /*.updateModal{
+        top:50%;
+    }*/
+}
+@media only screen and (max-width:991px){
+    .topContributorsPage {
+        width: 25%;
+    }
+    .myprofilePage{
+        width: 25%;
+    } 
+    .top_contrubutorImg{
+        height: 80px;
+        width: 80px;
+        overflow: hidden;
+    }
+     .contributor_rating {
+        bottom: -5px;
+
+    }
+}
+@media only screen and (max-width:910px){
+    .myprofilePage{
+        width: 33%;
+    }
+} 
+@media only screen and (max-width:815px){
+    .topContributorsPage {
+        width: 33%;
+    }
+    .myprofilePage{
+        width: 50%;
+    } 
+    /* .top_contrubutorImg{
+        height: 90px;
+        width: 90px;
+
+    }*/
+    .contributor_rating {
+        bottom: -5px;
+
+    }
+
+}
+@media only screen and (max-width:767px){
+    .topContributorsPage {
+        width: 50%;
+    }
+    .contributor_rating {
+        bottom: -5px;
+
+    }
+}
+/*top contributors page ends here*/ 
+
+/*header search box and select box responsive*/
+@media only screen and (max-width:820px){
+    .selectBox select {
+        width: 15px;
+
+    }
+}
+@media only screen and (max-width:795px){
+   .search-form .has-feedback .form-control {
+        padding-right: 0px !important;
+        width: 65% !important;
+        text-overflow: ellipsis;
+    }   
+}
+
+/*header search box and select box responsive ends*/ 
+
+/*latest app,popular,business unit page app view all media queries starts here*/
+@media only screen and (max-width:1180px){
+   .latestApplication{
+        width: 16.66%;
+
+    }
+}
+@media only screen and (max-width:1024px){
+   .latestApplication{
+        width: 20%;
+
+    }
+}
+@media only screen and (max-width:991px){
+   .latestApplication{
+
+        width:25%;
+    }
+}
+@media only screen and (max-width:800px){
+   .latestApplication{
+        width: 33.33%;
+    }
+}
+
+/*latest app,popular,business unit page app view all media queries ends here*/
+/*@media only screen and (max-width:1920px) {
+    .assetImages img, .assetImages span {
+        width: 90px;
+    }
+}
+
+@media only screen and (max-width:1271px) {
+    .assetImages img, .assetImages span {
+        width: 90px;
+    }
+}
+
+@media only screen and (max-width:1197px) {
+    .assetImages img, .assetImages span {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width:1090px) {
+    .assetImages img, .assetImages span {
+        width: 95px;
+    }
+}
+
+@media only screen and (max-width:1053px) {
+    .assetImages img, .assetImages span {
+        width: 80px;
+    }
+}
+@media only screen and (max-width:940px) {
+    .assetImages img, .assetImages span {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width:820px) {
+    .assetImages img, .assetImages span {
+        width: 91px;
+    }
+}*/
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width:1500px) {
+
+    .recommendedImg{
+        height: 120px;
+        width: 55%;
+    }
+    .recommendedImg img {
+        max-height: 120px;
+    }
+    .recommendedImgLatest{
+        height: 120px;
+        width: 55%;
+    }
+    .recommendedImgLatest img {
+        max-height: 120px;
+    }
+    .recommendedUp img {
+        max-height: 130px;
+    }
+    .deletepop{
+        margin-top: 15% !important;
+    }
+    .fileInfobasket button{
+        margin-top: -12px;
+    }
+    .caseImage{
+        height:220px;
+    }
+    .deafultImageOnSlider{
+        width: 98%;
+    }
+    .deafultImageOnSlider1{
+        width: 98%;
+    }
+} 
+
+@media (max-width:1024px) {
+
+    .carouselHeight {
+        height:auto;
+        max-height:auto;
+    }
+    .carouselHeight div{
+        height:auto;
+        max-height:auto;
+    }
+    .carouselHeight img{
+        height:auto;
+        max-height:auto;
+    }
+} 
+
+/*my basket media queries starts here*/
+@media (min-width:1400px) {
+   .edit-case-modal-content{
+    /*height: 560px;*/
+   }
+   .modal-dialog-editCase{
+    width: 1000px;
+   }
+}
+@media (max-width:1162px) {
+    .statusFlagGreen {
+
+        line-height:0; 
+    }
+    .flagDiv {
+        /*line-height: 0px;*/
+        padding-right: 0;
+    }
+}
+@media (max-width:1058px) and (min-width:992px){
+
+    .flagDiv {
+        line-height: 10px;
+       }
+
+}
+@media (max-width:805px) and (min-width:769px){
+
+    .flagDiv {
+        line-height: 10px;
+       }
+
+}
+
+/*my basket media queries ends here*/ 
+
+/*admin page media queries strts here*/
+@media (max-width:1220px) {
+
+    .Approved{
+            height: 453px;
+    }
+
+
+}
+@media (max-width:1024px) {
+    .Approved{
+            height: 451px;
+    }
+    .UserReportTable ul li{
+        font-size: 11px !important;
+    }
+    .Approved ul li{
+        font-size: 11px !important;
+    }
+    .adminhead1{
+        width: 12% !important;
+    }
+    .adminhead2{
+
+        width: 13% !important;
+
+    }
+    .adminhead3{
+        width: 10% !important;
+    }
+    .adminhead4{
+        width: 8% !important;
+    }
+    .adminhead5{
+        width: 8% !important;
+    }
+    .adminhead6{
+        width: 12% !important;
+    }
+    .adminhead7{
+        width: 12% !important;
+    }
+    .adminhead8{
+       width: 15% !important;
+    }
+
+
+}
+
+@media (max-width:895px) {
+
+    .adminhead1 {
+        width: 12% !important;
+        padding: 10px 0 !important;
+        padding-left: 10px !important;
+    }
+    .adminhead2 {
+
+        width: 13.5% !important;
+        padding: 10px 0 !important;
+        padding-right: 10px !important;
+    }
+    .adminhead3 {
+         width: 12% !important;
+         padding: 10px 0 !important;
+         padding-left: 10px !important;
+    }
+    .adminhead4 {
+        width: 11% !important;
+        padding: 10px 0 !important;
+        padding-left: 10px !important;
+    }
+    .adminhead5 {
+
+        padding: 10px 0 !important;
+        padding-left: 10px !important;
+    }
+    .adminhead6 {
+        width: 13% !important;
+        padding: 10px 0 !important;
+        padding-left: 10px !important;
+    }
+    .adminhead7 {
+        width: 13.5% !important;
+        padding: 10px 0 !important;
+        padding-right: 10px !important;
+    }
+    .adminhead8{
+       width: 12% !important;
+       padding: 10px 0 !important;
+
+
+    }
+    .adminhead9{
+       width: 5% !important;
+       padding: 10px 0 !important;
+
+    }
+    .adminheadindent{
+        text-indent: -9999px;
+    }
+
+
+
+}
+@media (max-width:1024px) {
+
+    .Approved .headerUl li{
+        font-size: 11px !important;
+    }
+    .approveBtn{
+        width:auto !important;
+    }
+    .admin11{
+       width: 11% !important;
+    }
+    .admin22{
+       width: 9.3% !important;
+
+    }
+   
+    .admin44{
+         width:11.5% !important;
+    }
+   
+    .admin1010{
+         width: 9% !important;
+         padding:10px 0 !important;
+    }
+    .admin1111{
+         width:5% !important;
+         padding:10px 0 !important;
+    }
+}
+/*admin page media queries ends here*/
+
+/*my profile page media query starts here*/
+@media (max-width:1050px) {
+    .pfl_like_count, .pfl_download_count {
+        margin-right: 10px;
+    }
+}
+@media (max-width:971px) {
+    .pfl_like_count, .pfl_download_count, .pfl_view_count {
+        font-size: 16px;
+
+        font-weight: bold;
+    }
+    .pfl_show_liveview img {
+        height: 16px;
+
+    }
+}
+@media (max-width:816px) {
+    /*.pfl_show_liveview {
+
+        display: flex;
+        margin-left: 6px;
+    }*/
+
+}
+@media (max-width:847px) {
+    .profile_app_no_div, .profile_empid_div{
+    padding: 0;
+    }
+}
+@media (max-width: 767px){
+    .pfl_show_liveview img {
+        height: 12px;
+
+    }
+}
+/*my profile page media query ends here*/
+
+/*app detail page right side slider space code for ipad starts*/
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+/*  .assetImages img{
+    width:100%;
+  }*/
+  .deafultImageOnSlider{
+        width: 98%;
+    }
+    .deafultImageOnSlider1{
+        width: 98%;
+    }
+  .deletepop{
+        margin-top: 25% !important;
+    }
+  .fileInfo button{
+    margin-left: -12px;
+  }
+  .appdetailsLeft{
+    /*height: 690px;
+    max-height: 690px;*/
+    height: 660px;
+    max-height: 660px;
+  } 
+  .explore_more{
+        margin-top: -2px;
+  }
+  .technologyClass{
+        width: 260px;
+    max-width: 260px;
+  }
+  .personaClass{
+    width: 260px;
+    max-width: 260px;
+  }
+  .pdfViewer{
+    overflow: auto;
+    overflow-x: auto;;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100%;
+    /* height: 100%; */
+    border: 1px solid #e0e0e0;  
+    }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* For landscape layouts only */
+/*  .assetImages img{
+    width:100%;
+  }*/
+  .width100{
+    width: 100% !important;
+    float: left !important;
+  }
+  .flagDiv {
+        line-height: 30px;
+        padding-left: 10px;
+    }
+    .deleteCaseButton{
+        margin-right: 5px;
+    }
+    .viewcasebutton{
+        margin-right: 5px;
+    } 
+  .deafultImageOnSlider{
+        width: 98%;
+    }
+    .deafultImageOnSlider1{
+        width: 98%;
+    }
+  .deletepop{
+        margin-top: 25% !important;
+    }
+  .fileInfo button{
+    margin-left: -12px;
+  }
+  .appdetailsLeft{
+       /* height: 680px;
+        max-height: 680px;*/
+        height: 650px;
+        max-height: 650px;
+  } 
+  .caseDetailsDiv{
+    width: 100%;
+  }
+  .technologyClass{
+        width: 260px;
+    max-width: 260px;
+  }
+   .personaClass{
+    width: 260px;
+    max-width: 260px;
+  }
+  .pdfViewer{
+    overflow: auto;
+    overflow-x: auto;;
+    -webkit-overflow-scrolling:touch !important;
+    width: 100%;
+    /* height: 100%; */
+    border: 1px solid #e0e0e0;  
+    }
+}
+
+ 
+/*app detail page right side slider space code for ipad starts ends*/
+
+/*for app detail page on mac system */
+@media (min-width:1500px) {
+    .app-deatils-inner{
+        height: 400px !important;
+    }
+}
+
+/*header below 767px and above 500px*/
+@media (max-width:767px) {
+    .odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-car .odometer-digit .odometer-value {
+        line-height: 1.2em;
+        font-size: 1.4em;
+    }
+    .odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-car .odometer-digit {
+        padding: 0.1em 1.1em;
+
+    }
+    .right_header_section{
+        width: 55% !important;
+    }
+    .odometer_wrapper {
+
+        margin-top: 3px;
+    }
+    .search-form .has-feedback .form-control {
+
+        font-size: 10px !important;
+        width: 90% !important;
+
+    }
+    .multiselectSearch {
+
+        right: 25px;
+
+    }
+    .search-form .form-group button.search_custom{
+            width: 24px;
+            font-size: 11px;
+    }
+    .search-form {
+        width: 45% !important;
+        margin-right: 5px;
+    }
+    .mediabody .media-heading{
+        display: none;
+    }
+    .mediabody .person_name{
+        display: none;
+    }
+    .hdrPersonLogo{
+        margin-right: 0px;
+    }
+    .logoDiv{
+        width: 120px;
+    }
+    .logoDiv img {
+
+        height: 35px;
+        width: 87px;
+        margin-top: -18px;
+
+    }
+    .arrow_down{
+        top: -10px;
+    }
+}
+@media (max-width:655px) {
+    .odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-car .odometer-digit .odometer-value {
+        line-height: 20px;
+        font-size: 12px;
+    }
+    .odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-car .odometer-digit {
+        padding: 0.1em 1em;
+    }
+    .odometer_wrapper{
+        position: absolute;
+        left: 85px;
+    }
+    .odometer_label{
+        margin-left: 5px;
+        font-size: 11px;
+    }
+    .logoDiv img {
+        height: 32px;
+        width: 60px;
+        margin-top: -16px;
+        left: 10px;
+    }
+    .logoDiv {
+        width: 80px;
+    }
+    .right_header_section {
+        width: 75% !important;
+    }
+    .basket_icon {
+        width: 23px;
+        float: right;
+        padding: 0;
+        font-size: 11px;
+    }
+    .icons_header i {
+        width: 23px;
+        float: right;
+        padding: 0;
+        font-size: 11px;
+    }
+    .hdrPersonLogo {
+        height: 25px;
+        width: 25px;
+
+        margin-top: 5px;
+    }
+
+}
+@media only screen and (max-width: 1330px) and (min-width: 990px){
+.width100{
+    width: 100% !important;
+    float: left !important;
+}
+}
+/*header below 767px and above 500px code end*/ 
+/*@media (max-width:1024px) {
+.pdfViewer{
+    display: none !important;
+  }
+  .pdfOnIpad{
+    display: block !important;
+  }
+} */
+ 

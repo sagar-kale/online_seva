@@ -35,6 +35,8 @@ management:
 ---
 spring:
   profiles: mysql
+  freemarker:
+    suffix: .html
   datasource:
     url: "jdbc:mysql://localhost:3306/online_seva?verifyServerCertificate=false&useSSL=true"
     driver-class-name: com.mysql.jdbc.Driver

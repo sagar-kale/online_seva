@@ -1,0 +1,45 @@
+@media all and (-ms-high-contrast:none)
+{
+        .classify_sol p {
+        transform: rotate(-180deg);
+        -webkit-transform: rotate(-180deg);
+        -moz-transform: rotate(-180deg);
+        -o-transform: rotate(-180deg);
+        -ms-transform: rotate(-90deg);
+        -sand-transform: rotate(-180deg);
+        position: absolute;
+        top: 38% !important;
+        left: -1px !important;
+        }
+        .classify_poc p{
+           transform: rotate(-180deg);
+
+             -webkit-transform: rotate(-180deg);
+            -moz-transform: rotate(-180deg);
+            -o-transform: rotate(-180deg);
+            -ms-transform: rotate(-90deg);
+            -sand-transform: rotate(-180deg);
+
+            position: absolute;
+            top:38% !important;
+            left:-1px !important;
+        }
+        .classify_app p{
+           transform: rotate(-180deg);
+
+             -webkit-transform: rotate(-180deg);
+            -moz-transform: rotate(-180deg);
+            -o-transform: rotate(-180deg);
+            -ms-transform: rotate(-90deg);
+            -sand-transform: rotate(-180deg);
+
+            position: absolute;
+            top:38% !important;
+            left:-1px !important;
+        }  /* IE10 */
+        .mediabody small.media-heading{
+            float: left;
+            width:100%;
+        }
+
+}  

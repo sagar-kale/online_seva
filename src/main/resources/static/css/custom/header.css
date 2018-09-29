@@ -1,0 +1,103 @@
+
+header{
+	       height: 70px;
+    width: 100%;
+    position: fixed;
+    background-color:#173b75;
+    top: 0px;
+    padding-top: 6px;
+  z-index: 9999;
+        padding-right: 25px;
+    
+}
+header img{
+
+    height: 55px;
+    width: 160px;
+    margin-left: 25px;
+
+}
+header .Actons img{
+	    float: right;
+    height: 25px;
+    width: 25px;
+    margin-top: -20px;
+    cursor: pointer;
+}
+header .sitelogotext{
+	    font-size: 25px;
+    color: #fff;
+    padding-left: 25px;
+    margin-top: 16px;
+    float: left;
+        font-weight: bold;
+}
+.Actons{
+	float: right;
+    padding-top: 15px;
+    min-width: 144px;
+    position: relative;
+}
+.rotateArrow{
+	transform: rotate(180deg);
+}
+.welcome{
+	
+    font-size: 15px;
+    font-weight: normal;
+    color: #fff
+}
+.userName{
+	font-size: 13px;
+    font-weight: normal;
+    color: #fff;
+}
+.menulistDiv ul :nth-child(1) {
+       background-image: url(/../images/admin.png);
+    
+}
+.menulistDiv ul :nth-child(2) {
+       background-image: url(/../images/admin.png);
+ }
+ .menulistDiv ul :nth-child(3) {
+       background-image: url(/../images/contact.png);
+ }
+ .menulistDiv ul :nth-child(4) {
+       background-image: url(/../images/logout.png);
+ }
+.menulistDiv ul{
+	padding: 0px;
+	margin: 0px;
+
+}
+.menulistDiv ul li{
+	font-size: 14px;
+    font-weight: normal;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #fff;
+    list-style-type: none;
+    padding: 8px;
+    padding-left: 40px;
+    background-repeat: no-repeat;
+    background-size: 19px 19px;
+    background-position-x: 12px;
+    background-position-y: 4px;
+    color: #fff;
+}
+.menulistDiv{
+   position: fixed;
+    right: 0;
+    top: 70px;
+    right: 10px;
+    background: #173b75;
+    /* height: 140px; */
+    /* padding: 13px; */
+    /* border-bottom-left-radius: 5px; */
+    /* border-bottom-right-radius: 5px; */
+    width: 170px;
+    /* border-bottom: solid #fff; */
+    cursor: pointer;
+    border-top: solid 2px #fff;
+
+}
