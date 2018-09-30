@@ -25,7 +25,80 @@
     /* margin-right: 20px; */
     text-align: center;
     border-radius: 19px;
-        cursor: pointer;
+        cursor: pointer;	
     font-size: 20px;
     border-bottom: solid 2px #c1b3b3;
 }
+.coursepageContent{
+	    float: left;
+    width: 100%;
+    background: #33171775;
+}
+.userActionsDiv {
+	      float: left;
+    width: 20%;
+    /* margin-top: 10px; */
+    height: calc(100vh - 151px);
+    background: #222b2d;
+}
+.userActionsDiv ul{
+	padding: 0px;
+	margin: 0px;
+}
+.userActionsDiv ul li{
+	float: left;
+	float: left;
+    width: 100%;
+    padding: 10px;
+    /* background-color: red; */
+    border-bottom: solid 1px #fff;
+    list-style-type: none;
+    padding-left: 30px;
+    font-size: 16px;
+       color: #fff;
+    font-weight: normal;
+    cursor: pointer;
+}
+.corsePageLeftContent{        float: left;
+    width: 80%;
+    height: 100%;
+    padding-left: 25px;
+    padding-top: 14px;
+    /* font-size: 21px; */
+    padding-right: 25px;
+    font-size: 22px;
+    color: #fbfbfb;
+}
+.regFormCource{
+	         float: left;
+    width: 100%;
+    /* height: 300px; */
+    /* background: red; */
+    border: solid 1px #fff;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 25px;
+}
+.userData{
+	float: left;
+	width: 50%;
+	margin-bottom: 10px;
+}
+.userData .regUserName{
+	    font-size: 16px;
+    margin-bottom: 7px;
+}
+.regTextInputDiv{
+	float: left;width: 100%;
+}
+.regTextInputDiv input,.regTextInputDiv select{
+	    border: solid 1px #f1eaea;
+    border-radius: 5px;
+    background: transparent;
+    width: 77%;
+    height: 40px;
+       
+        font-size: 16px;;
+        padding-left: 15px;
+}
+.regTextInputDiv select{    background-color: #1e21212e;}

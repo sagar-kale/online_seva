@@ -1,37 +1,49 @@
 <!DOCTYPE html>
+<html lang="en" ng-app="demoApp" ng-controller="mainCotroller">
+<head>
+    <title>Demo App</title>3
+    <meta charset="utf-8"/>
+    <!--   <meta http-equiv="X-UA-Compatible" content="IE=edge">  -->
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+    <meta name="twitter:dnt" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<html lang="en" ng-app="demoApp">
-    <head>
-        <title>${title}</title>
-        <link rel="stylesheet" href="css/lib/bootstrap.min.css" />
-              <link rel="stylesheet" href="css/lib/odometer-theme-car.css" />
-              <link rel="stylesheet" type="text/css" href="css/lib/styleforie.css" />
-              <link rel="stylesheet" href="css/lib/sweetalert.css" />
-              <link rel="stylesheet" href="css/custom/login.css" />
-              <link rel="stylesheet" href="css/custom/comman.css" />
-              <link rel="stylesheet" href="css/custom/header.css" />
-              <link rel="stylesheet" href="css/custom/home.css" />
-              <link rel="stylesheet" href="css/custom/jobs.css" />
-              <link rel="stylesheet" href="css/custom/cources.css" />
-    </head>
-    <body>
+    <!-- ******** css Files ********** -->
 
-       <div ui-view></div>
-       <div data-ui-view="" class="parentwrapper"></div>
-        <script src="js/lib/angular.min.js" ></script>
-        <script src="js/lib/angular-ui-router.min.js" ></script>
-        <script src="js/app/app.js"></script>
-         <script src="js/lib/jquery.min.js"></script>
-                <script src="js/lib/jquery-ui-1.js"></script>
-                <script src="js/lib/bootstrap.min.js"></script>
-                <script src="js/lib/angular-sanitize.min.js"></script>
-                <script src="js/lib/angular-animate.min.js"></script>
-                <script src="js/lib/sweetalert.min.js"></script>
-                <script src="js/controllers/parentController.js"></script>
-                <script src="js/controllers/logincontroller.js"></script>
-                <script src="js/controllers/homeController.js"></script>
-                <script src="js/controllers/headerController.js"></script>
-                <script src="js/controllers/jobsController.js"></script>
-                <script src="js/controllers/cources.js"></script>
-    </body>
-</html>
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/lib/odometer-theme-car.css"/>
+    <link rel="stylesheet" type="text/css" href="css/lib/styleforie.css"/>
+    <link rel="stylesheet" href="css/lib/sweetalert.css"/>
+    <link rel="stylesheet" href="css/custom/login.css"/>
+    <link rel="stylesheet" href="css/custom/comman.css"/>
+    <link rel="stylesheet" href="css/custom/header.css"/>
+    <link rel="stylesheet" href="css/custom/home.css"/>
+    <link rel="stylesheet" href="css/custom/jobs.css"/>
+    <link rel="stylesheet" href="css/custom/cources.css"/>
+
+</head>
+<body>
+
+<div data-ui-view="" class="parentwrapper"></div>
+
+<!-- **********  js files ************ -->
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/angular-ui-router.js"></script>
+<script src="js/lib/angular-sanitize.min.js"></script>
+<script src="js/lib/angular-animate.min.js"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/jquery-ui-1.js"></script>
+<script src="js/lib/sweetalert.min.js"></script>
+<script src="js/paths/pathfile.js"></script>
+<script src="js/controllers/parentController.js"></script>
+<script src="js/controllers/logincontroller.js"></script>
+<script src="js/controllers/homeController.js"></script>
+<script src="js/controllers/headerController.js"></script>
+<script src="js/controllers/jobsController.js"></script>
+<script src="js/controllers/cources.js"></script>
+
+</body>
+
+<html>   
+        
