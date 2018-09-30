@@ -1,13 +1,4 @@
-server.port: 8080
-logging:
-  level:
-    org.springframework.web: DEBUG
-    org.hibernate: DEBUG
-    org.apache.http: DEBUG
-
 spring:
-  profiles:
-    active: mysql
   freemarker:
     suffix: .html
   #devtools:
@@ -48,6 +39,8 @@ spring:
 ---
 spring:
   profiles: postgres
+  freemarker:
+    suffix: .html
   datasource:
     url: ${JDBC_DATABASE_URL}
     driver-class-name: org.postgresql.Driver
@@ -57,6 +50,17 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.ProgressDialect
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
+    org.apache.http: DEBUG
+
 ---
 spring:
   profiles: errorlogs
