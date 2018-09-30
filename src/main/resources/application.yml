@@ -8,12 +8,12 @@ logging:
 spring:
   profiles:
     active: mysql
-  messages.basename: validation
+  freemarker:
+    suffix: .html
   #devtools:
    # livereload.enabled: true
     #restart.exclude: static/**,public/**
     #reload.trigger-file: .html
-  thymeleaf.cache: false
   jpa:
     properties:
       hibernate:
@@ -35,8 +35,6 @@ management:
 ---
 spring:
   profiles: mysql
-  freemarker:
-    suffix: .html
   datasource:
     url: "jdbc:mysql://localhost:3306/online_seva?verifyServerCertificate=false&useSSL=true"
     driver-class-name: com.mysql.jdbc.Driver
@@ -51,10 +49,10 @@ spring:
 spring:
   profiles: postgres
   datasource:
-    url: "postgres://https://tlhjpzrd:yIIfrJfypN3nvNVsmkwf0arULefly-e4@elmer.db.elephantsql.com:5432/tlhjpzrd"
+    url: ${JDBC_DATABASE_URL}
     driver-class-name: org.postgresql.Driver
-    username: tlhjpzrd
-    password: yIIfrJfypN3nvNVsmkwf0arULefly-e4
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
   jpa:
     properties:
       hibernate:

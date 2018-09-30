@@ -16,7 +16,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state("header.home", {
             url: "/",
             templateUrl: "partials/home",
-
             controller : "homeController"
         })
         .state("header.jobs", {

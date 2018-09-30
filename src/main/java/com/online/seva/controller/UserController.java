@@ -2,7 +2,6 @@ package com.online.seva.controller;
 
 
 import com.online.seva.domain.User;
-import com.online.seva.service.SecurityService;
 import com.online.seva.service.UserService;
 import com.online.seva.validator.UserValidator;
 import org.slf4j.Logger;
@@ -23,9 +22,6 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
-
-//    @Autowired
-    private SecurityService securityService;
 
     @Autowired
     private UserValidator userValidator;
@@ -71,7 +67,7 @@ public class UserController {
         }
 
         userService.save(user);
-        securityService.autologin(user.getUsername(), user.getPasswordConfirm());
+    //    securityService.autologin(user.getUsername(), user.getPasswordConfirm());
         logger.info("Password ::: " + user.getPassword());
         logger.info("Password plain ::: " + user.getPasswordConfirm());
         return "user/home";

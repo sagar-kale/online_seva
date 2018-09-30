@@ -4,12 +4,11 @@ import com.instamojo.wrapper.model.Payment;
 import com.instamojo.wrapper.model.PaymentOrder;
 import com.instamojo.wrapper.response.PaymentOrderDetailsResponse;
 import com.online.seva.builder.PaymentOrderBuilder;
-import com.online.seva.domain.CurrentUser;
 import com.online.seva.domain.RandomIdGenerator;
+import com.online.seva.domain.User;
 import com.online.seva.service.InstaMojoService;
 import com.online.seva.validator.OrderValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
@@ -35,7 +34,7 @@ public class PayController {
     @GetMapping("/order")
     public String retrieveOrderPage(PaymentOrder paymentOrder) {
 
-        CurrentUser user = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = new User();
         paymentOrder.setName(user.getFirstName() + " " + user.getLastName());
         paymentOrder.setEmail(user.getEmail());
         paymentOrder.setPhone(user.getPhone());
