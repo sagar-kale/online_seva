@@ -17,7 +17,7 @@ public class AppController {
         return "index";
     }
 
-    @RequestMapping("/views/{page}")
+    @RequestMapping("/pagerouting/{page}")
     String partialHandler(@PathVariable("page") final String page) {
         return "views/" + page.trim();
     }

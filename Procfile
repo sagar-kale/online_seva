@@ -1,0 +1,1 @@
+web: mvn package && java -jar target/online-seva-0.1.0.jar

@@ -1,19 +1,28 @@
+server.port: 8080
+
+logging:
+  level:
+    org.springframework.web: error
+    org.hibernate: error
+    org.apache.http: error
+
 spring:
-  freemarker:
-    suffix: .html
+  messages.basename: validation
   #devtools:
    # livereload.enabled: true
     #restart.exclude: static/**,public/**
     #reload.trigger-file: .html
+  freemarker:
+    suffix: .html
   jpa:
     properties:
       hibernate:
-        format_sql: true
-        use_sql_comments: true
-        show_sql: true
-        type: trace
-    generate-ddl: true
-    show-sql: true
+        format_sql: false
+        use_sql_comments: false
+        show_sql: false
+        #type: trace
+    generate-ddl: false
+    show-sql: false
     hibernate:
       ddl-auto: update
 
@@ -27,7 +36,7 @@ management:
 spring:
   profiles: mysql
   datasource:
-    url: "jdbc:mysql://localhost:3306/online_seva?verifyServerCertificate=false&useSSL=true"
+    url: "jdbc:mysql://localhost:3306/payment?verifyServerCertificate=false&useSSL=true"
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
@@ -39,8 +48,6 @@ spring:
 ---
 spring:
   profiles: postgres
-  freemarker:
-    suffix: .html
   datasource:
     url: ${JDBC_DATABASE_URL}
     driver-class-name: org.postgresql.Driver
@@ -50,17 +57,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.ProgressDialect
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-logging:
-  level:
-    org.springframework.web: DEBUG
-    org.hibernate: DEBUG
-    org.apache.http: DEBUG
-
 ---
 spring:
   profiles: errorlogs

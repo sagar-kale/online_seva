@@ -6,32 +6,32 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state("login", {
             url: "/login",
-            templateUrl: "views/login",
+            templateUrl: "pagerouting/login",
             controller : "logincontroller"
         })
           .state("header", {
             url: "/header",
-            templateUrl: "views/header",
+            templateUrl: "pagerouting/header",
             controller : "headerContrl"
         })
         .state("header.home", {
             url: "/home",
-            templateUrl: "views/home",
+            templateUrl: "pagerouting/home",
             controller : "homeController"
         })
         .state("header.jobs", {
             url: "/jobdetails",
-            templateUrl: "views/jobDeatials",
+            templateUrl: "pagerouting/jobDeatials",
             controller : "jobsController"
         })
          .state("header.admin", {
             url: "/admin",
-            templateUrl: "views/admin",
+            templateUrl: "pagerouting/admin",
             controller : "adminContrl"
         })
             .state("header.cources", {
             url: "/cources",
-            templateUrl: "views/cources",
+            templateUrl: "pagerouting/cources",
             controller : "courcesCntrl"
         })
 

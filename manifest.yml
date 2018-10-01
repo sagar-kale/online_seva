@@ -1,0 +1,8 @@
+---
+applications:
+- name: online-seva
+  memory: 1G
+  path : target\online-seva-0.1.0.jar
+  instances: 1
+  routes:
+    - route: online-seva.cfapps.io

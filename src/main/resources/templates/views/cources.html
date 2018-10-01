@@ -1,0 +1,108 @@
+
+<div class=" pgaeContainer" style="padding: 0px;">
+	<div class="courcesTabs" style="padding: 25px;">
+		<ul>
+			<li ng-repeat = "course in listOfCources" ng-click="getCourseData(course)">
+				{{course}}
+			</li>
+		</ul>
+	</div>
+	<div class="coursepageContent">
+		<div class="userActionsDiv">
+			<ul>
+				<li ng-click="toggleForms('Register')">Register New User</li>
+				<li  ng-click="toggleForms('Admit Cards')">Check Admit Cards</li>
+				<li ng-click="toggleForms('Exam')">Take Exam</li>
+				<li ng-click="toggleForms('Bonafide')">Generate Bonafide</li>
+				<li ng-click="toggleForms('Learning')"> Learning</li>
+			</ul>
+		</div>
+		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Register'">
+			<div class="titleForm">
+				Register here
+			 </div>
+
+			<div class="regFormCource">	
+				<div class="userData">
+					<div class="regUserName">Student Name</div>
+					<div class="regTextInputDiv">
+						<input type="text" name="regUserName ">
+					</div>
+				</div>
+				<div class="userData">
+					<div class="regUserName">email id</div>
+					<div class="regTextInputDiv">
+						<input type="text" name="regUserName ">
+					</div>
+				</div>
+					
+				<div class="userData">
+					<div class="regUserName">Addhar Number</div>
+					<div class="regTextInputDiv">
+						<input type="text" name="regUserName ">
+					</div>
+				</div>
+				<div class="userData">
+					<div class="regUserName">Select Course Name</div>
+					<div class="regTextInputDiv">
+						<select>
+								<option value="MSCIT" selected="MSCIT">MSCIT</option>
+								<option value="MSCIT" selected="CCC">CCC</option>
+								<option value="MSCIT" selected="DTP">DTP</option>
+								<option value="MSCIT" selected="TALLY">TALLY</option>
+						</select>
+					</div>
+				</div>
+				<div class="userData">
+					<div class="regUserName">Select Center Name</div>
+					<div class="regTextInputDiv">
+						<select>
+								<option value="MSCIT" selected="MSCIT">MSCIT</option>
+								<option value="MSCIT" selected="CCC">CCC</option>
+								<option value="MSCIT" selected="DTP">DTP</option>
+								<option value="MSCIT" selected="TALLY">TALLY</option>
+						</select>
+					</div>
+				</div>
+				<div class="userData">
+					<div class="regUserName">Address</div>
+					<div class="regTextInputDiv">
+						<input type="text" name="regUserName ">
+					</div>
+				</div>
+				<div class="userData">
+					<div class="regUserName">Contact Number</div>
+					<div class="regTextInputDiv">
+						<input type="text" name="regUserName ">
+					</div>
+				</div>
+				<div class="userData">
+					<div class="regUserName">Address</div>
+					<div class="regTextInputDiv">
+						<input type="text" name="regUserName ">
+					</div>
+				</div>
+					
+					
+
+		
+			</div>
+	
+			
+		</div>
+		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Admit Cards'">
+			Admit Cards
+		</div>
+		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Exam'">
+			Exam
+		</div>
+		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Bonafide'">
+			Bonafide
+		</div>
+		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Learning'">
+			Learning
+		</div>
+
+		
+	</div>
+</div>
