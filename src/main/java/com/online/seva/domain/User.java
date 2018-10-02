@@ -1,17 +1,19 @@
 package com.online.seva.domain;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.Set;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+import java.util.List;
 
 @Entity(name = "user_details")
-public class User {
-    @Id
+public class User  implements HttpSessionBindingListener {
+    /*@Id
     @Column(length = 40)
     @GeneratedValue(generator = "randomId")
     @GenericGenerator(name = "randomId", strategy = "com.online.seva.domain.RandomIdGenerator")
-    private String id;
+    private String id;*/
+    @Id
+    @Column(name = "username", unique = true)
     private String username;
     private String firstName;
     private String lastName;
@@ -20,18 +22,22 @@ public class User {
     @Transient
     private String passwordConfirm;
     private String phone;
-    private String role;
     private boolean active;
-    @ManyToMany(mappedBy = "users")
-    private Set<Role> roles;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles",
+            joinColumns = {@JoinColumn(name = "user_name", referencedColumnName = "username")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+    )
+    private List<Role> roles;
+/*
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
+    }*/
 
     public String getUsername() {
         return username;
@@ -89,14 +95,6 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public boolean isActive() {
         return active;
     }
@@ -105,11 +103,35 @@ public class User {
         this.active = active;
     }
 
-    public Set<Role> getRoles() {
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", passwordConfirm='" + passwordConfirm + '\'' +
+                ", phone='" + phone + '\'' +
+                ", active=" + active +
+                '}';
+    }
+
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public void valueBound(HttpSessionBindingEvent httpSessionBindingEvent) {
+
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent httpSessionBindingEvent) {
+
     }
 }

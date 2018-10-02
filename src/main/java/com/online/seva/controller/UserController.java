@@ -1,91 +1,118 @@
 package com.online.seva.controller;
 
 
+import com.online.seva.config.listeners.SessionCounter;
+import com.online.seva.domain.OnlineUsers;
+import com.online.seva.domain.Response;
 import com.online.seva.domain.User;
 import com.online.seva.service.UserService;
-import com.online.seva.validator.UserValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
-@Controller
+@RestController
+@CrossOrigin
+@ResponseBody
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
 
     @Autowired
-    private UserValidator userValidator;
+    private ServletContext context;
 
-//    @GetMapping("/")
-    public String welcome() {
-        return "user/home";
-    }
+    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response registration(@RequestBody User user) {
+        Response response;
+        logger.info("User Email::: " + user.getEmail());
+        if (null == user.getEmail()) {
 
-  //  @GetMapping("/home")
-    public String home() {
-        return "user/home";
-    }
-
-    @GetMapping("/admin")
-    public String admin() {
-        return "admin";
-    }
-
-//    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showForm(User user) {
-        return "login";
-    }
-
-    @GetMapping("/userregister")
-    public String showRegister(User user) {
-        return "user/register";
-    }
-
-    //@RequestMapping(value = "/registration", method = RequestMethod.POST)
-    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String registration(@Valid User user, BindingResult bindingResult, Model model) {
-
-        logger.info("Adding User " + user.getId());
-        logger.info("User::: " + user);
+            response = new Response();
+            response.setError("User details empty");
+            return response;
+        }
         user.setUsername(user.getEmail());
-        user.setRole("user");
-        userValidator.validate(user, bindingResult);
+        if (userService.findByUsername(user.getUsername()) != null) {
+            response = new Response();
+            response.setError("Email already exists");
+            return response;
+        }
         user.setPasswordConfirm(user.getPassword());
 
-        if (bindingResult.hasErrors()) {
-            return "login";
-        }
-
         userService.save(user);
-    //    securityService.autologin(user.getUsername(), user.getPasswordConfirm());
         logger.info("Password ::: " + user.getPassword());
         logger.info("Password plain ::: " + user.getPasswordConfirm());
-        return "user/home";
+        response = new Response();
+        response.setMessage("Registration Successful, Please Login");
+        return response;
     }
 
-   /* @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+    @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response login(@RequestBody User user, HttpSession httpSession) {
+        logger.info("Under Login");
+        logger.info("request User" + user);
+        Response response;
+        if (null == user.getUsername() || null == user.getPassword()) {
+            response = new Response();
+            response.setError("Null Username and Password");
+            return response;
+        }
+        User loggedUser = userService.authenticateUser(user.getUsername(), user.getPassword());
+        logger.info("Logged User::: " + loggedUser);
+        if (null == loggedUser) {
+            response = new Response();
+            response.setError("Invalid Username and Password");
+            return response;
+        }
+        logger.info("Logged User success::: " + loggedUser);
+        httpSession.setAttribute("user", loggedUser);
+        response = new Response();
+        loggedUser.setPassword(null);
+        response.setUser(loggedUser);
+        Map<HttpSession, String> logins = getLoggedUserAttr(httpSession);
+        logins.put(httpSession, user.getUsername());
+        logger.info("Leaving Login Controller");
+        return response;
+    }
 
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+    @RequestMapping(value = "/users/all", method = RequestMethod.GET)
+    public List<User> getAllUsers() {
+        logger.info("fetching all users");
+        return userService.findAll();
+    }
 
-        return "login";
-    }*/
-/*
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "welcome";
-    }*/
+    @RequestMapping(value = "/logged/count", method = RequestMethod.GET)
+    public OnlineUsers getLoggedUsersCount() {
+        SessionCounter counter = SessionCounter.getInstance(context);
+        logger.info("fetching all online uaers");
+        OnlineUsers onlineUsers = new OnlineUsers();
+        onlineUsers.setLoggedInUsers(counter.getLoggedUsersCount());
+        onlineUsers.setTotalOnlineUsers(counter.getTotalUsers());
+        return onlineUsers;
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ResponseEntity<String> logout(HttpSession session) {
+        logger.info("fetching all users");
+        User user = (User) session.getAttribute("user");
+        if (null == user)
+            return ResponseEntity.ok("You are already Logged Out");
+        logger.info("logging out following user" + user);
+        session.invalidate();
+        Map<HttpSession, String> logins = getLoggedUserAttr(session);
+        logins.remove(session, user.getUsername());
+        return ResponseEntity.ok("SuccessFully Logged Out");
+    }
+
+    private Map<HttpSession, String> getLoggedUserAttr(HttpSession httpSession) {
+        return (Map<HttpSession, String>) httpSession.getServletContext().getAttribute("loggedUsers");
+    }
 }

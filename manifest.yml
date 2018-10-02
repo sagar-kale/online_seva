@@ -6,3 +6,5 @@ applications:
   instances: 1
   routes:
     - route: online-seva.cfapps.io
+  services:
+     - online_seva_db

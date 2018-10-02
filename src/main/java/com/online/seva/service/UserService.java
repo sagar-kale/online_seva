@@ -11,8 +11,14 @@ public interface UserService {
     User findByUsername(String username);
 
     User findUserByEmail(String email);
+
     void saveUser(User user);
+
     void createUser(User user);
+
     List<User> findAll();
+
     List<Role> findAllRoles();
+
+    User authenticateUser(String username, String password);
 }
