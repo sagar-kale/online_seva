@@ -20,4 +20,24 @@
 	    };
 	}]);
 
+		app.factory('userService', [function () {
+			var user ={};
+			
+
+	    
+	    var _getUser = function () {
+	        return user;
+	    };
+	    var _setUser = function (obj) {
+	        user = obj;
+	    };
+
+	   
+	    return {
+	        getUser: _getUser,
+	        setUser: _setUser
+	        
+	    	};
+	}]);
+
 	

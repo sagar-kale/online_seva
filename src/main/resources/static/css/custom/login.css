@@ -7,17 +7,21 @@ a{color:inherit;text-decoration:none}
 .login-wrap{
 	width:100%;
 	margin:auto;
-	max-width:525px;
-	min-height:670px;
+	width: 750px;
+  min-height: 100vh;
 	position:relative;
-	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+	background:url(/images/loginpagebg.jpg) no-repeat center;
+	background-size: cover;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.sethieghtToWrapper{
+	  min-height: 140vh;
 }
 .login-html{
 	width:100%;
 	height:100%;
 	position:absolute;
-	padding:90px 70px 50px 70px;
+	padding: 30px 30px 30px 30px;
 	background:rgba(40,57,101,.9);
 }
 .login-html .sign-in-htm,
@@ -55,7 +59,7 @@ a{color:inherit;text-decoration:none}
 	border-color:#1161ee;
 }
 .login-form{
-	min-height:345px;
+	    min-height: 435px;
 	position:relative;
 	perspective:1000px;
 	transform-style:preserve-3d;
@@ -82,8 +86,8 @@ a{color:inherit;text-decoration:none}
 	-webkit-text-security:circle;
 }
 .login-form .group .label{
-	color:#aaa;
-	font-size:12px;
+	    font-size: 13px;
+    color: #fff;
 }
 .login-form .group .button{
 	background:#1161ee;
@@ -146,3 +150,56 @@ a{color:inherit;text-decoration:none}
 .login-form .group .label{
 	text-align: left !important;
 }
+.rigistrationFrom{
+	float: left;
+	width: 100%;
+}
+.rigistrationFrom .group{
+	        float: left;
+    width: 48%;
+    margin-right: 2%;
+    margin-bottom: 20px !important;
+        min-height: 100px;
+}
+.rigistrationFrom .group input,.rigistrationFrom .group select{
+	background: transparent !important;;
+    border: left;
+    width: 100% !important;
+    margin-right: 2%;
+    height: 45px !important;
+    border-radius: 7px !important;
+    border: transparent;
+    border: solid 1px #fff !important;
+    font-size: 14px;
+}
+.rigistrationFrom .group select{
+	background-color:#28355c !important
+}
+.rigistrationFrom .saveButton{
+	width: 100%;
+	float: left;
+}
+.invalidtextColor{    
+  
+	color: red;
+    font-size: 18px;
+}
+.saveButton button{
+	    background: #1161ee;
+    width: 100%;
+    color: #fff;
+    display: block;
+    border-radius: 17px;
+    text-transform: uppercase;
+    height: 43px;
+    font-size: 20px;
+}
+.login-form .group .input{    border: solid 1px #fff;
+    border-radius: 10px;
+    color: #fff;}
+    .sign-in-htm{
+    	    width: 466px !important;
+    margin: auto;
+    border: solid 1px #fff;
+    padding: 30px;
+    }

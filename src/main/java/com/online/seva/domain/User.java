@@ -1,12 +1,10 @@
 package com.online.seva.domain;
 
 import javax.persistence.*;
-import javax.servlet.http.HttpSessionBindingEvent;
-import javax.servlet.http.HttpSessionBindingListener;
 import java.util.List;
 
 @Entity(name = "user_details")
-public class User  implements HttpSessionBindingListener {
+public class User {
     /*@Id
     @Column(length = 40)
     @GeneratedValue(generator = "randomId")
@@ -15,14 +13,21 @@ public class User  implements HttpSessionBindingListener {
     @Id
     @Column(name = "username", unique = true)
     private String username;
-    private String firstName;
-    private String lastName;
+    private String name;
     private String email;
     private String password;
     @Transient
     private String passwordConfirm;
     private String phone;
     private boolean active;
+    private String centerName;
+    private String dob;
+    private String aadhar;
+    private String state;
+    private String district;
+    private String city;
+    private String pincode;
+
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
@@ -45,22 +50,6 @@ public class User  implements HttpSessionBindingListener {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -103,20 +92,6 @@ public class User  implements HttpSessionBindingListener {
         this.active = active;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", passwordConfirm='" + passwordConfirm + '\'' +
-                ", phone='" + phone + '\'' +
-                ", active=" + active +
-                '}';
-    }
-
     public List<Role> getRoles() {
         return roles;
     }
@@ -125,13 +100,88 @@ public class User  implements HttpSessionBindingListener {
         this.roles = roles;
     }
 
-    @Override
-    public void valueBound(HttpSessionBindingEvent httpSessionBindingEvent) {
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCenterName() {
+        return centerName;
+    }
+
+    public void setCenterName(String centerName) {
+        this.centerName = centerName;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getAadhar() {
+        return aadhar;
+    }
+
+    public void setAadhar(String aadhar) {
+        this.aadhar = aadhar;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
     }
 
     @Override
-    public void valueUnbound(HttpSessionBindingEvent httpSessionBindingEvent) {
-
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", passwordConfirm='" + passwordConfirm + '\'' +
+                ", phone='" + phone + '\'' +
+                ", active=" + active +
+                ", centerName='" + centerName + '\'' +
+                ", dob='" + dob + '\'' +
+                ", aadhar='" + aadhar + '\'' +
+                ", state='" + state + '\'' +
+                ", district='" + district + '\'' +
+                ", city='" + city + '\'' +
+                ", pincode='" + pincode + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

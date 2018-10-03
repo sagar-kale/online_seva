@@ -6,6 +6,7 @@ import com.online.seva.domain.OnlineUsers;
 import com.online.seva.domain.Response;
 import com.online.seva.domain.User;
 import com.online.seva.service.UserService;
+import com.online.seva.util.AppConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +34,19 @@ public class UserController {
     public Response registration(@RequestBody User user) {
         Response response;
         logger.info("User Email::: " + user.getEmail());
+        logger.info("registering User:: " + user);
         if (null == user.getEmail()) {
 
             response = new Response();
-            response.setError("User details empty");
+            response.setMessage("User details empty");
+            response.setMsgType(AppConstant.ERROR);
             return response;
         }
         user.setUsername(user.getEmail());
         if (userService.findByUsername(user.getUsername()) != null) {
             response = new Response();
-            response.setError("Email already exists");
+            response.setMessage("Email already exists");
+            response.setMsgType(AppConstant.ERROR);
             return response;
         }
         user.setPasswordConfirm(user.getPassword());
@@ -52,6 +56,7 @@ public class UserController {
         logger.info("Password plain ::: " + user.getPasswordConfirm());
         response = new Response();
         response.setMessage("Registration Successful, Please Login");
+        response.setMsgType(AppConstant.SUCCESS);
         return response;
     }
 
@@ -62,14 +67,16 @@ public class UserController {
         Response response;
         if (null == user.getUsername() || null == user.getPassword()) {
             response = new Response();
-            response.setError("Null Username and Password");
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Null Username and Password");
             return response;
         }
         User loggedUser = userService.authenticateUser(user.getUsername(), user.getPassword());
         logger.info("Logged User::: " + loggedUser);
         if (null == loggedUser) {
             response = new Response();
-            response.setError("Invalid Username and Password");
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Invalid Username and Password");
             return response;
         }
         logger.info("Logged User success::: " + loggedUser);
@@ -77,6 +84,8 @@ public class UserController {
         response = new Response();
         loggedUser.setPassword(null);
         response.setUser(loggedUser);
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setMessage("Login Success");
         Map<HttpSession, String> logins = getLoggedUserAttr(httpSession);
         logins.put(httpSession, user.getUsername());
         logger.info("Leaving Login Controller");

@@ -25,7 +25,8 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
             if (session == null || session.getAttribute("user") == null) {
                 response.setContentType("application/json");
                 Response response1 = new Response();
-                response1.setError("User not logged in or session expired,Please login");
+                response1.setMsgType("error");
+                response1.setMessage("User not logged in or session expired,Please login");
                 response.getWriter().println(new Gson().toJson(response1));
 
                 return false;

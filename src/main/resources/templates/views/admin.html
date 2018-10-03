@@ -1,0 +1,282 @@
+<div class="pgaeContainer" style="padding: 0px;">
+	<div class="adminTabs">
+		<ul class="topUl">
+			<li ng-click="toggleTabs('show1')" ng-class="{'Activebg':activeTab =='show1'}">Job Management</li>
+			<li ng-click="toggleTabs('show2')" ng-class="{'Activebg':activeTab =='show2'}">User Management</li>
+			<li ng-click="toggleTabs('show3')" ng-class="{'Activebg':activeTab =='show3'}">Admin Cards</li>
+		</ul>
+		<div class="JobDetailsDivParent" ng-show="activeTab=='show1'">			
+				<div class="container" style="padding: 0px !important;
+    width: 97%;">
+    <div class="row">
+   
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-custom">
+                <div class="panel-heading" role="tab" id="headingOne" ng-class="{'done':firstsection.$valid}">
+                    <h4 class="panel-title">
+                    	 <i class="glyphicon glyphicon-plus"></i>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="return false">
+                           
+                           
+                            Add Job Basic Details
+                             <img class="checkedImg" src="../images/verified.png" ng-if="firstsection.$valid">
+                        </a>
+                    </h4>
+
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body animated zoomOut">
+                    <div class="mainDivJobs" >    
+	                   	 <form name ="firstsection">
+	                    		<div class="inputDiv">
+								<div class="title">
+									Job Title
+								</div>
+								<div class="title">
+									<input type="text" ng-readonly="readOnlyFirst" name="title" ng-model="basicsJob.title" required/>
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">
+									Total Posts
+								</div>
+								<div class="title">
+									<input type="text" ng-readonly="readOnlyFirst" name="TotalPosts" ng-model="basicsJob.TotalPosts" required/>
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">
+									Sector
+								</div>
+								<div class="title">
+									<input type="text" ng-readonly="readOnlyFirst" name="Sector" ng-model="basicsJob.Sector" required/>
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">
+									Qualification
+								</div>
+								<div class="title">
+									<input type="text" ng-readonly="readOnlyFirst" name="Qualification" ng-model="basicsJob.Qualification" required/>
+								</div>
+							</div>	
+							<div class="inputDiv">
+								<div class="title">
+									Last Date
+								</div>
+								<div class="title">
+									<input type="date" ng-readonly="readOnlyFirst" name="LastDate" ng-model="basicsJob.LastDate" required/>
+								</div>
+							</div>	
+							<div class="saveEdit">
+								<button ng-click="editFirstSection()">Edit</button>
+								<button ng-click="saveFirstSection()">Next</button>
+							</div>
+	                    </form>                	
+							
+					</div>	
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-custom">
+                <div class="panel-heading" role="tab" id="headingTwo" ng-class="{'done':secondsection.$valid,'disableDiv':!firstsection.$valid}" >
+                    <h4 class="panel-title">
+                    	
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="return false">
+                            <i class="glyphicon glyphicon-plus" ></i>
+                         
+                             Add Sub Job Details
+                             <img class="checkedImg" src="../images/verified.png" ng-if="secondsection.$valid">
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body animated zoomOut">
+                      <div class="section2Div">						
+					
+							<div class="mainDivJobs">
+									<form name="secondsection">
+										<div class="inputDiv">
+									<div class="title">
+										Job Discription
+									</div>
+									<div class="title">
+										<input type="text" name="aboutJob" ng-model="subDetails.aboutJob" required></input>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										Post Name
+									</div>
+									<div class="title">
+										<input type="text" name="aboutJob" ng-model="subDetails.postName" required/>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										Total Vacancies
+									</div>
+									<div class="title">
+										<input type="text" name="TotalVacancies" ng-model="subDetails.TotalVacancies" required/>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										Salary Scale
+									</div>
+									<div class="title">
+										<input type="text" name="SalaryScale" ng-model="subDetails.SalaryScale" required/>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										Job Location
+									</div>
+									<div class="title">
+										<input type="text" name="JobLocation" ng-model="subDetails.JobLocation" required/>
+									</div>
+								</div>
+								<div class="saveEdit">
+									<button>Edit</button>
+									<button>Next</button>
+								</div>
+							</div>
+									</form>
+								
+					</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-custom">
+                <div class="panel-heading" role="tab" id="headingThree" ng-class="{'done':thirdsection.$valid,'disableDiv':!firstsection.$valid || !secondsection.$valid}">
+                    <h4 class="panel-title">
+                    <i class="glyphicon glyphicon-plus"></i>                    
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="return false" >                            
+                             Add Job Criteria
+                               <img class="checkedImg" src="../images/verified.png" ng-if="thirdsection.$valid">
+                        </a>                        
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body animated zoomOut">
+                       	<div class="mainDivJobs">
+                       		<form name="thirdsection">
+								<div class="inputDiv">
+									<div class="title">
+										Educational Qualifiction
+									</div>
+									<div class="title">
+										<input type="text" name="EducationalQualifiction" ng-model="subDetails.EducationalQualifiction" required></input>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										Age Limit
+									</div>
+									<div class="title">
+										<input type="text" name="AgeLimit" ng-model="subDetails.AgeLimit" required/>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										Selection Process
+									</div>
+									<div class="title">
+										<input type="text" name="SelectionProcess" ng-model="subDetails.SelectionProcess" required/>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										Application Fee
+									</div>
+									<div class="title">
+										<input type="text" name="SalaryScale" ng-model="subDetails.SalaryScale" required/>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										How To Applay
+									</div>
+									<div class="title">
+										<input type="text" name="Applay" ng-model="subDetails.Applay" required/>
+									</div>
+								</div>
+								<div class="inputDiv">
+									<div class="title">
+										YouTube Link
+									</div>
+									<div class="title">
+										<input type="text" name="Applay" ng-model="subDetails.YouTubeLink" required/>
+									</div>
+								</div>
+								<div class="saveEdit">
+									<button>Edit</button>
+									<button>Next</button>
+								</div>
+								</form>
+							</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+		</div>
+			<div class="JobDetailsDivParent" ng-show="activeTab=='show2'">
+			<div class="userTable">
+				<ul class="headerUlAdmin">
+					<li>
+						User Name
+					</li>
+					<li>
+						Email
+					</li>
+					<li>
+						City
+					</li>
+					<li>
+						Select Role
+					</li>
+					<li>
+						Action
+					</li>
+					<li>
+						Action
+					</li>
+				</ul>
+				<ul class="headerUlAdmin" ng-repeat="user in userList">
+					<li>
+					{{user.firstName}}
+					</li>
+					<li>
+						{{user.username}}
+					</li>
+					<li>
+						Pune
+					</li>
+					<li>
+						<select>
+							<option value="user" selected>User</option>
+							<option value="admin">Admin</option>
+						</select>
+					</li>
+					<li>
+						<button type="btn">Approve</button>
+					</li>
+					<li>
+						<button type="btn" class="rejectbtn">Reject</button>
+					</li>
+				</ul>
+			
+
+			</div>	
+			
+		</div>
+			<div class="JobDetailsDivParent" ng-show="activeTab=='show3'">
+			
+			Job Creteria
+		</div>
+	</div>
+</div>

@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        if (user.getFirstName().equalsIgnoreCase("sagar") || user.getFirstName().equalsIgnoreCase("mohan")) {
+        if (user.getName().equalsIgnoreCase("sagar kale") || user.getName().equalsIgnoreCase("mohan randive")) {
             List<Role> roles = userRoleRepository.findAll();
             logger.info("all roles ::: " + roles);
             user.setRoles(roles);

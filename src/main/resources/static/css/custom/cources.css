@@ -1,10 +1,12 @@
 .courcesTabs{
 	        float: left;
     width: 100%;
-    background: #b9a6a626;
+    background: #3a363626;
     /* padding: 0px !important; */
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
+    padding-top: 0px !important;
+    padding-bottom: 21px !important;
+    border-top: solid 1px #fff;
+    border-bottom: solid 1px #fff;
   
 
 }
@@ -32,14 +34,14 @@
 .coursepageContent{
 	    float: left;
     width: 100%;
-    background: #33171775;
+        background: #0c1d1fc2;
 }
 .userActionsDiv {
 	      float: left;
     width: 20%;
     /* margin-top: 10px; */
     height: calc(100vh - 151px);
-    background: #222b2d;
+       background: #102933;
 }
 .userActionsDiv ul{
 	padding: 0px;

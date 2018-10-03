@@ -3,7 +3,7 @@ header{
 	       height: 70px;
     width: 100%;
     position: fixed;
-    background-color:#173b75;
+   background-color: #102933;
     top: 0px;
     padding-top: 6px;
   z-index: 9999;
@@ -86,18 +86,15 @@ header .sitelogotext{
     color: #fff;
 }
 .menulistDiv{
-   position: fixed;
+      position: fixed;
     right: 0;
     top: 70px;
-    right: 10px;
-    background: #173b75;
-    /* height: 140px; */
-    /* padding: 13px; */
-    /* border-bottom-left-radius: 5px; */
-    /* border-bottom-right-radius: 5px; */
+    right: 0;
+    background: #091f27;
+  
     width: 170px;
-    /* border-bottom: solid #fff; */
+  
     cursor: pointer;
-    border-top: solid 2px #fff;
+    border-top: solid 1px #fff;
 
 }

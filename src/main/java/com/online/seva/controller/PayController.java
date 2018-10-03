@@ -35,7 +35,7 @@ public class PayController {
     public String retrieveOrderPage(PaymentOrder paymentOrder) {
 
         User user = new User();
-        paymentOrder.setName(user.getFirstName() + " " + user.getLastName());
+        paymentOrder.setName(user.getName());
         paymentOrder.setEmail(user.getEmail());
         paymentOrder.setPhone(user.getPhone());
         return "user/order";

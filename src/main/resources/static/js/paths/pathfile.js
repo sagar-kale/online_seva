@@ -1,6 +1,6 @@
-// create the module and name it digistoreapp
-var app = angular.module('demoApp', ['ui.router']);
 
+
+var app = angular.module('demoApp', ['ui.router']);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
     $stateProvider
@@ -36,6 +36,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
 });
+
 
 
 

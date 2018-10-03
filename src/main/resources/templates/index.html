@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="demoApp" ng-controller="mainCotroller">
 <head>
-    <title>Demo App</title>3
+    <title>Demo App</title>
     <meta charset="utf-8"/>
     <!--   <meta http-equiv="X-UA-Compatible" content="IE=edge">  -->
     <meta http-equiv="X-UA-Compatible" content="IE=11"/>
@@ -20,22 +20,28 @@
     <link rel="stylesheet" href="css/custom/home.css"/>
     <link rel="stylesheet" href="css/custom/jobs.css"/>
     <link rel="stylesheet" href="css/custom/cources.css"/>
+    <link rel="stylesheet" href="css/custom/admin.css"/>
 
 </head>
 <body>
-
 <div data-ui-view="" class="parentwrapper"></div>
 
+
 <!-- **********  js files ************ -->
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/jquery-ui-1.js"></script>
 <script src="js/lib/bootstrap.min.js"></script>
 <script src="js/lib/angular.min.js"></script>
 <script src="js/lib/angular-ui-router.js"></script>
 <script src="js/lib/angular-sanitize.min.js"></script>
 <script src="js/lib/angular-animate.min.js"></script>
-<script src="js/lib/jquery.min.js"></script>
-<script src="js/lib/jquery-ui-1.js"></script>
 <script src="js/lib/sweetalert.min.js"></script>
 <script src="js/paths/pathfile.js"></script>
+
+<script src="js/CommonFileservices/apiLinks.js"></script>
+<script src="js/CommonFileservices/configservice.js"></script>
+<script src="js/CommonFileservices/Uitilities.js"></script>
+
 <script src="js/controllers/parentController.js"></script>
 <script src="js/controllers/logincontroller.js"></script>
 <script src="js/controllers/homeController.js"></script>
@@ -43,6 +49,7 @@
 <script src="js/controllers/jobsController.js"></script>
 <script src="js/controllers/cources.js"></script>
 
+<script src="js/controllers/admin.js"></script>
 </body>
 
 <html>   

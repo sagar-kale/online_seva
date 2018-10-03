@@ -1,6 +1,6 @@
 
 <header>
-<!-- <img src="../images/logo.png" style="height: 55px;
+<!--         <img src="../images/logo.png" style="height: 55px;
     width: 160px;
     margin-left: 25px;"> -->
     <span class="sitelogotext" ng-click="gotoHome()">ONLINE SEVA</span>
@@ -12,7 +12,8 @@
     
     <div class="menulistDiv" ng-show="openMenu">
     	<ul>    		
-    		<li ng-click="gotoHome()">Admin</li>
+    		<!-- <li ng-click="gotoAdmin()" ng-if="currentUser.roles[0].role=='user'">Admin</li> -->
+            <li ng-click="gotoAdmin()">Admin</li>
     		<li>About Us</li>
     		<li>Contact Us</li>
     		<li ng-click="logoutApp()">Log out</li>
