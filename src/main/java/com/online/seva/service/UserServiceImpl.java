@@ -53,24 +53,6 @@ public class UserServiceImpl implements UserService {
             user.setRoles(new ArrayList<>(Arrays.asList(userRole)));
         }
         jpaUserRepository.save(user);
-     /*
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Role role = new Role();
-        role.setRole("user");
-        if (user.getFirstName().equalsIgnoreCase("sagar"))
-            role.setRole("admin");
-        HashSet<Role> roles = new HashSet<>();
-        roles.add(role);
-        user.setRoles(roles);
-
-        HashSet<User> users = new HashSet<>();
-        users.add(user);
-        role.setUsers(users);
-
-        logger.debug("Authentication Role for user ::: " + user.getUsername());
-        logger.debug("Roles ::: " + user.getRoles());
-        userRoleRepository.save(role);
-        jpaUserRepository.save(user);*/
     }
 
     @Override
