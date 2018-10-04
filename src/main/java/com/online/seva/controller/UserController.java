@@ -109,16 +109,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public ResponseEntity<String> logout(HttpSession session) {
+    public Response logout(HttpSession session) {
+        Response response = new Response();
         logger.info("fetching all users");
         User user = (User) session.getAttribute("user");
-        if (null == user)
-            return ResponseEntity.ok("You are already Logged Out");
+        if (null == user) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("You are already Logged Out");
+            return response;
+        }
         logger.info("logging out following user" + user);
         session.invalidate();
         Map<HttpSession, String> logins = getLoggedUserAttr(session);
         logins.remove(session, user.getUsername());
-        return ResponseEntity.ok("SuccessFully Logged Out");
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setMessage("SuccessFully Logged Out");
+        return response;
     }
 
     private Map<HttpSession, String> getLoggedUserAttr(HttpSession httpSession) {
