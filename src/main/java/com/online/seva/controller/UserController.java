@@ -5,6 +5,7 @@ import com.online.seva.config.listeners.SessionCounter;
 import com.online.seva.domain.OnlineUsers;
 import com.online.seva.domain.Response;
 import com.online.seva.domain.User;
+import com.online.seva.service.SessionService;
 import com.online.seva.service.UserService;
 import com.online.seva.util.AppConstant;
 import org.slf4j.Logger;
@@ -29,6 +30,9 @@ public class UserController {
 
     @Autowired
     private ServletContext context;
+
+    @Autowired
+    private SessionService sessionService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Response registration(@RequestBody User user) {
@@ -86,7 +90,7 @@ public class UserController {
         response.setUser(loggedUser);
         response.setMsgType(AppConstant.SUCCESS);
         response.setMessage("Login Success");
-        Map<HttpSession, String> logins = getLoggedUserAttr(httpSession);
+        Map<HttpSession, String> logins = sessionService.getLoggedUserAttr(httpSession);
         logins.put(httpSession, user.getUsername());
         logger.info("Leaving Login Controller");
         return response;
@@ -120,14 +124,10 @@ public class UserController {
         }
         logger.info("logging out following user" + user);
         session.invalidate();
-        Map<HttpSession, String> logins = getLoggedUserAttr(session);
+        Map<HttpSession, String> logins = sessionService.getLoggedUserAttr(session);
         logins.remove(session, user.getUsername());
         response.setMsgType(AppConstant.SUCCESS);
         response.setMessage("SuccessFully Logged Out");
         return response;
-    }
-
-    private Map<HttpSession, String> getLoggedUserAttr(HttpSession httpSession) {
-        return (Map<HttpSession, String>) httpSession.getServletContext().getAttribute("loggedUsers");
     }
 }
