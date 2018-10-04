@@ -85,7 +85,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        return jpaUserRepository.findAll();
+        List<User> users = new ArrayList<>();
+        List<User> userList = jpaUserRepository.findAll();
+        for (User user : userList) {
+            user.setPassword(null);
+            users.add(user);
+        }
+        return users;
+
     }
 
     public List<Role> findAllRoles() {
