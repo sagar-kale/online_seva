@@ -141,7 +141,7 @@ panel-collapse .collapse.in{
     position: relative;
 }
 .completedImg{
-	    background-image: url(/../images/verified.png);
+    background-image: url(/images/verified.png);
     background-repeat: no-repeat;
     background-position: 92% 4px;
     background-size: 30px 30px;

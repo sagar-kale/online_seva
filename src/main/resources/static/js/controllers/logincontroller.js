@@ -27,6 +27,7 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
 
                 }
                 else {
+                    console.log("success", res.data);
                     userService.setUser($scope.userData);
                     $state.go("header.home");
 
