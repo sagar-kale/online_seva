@@ -1,5 +1,7 @@
 package com.online.seva.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,8 +17,10 @@ public class User {
     private String username;
     private String name;
     private String email;
+    @JsonIgnore
     private String password;
     @Transient
+    @JsonIgnore
     private String passwordConfirm;
     private String phone;
     private boolean active;
