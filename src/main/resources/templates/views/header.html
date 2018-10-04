@@ -5,15 +5,20 @@
     margin-left: 25px;"> -->
     <span class="sitelogotext" ng-click="gotoHome()">ONLINE SEVA</span>
     <div class="Actons">
+        <img src="../images/user.png"/>
     	<div class="welcome">Welcome</div>
-    	<div class="userName">Mohan Randive</div>
-    	<img src="../images/arrow.png" ng-click = "openMenu = !openMenu" ng-class="{'rotateArrow':openMenu}">
+    	<div class="userName">{{currentUser.name}}</div>
+        <div class="arrowimgDiv" ng-class="{'setbgOnActive':openMenu}">
+            <img class="arrow" src="../images/arrow.png" ng-click = "openMenu = !openMenu" ng-class="{'rotateArrow':openMenu}"/>
+        </div>
+    	
     </div>
     
-    <div class="menulistDiv" ng-show="openMenu">
+    <div class="menulistDiv hideshowAnimation zoomIn" ng-show="openMenu">
     	<ul>    		
-    		<!-- <li ng-click="gotoAdmin()" ng-if="currentUser.roles[0].role=='user'">Admin</li> -->
-            <li ng-click="gotoAdmin()">Admin</li>
+    		 <li ng-click="gotoAdmin()" ng-if="currentUser.roles[0].role === 'admin'">Admin</li> 
+           
+         
     		<li>About Us</li>
     		<li>Contact Us</li>
     		<li ng-click="logoutApp()">Log out</li>

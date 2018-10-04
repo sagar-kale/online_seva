@@ -7,43 +7,5 @@ app.controller('courcesCntrl',['$scope', '$state' ,function($scope, $state) {
 		$scope.selectedDiv = str;
 	}
 
-	jobData = 
-	[
-
-
-	{
-	"JobTitle": "",
-	"totalPosts": "",
-	"Sector": "",
-	"Qualfication": "",
-	"lastDate": "",
-
-
-	"subDetails": [{
-		"startDate": "",
-		"lastDate": "",
-		"jobDescription": "",
-		"postName": "",
-		"totalVacancies": "",
-		"salary/payscale": "",
-		"jobLocation": "",
-
-		"EligibilityCriteria": [{
-			"educationalQualification": "",
-			"AgeLimit": [{
-				"open": "",
-				"cast": ""
-			}]
 			
-		}],
-		"selectionProcess": "",
-		"ApplicationFee": "",
-		"HowtoApply": "",
-		"impLinks": ""
-
-
-	}
-
-	]
-}]
-}]);
+	}]);

@@ -21,13 +21,14 @@
 	float: left;
     width: 100%;
     margin-top: 10px;
+    display: none;
 }
 
 
 .saveEdit button{
 	     width: 108px;
     height: 38px;
-        background: #102933e3;
+       background: #175021;
     color: #fff;
     border: solid 0px #FF9800;
     border-radius: 4px;
@@ -56,6 +57,13 @@ snippet from Animate.css - zoomIn effect
     transition: transform 0.5s ease-in-out;
 }
 
+.hideshowAnimation{
+     -moz-transition: -moz-transform 0.5s ease-in-out;
+    -o-transition: -o-transform 0.5s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+}
+
 .rotate-icon{
     -webkit-transform: rotate(-225deg);
     -moz-transform: rotate(-225deg);
@@ -64,7 +72,7 @@ snippet from Animate.css - zoomIn effect
 
 .panel{
     border: 0px;
-    border-bottom: 1px solid #f5f3f0;
+       border-top: 1px solid #f5f3f0;
 }
 .panel-group .panel+.panel{
     margin-top: 0px;
@@ -141,7 +149,7 @@ panel-collapse .collapse.in{
     position: relative;
 }
 .completedImg{
-    background-image: url(/images/verified.png);
+	    background-image: url(/../images/verified.png);
     background-repeat: no-repeat;
     background-position: 92% 4px;
     background-size: 30px 30px;
@@ -159,6 +167,7 @@ panel-collapse .collapse.in{
     padding-bottom: 4px !important;
     float: left;
     font-weight: normal;
+        color: #fff !important;
 }
 
 .userTable{
@@ -209,4 +218,15 @@ panel-collapse .collapse.in{
 .checkedImg{
 	    margin-left: 23px;
     height: 27px;
+}
+.savejobbtn{
+        width: 200px;
+    height: 42px;
+    font-size: 20px;
+    background: #06c10d;
+    border: none;
+    color: #fff;
+    margin-top: 39px;
+    border-radius: 5px;
+        margin-left: 20px;
 }

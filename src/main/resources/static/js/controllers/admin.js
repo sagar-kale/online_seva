@@ -1,5 +1,11 @@
 app.controller('adminContrl',['$scope','$state','apiLink','APIService', function($scope, $state,apiLink,APIService) {
 	
+	if($scope.currentUser.roles[0].role != "admin"){
+         swal("","You are not authorised to access admin page", "error");
+         //$scope.logoutApp(); 
+		 $state.go("header.home");
+	}
+
 	$scope.activeTab = "show1";
 	$scope.toggleTabs = function(tab){
 		$scope.activeTab = tab;
@@ -52,6 +58,60 @@ $scope.editFirstSection = function(){
                     console.log(error);
                   });
 		}
-$scope.getAllUserList(); 
+		$scope.getAllUserList(); 
+				$scope.saveJobDetails = function(){
+
+					var jobdata ={
+						
+									"lastDate": $scope.basicsJob.LastDate,
+									"qualification":$scope.basicsJob.Qualification,
+									"sector": $scope.basicsJob.Sector,
+									"totalPosts": $scope.basicsJob.TotalPosts,
+									"title": $scope.basicsJob.title,
+									"startDate": $scope.basicsJob.StartDate,
+
+									
+							"jobSubDetails":{
+									"aboutJob": $scope.subDetails.aboutJob,	
+									"postName": $scope.subDetails.postName,
+									"totalVacancies": $scope.subDetails.TotalVacancies,
+									"salaryScale":$scope.subDetails.SalaryScale,
+									"jobLocation":$scope.subDetails.JobLocation,
+									"educationalQualifiction":$scope.subDetails.EducationalQualifiction,
+									"selectionProcess":$scope.subDetails.SelectionProcess,
+									"ageLimit":$scope.subDetails.AgeLimit,
+									"applicationFee":$scope.subDetails.applicationFee,
+									"howToApplay":$scope.subDetails.Applay,
+									"youTubeLink": $scope.subDetails.YouTubeLink				
+			
+									}
+
+								};
+
+						var url = apiLink.saveJobDetails;
+        //alert(url);
+
+        APIService.httpPostJson(url, jobdata).then(
+            function (res) {
+
+                if (res.data.msgType == 'error') {
+                    swal("", res.data.message, res.data.msgType);
+                }
+                else {
+                    console.log("saved", res.data);
+                    swal("", res.data.message, res.data.msgType);
+                    	  $scope.firstsection.$setPristine();
+						  $scope.secondsection.$setPristine();
+						  $scope.thirdsection.$setPristine();
+                }
+
+            },
+            function (error) {
+                console.log(error);
+            });
+						
+
+
+		}
 
 }]);

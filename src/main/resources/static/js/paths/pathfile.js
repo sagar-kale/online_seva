@@ -21,13 +21,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state("header.jobs", {
             url: "/jobdetails",
-            templateUrl: "pagerouting/jobDeatials",
+            templateUrl: "pagerouting/jobDetails",
             controller : "jobsController"
         })
          .state("header.admin", {
             url: "/admin",
-            templateUrl: "pagerouting/admin",
+             templateUrl: "pagerouting/admin",
             controller : "adminContrl"
+             
         })
             .state("header.cources", {
             url: "/cources",

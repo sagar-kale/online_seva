@@ -33,7 +33,7 @@
 									Job Title
 								</div>
 								<div class="title">
-									<input type="text" ng-readonly="readOnlyFirst" name="title" ng-model="basicsJob.title" required/>
+									<input type="text"  name="title" ng-model="basicsJob.title" required/>
 								</div>
 							</div>
 							<div class="inputDiv">
@@ -41,7 +41,7 @@
 									Total Posts
 								</div>
 								<div class="title">
-									<input type="text" ng-readonly="readOnlyFirst" name="TotalPosts" ng-model="basicsJob.TotalPosts" required/>
+									<input type="text"  name="TotalPosts" ng-model="basicsJob.TotalPosts" required/>
 								</div>
 							</div>
 							<div class="inputDiv">
@@ -49,7 +49,7 @@
 									Sector
 								</div>
 								<div class="title">
-									<input type="text" ng-readonly="readOnlyFirst" name="Sector" ng-model="basicsJob.Sector" required/>
+									<input type="text" name="Sector" ng-model="basicsJob.Sector" required/>
 								</div>
 							</div>
 							<div class="inputDiv">
@@ -57,20 +57,27 @@
 									Qualification
 								</div>
 								<div class="title">
-									<input type="text" ng-readonly="readOnlyFirst" name="Qualification" ng-model="basicsJob.Qualification" required/>
+									<input type="text" name="Qualification" ng-model="basicsJob.Qualification" required/>
 								</div>
 							</div>	
+							<div class="inputDiv">
+								<div class="title">
+									Start Date
+								</div>
+								<div class="title">
+									<input type="date"  name="LastDate" ng-model="basicsJob.StartDate" required/>
+								</div>
+							</div>
 							<div class="inputDiv">
 								<div class="title">
 									Last Date
 								</div>
 								<div class="title">
-									<input type="date" ng-readonly="readOnlyFirst" name="LastDate" ng-model="basicsJob.LastDate" required/>
+									<input type="date"  name="LastDate" ng-model="basicsJob.LastDate" required/>
 								</div>
 							</div>	
-							<div class="saveEdit">
-								<button ng-click="editFirstSection()">Edit</button>
-								<button ng-click="saveFirstSection()">Next</button>
+							<div class="saveEdit">							
+								<button  ng-if="firstsection.$valid"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="return false">Next</button>
 							</div>
 	                    </form>                	
 							
@@ -109,7 +116,7 @@
 										Post Name
 									</div>
 									<div class="title">
-										<input type="text" name="aboutJob" ng-model="subDetails.postName" required/>
+										<input type="text" name="postName" ng-model="subDetails.postName" required/>
 									</div>
 								</div>
 								<div class="inputDiv">
@@ -137,8 +144,10 @@
 									</div>
 								</div>
 								<div class="saveEdit">
-									<button>Edit</button>
-									<button>Next</button>
+
+									<button ><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="return false">Pre</button>
+									
+									<button><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="return false" ng-if="secondsection.$valid">Next</button>
 								</div>
 							</div>
 									</form>
@@ -190,7 +199,7 @@
 										Application Fee
 									</div>
 									<div class="title">
-										<input type="text" name="SalaryScale" ng-model="subDetails.SalaryScale" required/>
+										<input type="text" name="applicationFee" ng-model="subDetails.applicationFee" required/>
 									</div>
 								</div>
 								<div class="inputDiv">
@@ -209,16 +218,18 @@
 										<input type="text" name="Applay" ng-model="subDetails.YouTubeLink" required/>
 									</div>
 								</div>
-								<div class="saveEdit">
-									<button>Edit</button>
-									<button>Next</button>
+								<div class="saveEdit">									
+									
+									<button><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="return false" >Pre</button>
+										
 								</div>
 								</form>
 							</div>
                     </div>
                 </div>
-
+                	 <button type="btn" ng-click="saveJobDetails();" class="savejobbtn" ng-show="firstsection.$valid && secondsection.$valid && thirdsection.$valid">Save Job</button>
             </div>
+           
         </div>
     </div>
 </div>

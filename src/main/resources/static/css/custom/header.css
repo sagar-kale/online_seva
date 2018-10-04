@@ -7,22 +7,22 @@ header{
     top: 0px;
     padding-top: 6px;
   z-index: 9999;
-        padding-right: 25px;
+        padding-right: 0px;
     
 }
 header img{
-
-    height: 55px;
-    width: 160px;
-    margin-left: 25px;
+height: 50px;
+    width: 50px;
+    float: left;
 
 }
-header .Actons img{
-	    float: right;
+header .Actons .arrow{
+	         float: right;
     height: 25px;
     width: 25px;
-    margin-top: -20px;
+    margin-top: 28px;
     cursor: pointer;
+    margin-right: 11px;
 }
 header .sitelogotext{
 	    font-size: 25px;
@@ -34,23 +34,42 @@ header .sitelogotext{
 }
 .Actons{
 	float: right;
-    padding-top: 15px;
-    min-width: 144px;
+    padding-top: 3px;
+    /* min-width: 170px; */
     position: relative;
+    min-width: 180px;
 }
 .rotateArrow{
 	transform: rotate(180deg);
 }
-.welcome{
-	
-    font-size: 15px;
-    font-weight: normal;
-    color: #fff
+.arrowimgDiv{
+     position: absolute;
+    right: 0;
+    top: -7px;
+    z-index: 999999;
+    height: 70px;
+    /* width: 10px; */
+    /* padding-right: 13px; */
+    width: 50px;
 }
-.userName{
-	font-size: 13px;
+.setbgOnActive{
+    background: #0e3a4c;
+}
+.welcome{
+      font-size: 21px;
     font-weight: normal;
     color: #fff;
+    float: left;
+    width: 58%;
+    margin-left: 16px;
+}
+.userName{
+	     font-size: 15px;
+    font-weight: normal;
+    color: #fff;
+    padding-right: 33px;
+    float: left;
+    margin-left: 16px;
 }
 .menulistDiv ul :nth-child(1) {
        background-image: url(/../images/admin.png);
@@ -90,7 +109,7 @@ header .sitelogotext{
     right: 0;
     top: 70px;
     right: 0;
-    background: #091f27;
+       background: #0e3a4c;
   
     width: 170px;
   

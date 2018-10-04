@@ -1,5 +1,9 @@
 app.controller('headerContrl',['$scope', '$state','userService','apiLink','APIService',function($scope, $state,userService,apiLink,APIService) {
 	console.log("inside headerContrl");
+	$scope.currentUser = userService.getUser();
+	if(!$scope.currentUser.username){
+		$state.go('login');
+	}
 		$(document).scrollTop(0);
 		$scope.openMenu = false;
 		// $scope.gotoLandingPage = function(){
@@ -25,6 +29,7 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
 			$state.go("header.admin")
 		}
 
-		$scope.currentUser = userService.getUser();
+		
+		
 		
 }]);

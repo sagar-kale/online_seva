@@ -12,6 +12,7 @@
                         url: url,
                         headers : {
                         //'Authorization' : $rootScope.token
+                        "Access-Control-Allow-Origin": "*"
                         },
                         beforeSend: function() {
                             $rootScope.onAjax[uniqueID] = true;

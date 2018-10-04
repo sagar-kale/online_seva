@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @ResponseBody
 @RequestMapping("/jobs")
 public class JobController {
     @Autowired
     private JobService jobService;
 
-    @GetMapping("/all")
-    List<Job> getAllJobs() {
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List<Job> getAllJobs() {
         return jobService.retrieveAllJobs();
     }
 
-    @PostMapping("/save")
-    Response saveJob(@RequestBody Job job) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public Response saveJob(@RequestBody Job job) {
         Response response = new Response();
 
         if (jobService.saveJob(job)) {
