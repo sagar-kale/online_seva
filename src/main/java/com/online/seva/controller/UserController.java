@@ -12,10 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +47,7 @@ public class UserController {
             return response;
         }
         user.setUsername(user.getEmail());
-        if (userService.findByUsername(user.getUsername()) != null) {
+        if (userService.isUserExists(user.getUsername())) {
             response = new Response();
             response.setMessage("Email already exists");
             response.setMsgType(AppConstant.ERROR);
@@ -102,10 +102,27 @@ public class UserController {
         return userService.findAll();
     }
 
+    @RequestMapping(value = "/current/user", method = RequestMethod.GET)
+    public Response getAllUsers(HttpServletRequest request) {
+        Response response = new Response();
+        logger.info("fetching current user");
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session Expired ... Please Login");
+            return response;
+        }
+
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setMessage("Successfully logged in...");
+        response.setUser(loggedUser);
+        return response;
+    }
+
     @RequestMapping(value = "/logged/count", method = RequestMethod.GET)
     public OnlineUsers getLoggedUsersCount() {
         SessionCounter counter = SessionCounter.getInstance(context);
-        logger.info("fetching all online uaers");
+        logger.info("fetching all online users");
         OnlineUsers onlineUsers = new OnlineUsers();
         onlineUsers.setLoggedInUsers(counter.getLoggedUsersCount());
         onlineUsers.setTotalOnlineUsers(counter.getTotalUsers());

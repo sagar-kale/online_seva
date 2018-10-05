@@ -6,16 +6,16 @@
     font-size: 16px;
     font-weight: normal;
     margin-bottom: 10px;
-    color: #fff;
+    /*color: #fff;*/
 }
 .panel-body .mainDivJobs .inputDiv input{
 	    height: 38px;
     width: 96%;
-    background: transparent;
+    background: #f1f1f1;
     border-radius: 5px;
     border: solid 1px #ccc;
     padding: 5px;
-    color: #fff;
+   /* color: #fff;*/
 }
 .saveEdit{
 	float: left;
@@ -37,7 +37,7 @@
     margin-right: 20px;
 }
 .done{
-	background-color: #1d6920a3 !important;
+	background-color: #06c10d !important;
 }
 .disableDiv{
 	pointer-events:none !important;
@@ -113,40 +113,43 @@ panel-collapse .collapse.in{
 .adminTabs{
 	float: left;
     width: 100%;
-    /* margin-top: 20px; */
+        background: #f1f1f1;
     padding: 30px;
 }
 .adminTabs .topUl{
 	float: left;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: solid 1px #ccc !important;
 }
 .adminTabs .topUl li{
-	       border: solid 2px #fff;
+	  
     display: inline-block;
     list-style-type: none;
-    min-width: 20%;
-    color: #fff;
+    /* min-width: 13%; */
+    /* color: #fff; */
     font-size: 18px;
     font-weight: normal;
-       background: #10293366;
+    /* background: #10293366; */
     text-align: center;
     padding: 10px;
     cursor: pointer;
     margin: 0px;
     border-bottom: 0px;
+    margin-right: 20px;
 }
 .JobDetailsDivParent{
 	float: left;
     width: 100%;
-       min-height: 450px;
-    background: #143b367a;
-   
+    min-height: 450px;
+    /* background: #143b367a; */
     color: black;
-    border: solid 2px #fff;
-    
+    /* border: solid 2px #fff; */
     position: relative;
+    /* display: none; */
+    margin-top: 25px;
+    background: #909090;
 }
 .completedImg{
 	    background-image: url(/../images/verified.png);
@@ -206,9 +209,7 @@ panel-collapse .collapse.in{
     font-weight: normal;
     margin-right: 20px;
 }
-.rejectbtn{
-	    background: #ca1c1c94 !important;
-}
+
 .userTable ul li select{
 	    height: 30px;
     width: 90%;
@@ -229,4 +230,51 @@ panel-collapse .collapse.in{
     margin-top: 39px;
     border-radius: 5px;
         margin-left: 20px;
+        border: solid 1px #fff;
+}
+
+/**************  data table css **********/
+.headerTr{       height: 55px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background: #102933;
+}
+.dataTr{    height: 45px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    border: solid 1px #fff;
+}
+.dataTr td select{
+           height: 30px;
+    width: 80%;
+    background: #797979;
+    text-align: center;
+    font-size: 14px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: solid #fff 1px;
+}
+.dataTr td button{
+        height: 25px;
+    font-size: 14px;
+    
+    border: none;
+    width: 57%;
+    height: 27px;
+    border-radius: 5px;
+}
+
+.approvebtn{
+background: #0ac712;
+}
+.rejectbtn{
+    background: red ;
+}
+.even{
+    background-color: #928f8f !important;
+}
+.odd{
+    background-color: #797979 !important;
 }

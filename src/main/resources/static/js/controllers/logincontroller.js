@@ -10,6 +10,28 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
         $scope.isLoginTab = false;
     }
     $scope.userData = "";
+
+    $scope.checkCurrentUserSession = function(){
+
+        
+        var url = apiLink.currentUserSession;
+                    APIService.httpGet(url).then(
+                  function(res){
+                    if(res.msgType !='error'){
+                         userService.setUser(res.data.user);
+                         $state.go("header.home");
+                    }                  
+                    else{
+                    swal("", res.data.message, "error");
+                    }
+                
+                  
+                  },
+                  function(error) {
+                    console.log(error);
+                  });
+    }
+
     $scope.saveLoginForm = function () {
         var data = {
             "username": $scope.login.username,
@@ -35,8 +57,8 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
             },
             function (error) {
                 console.log(error);
-            });
-        // $state.go("header.home");
+            }); 
+        // $state.go("header.admin");
 
     }
 
@@ -69,6 +91,7 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
                 else {
                     console.log("saved", res.data);
                     swal("", res.data.message, res.data.msgType);
+                    
                     $scope.formData = {};
                     ;
                     $scope.myForm.$setPristine();
@@ -80,7 +103,7 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
             function (error) {
                 console.log(error);
             });
-        console.log()
+       
     };
 
 

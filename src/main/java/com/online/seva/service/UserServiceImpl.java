@@ -14,9 +14,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private JpaUserRepository jpaUserRepository;
@@ -103,5 +105,22 @@ public class UserServiceImpl implements UserService {
         User loggedUser = jpaUserRepository.findByUsername(username);
         return null == loggedUser ? null : bCryptPasswordEncoder.matches(password, loggedUser.getPassword()) ? loggedUser : null;
     }
+
+    @Override
+    public Optional<User> findUserByResetToken(String resetToken) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean updatePassword(String password, String username) {
+        jpaUserRepository.updatePassword(password, username);
+        return true;
+    }
+
+    @Override
+    public boolean isUserExists(String username) {
+        return jpaUserRepository.existsByUsername(username);
+    }
+
 
 }

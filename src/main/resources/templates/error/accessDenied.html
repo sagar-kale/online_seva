@@ -1,0 +1,31 @@
+<div style="     margin-top: 80px;
+    width: 100%;
+    /* height: 300px; */
+    text-align: center;
+    padding-top: 100px;">
+    <span style="font-size: 38px;
+    text-align: center;
+    float: left;
+    width: 100%;
+    margin-bottom: 22px;">Access Denied
+    </span>
+	<img src="../images/access-denied.png" style="margin-top: 0px">
+    <br/><br/><br/>
+    <#if logged??>
+    <#if logged == true>
+    <div>
+        <p class="Main Description">
+            Hi <b>${name}</b> ! You do not have
+            sufficient
+            permission to access this page
+            Back to <b><a href="/#/header/home">Home</a></b>
+        </p>
+    </div>
+    <#else>
+    <div>
+        Your session has been expired !! please <a href="/">login here</a>
+    </div>
+</#if>
+</#if>
+
+</div>

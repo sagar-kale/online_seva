@@ -3,10 +3,12 @@ package com.online.seva;
 import com.online.seva.config.SpringApplicationContextInitializer;
 import com.online.seva.config.listeners.SessionCounter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.context.annotation.ApplicationScope;
 
 import javax.servlet.ServletContextListener;
@@ -14,6 +16,7 @@ import javax.servlet.ServletContextListener;
 
 @SpringBootApplication
 @ComponentScan("com.online.seva")
+@EntityScan("com.online.seva.domain")
 public class Application {
 
     public static void main(String[] args) {
@@ -34,5 +37,10 @@ public class Application {
         bean.setListener(new SessionCounter());
         return bean;
 
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

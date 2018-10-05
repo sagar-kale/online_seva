@@ -2,11 +2,24 @@ server.port: 8080
 
 logging:
   level:
-    org.springframework.web: error
-    org.hibernate: error
-    org.apache.http: error
+    org.springframework.web: debug
+    org.hibernate: debug
+    org.apache.http: debug
 
 spring:
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    port: 587
+    username: sagarrk.kale@gmail.com
+    password: iamsagar
+    properties:
+      mail:
+        smtp:
+          auth: "true"
+          starttls:
+            enable: "true"
+    protocol: smtp
   messages.basename: validation
   #devtools:
    # livereload.enabled: true

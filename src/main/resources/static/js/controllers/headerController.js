@@ -1,14 +1,12 @@
 app.controller('headerContrl',['$scope', '$state','userService','apiLink','APIService',function($scope, $state,userService,apiLink,APIService) {
 	console.log("inside headerContrl");
 	$scope.currentUser = userService.getUser();
-	if(!$scope.currentUser.username){
-		$state.go('login');
-	}
-		$(document).scrollTop(0);
+	// if(!$scope.currentUser.username){
+	// 	$state.go('login');
+	// }
+	// 	$(document).scrollTop(0);
 		$scope.openMenu = false;
-		// $scope.gotoLandingPage = function(){
-		// 	$state.go("ultimatix");
-		// }
+		
 
 		$scope.logoutApp = function(){
             var url = apiLink.logout;
@@ -16,7 +14,9 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
                 function(res){
                     console.log("jkhaksdkja", res.data);
                     $state.go("login")
+                    window.location.reload(true);
                     swal("", res.data.message, res.data.msgType);
+
                 },
                 function(error) {
                     console.log(error);

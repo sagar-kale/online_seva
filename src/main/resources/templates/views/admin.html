@@ -6,8 +6,8 @@
 			<li ng-click="toggleTabs('show3')" ng-class="{'Activebg':activeTab =='show3'}">Admin Cards</li>
 		</ul>
 		<div class="JobDetailsDivParent" ng-show="activeTab=='show1'">			
-				<div class="container" style="padding: 0px !important;
-    width: 97%;">
+				<div class="container" style="    padding: 0px !important;
+    width: 98%;">
     <div class="row">
    
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -236,58 +236,43 @@
 
 		</div>
 			<div class="JobDetailsDivParent" ng-show="activeTab=='show2'">
-			<div class="userTable">
-				<ul class="headerUlAdmin">
-					<li>
-						User Name
-					</li>
-					<li>
-						Email
-					</li>
-					<li>
-						City
-					</li>
-					<li>
-						Select Role
-					</li>
-					<li>
-						Action
-					</li>
-					<li>
-						Action
-					</li>
-				</ul>
-				<ul class="headerUlAdmin" ng-repeat="user in userList">
-					<li>
-					{{user.name}}
-					</li>
-					<li>
-						{{user.username}}
-					</li>
-					<li>
-						{{user.city}}
-					</li>
-					<li>
-						<select>
+			
+			
+			<table width="100%" cellspacing="0" border="1">  
+    <thead id="TblHead">  
+        <tr class="headerTr">  
+            <td>User Name</td>  
+            <td>Email</td>  
+            <td>City</td>  
+            <td>Select Role</td> 
+             <td>Status</td>  
+            <td>Action</td>  
+            <td>Action</td>  
+           
+            
+        </tr>  
+    </thead>  
+    <tbody>  
+        <tr ng-repeat="user in userList" class="dataTr" ng-class="{'even':$even,'odd':$odd}">            
+            <td>{{user.name}}</td>  
+            <td>{{user.username}}</td>  
+            <td>{{user.city}}</td>  
+            <td><select>
 							<option value="user" selected>User</option>
 							<option value="admin">Admin</option>
-						</select>
-					</li>
-					<li>
-						<button type="btn">Approve</button>
-					</li>
-					<li>
-						<button type="btn" class="rejectbtn">Reject</button>
-					</li>
-				</ul>
-			
-
-			</div>	
-			
+						</select></td>  
+             <td><button type="btn" class="approvebtn">Active</button></td>
+              <td><button type="btn" class="approvebtn">Approve</button></td>
+            <td><button type="btn" class="rejectbtn">Reject</button></td>  
+            
+           
+              
+        </tr>  
+    </tbody>  
+</table>  
 		</div>
 			<div class="JobDetailsDivParent" ng-show="activeTab=='show3'">
-			
-			Job Creteria
+			fsdfsdfsd
 		</div>
 	</div>
 </div>

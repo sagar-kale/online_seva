@@ -1,10 +1,10 @@
 app.controller('adminContrl',['$scope','$state','apiLink','APIService', function($scope, $state,apiLink,APIService) {
 	
-	if($scope.currentUser.roles[0].role != "admin"){
+	/*if($scope.currentUser.roles[0].role != "admin"){
          swal("","You are not authorised to access admin page", "error");
          //$scope.logoutApp(); 
 		 $state.go("header.home");
-	}
+	}*/
 
 	$scope.activeTab = "show1";
 	$scope.toggleTabs = function(tab){
@@ -27,7 +27,11 @@ app.controller('adminContrl',['$scope','$state','apiLink','APIService', function
     
     $('#accordion').on('hide.bs.collapse', toggleChevron);
     $('#accordion').on('show.bs.collapse', toggleChevron);
-})
+});
+		angular.element(document).ready(function() {  
+    dTable = $('#user_table')  
+    dTable.DataTable();  
+});  
 $scope.clickedNext = function(){
 	var target = $("#headingTwo");
 	$("#headingTwo").click();
@@ -98,11 +102,12 @@ $scope.editFirstSection = function(){
                     swal("", res.data.message, res.data.msgType);
                 }
                 else {
-                    console.log("saved", res.data);
-                    swal("", res.data.message, res.data.msgType);
-                    	  $scope.firstsection.$setPristine();
+                	  $scope.firstsection.$setPristine();
 						  $scope.secondsection.$setPristine();
 						  $scope.thirdsection.$setPristine();
+                    console.log("saved", res.data);
+                    swal("", res.data.message, res.data.msgType);
+                    	
                 }
 
             },

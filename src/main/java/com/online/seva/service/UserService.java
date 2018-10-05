@@ -4,6 +4,7 @@ import com.online.seva.domain.Role;
 import com.online.seva.domain.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     void save(User user);
@@ -21,4 +22,10 @@ public interface UserService {
     List<Role> findAllRoles();
 
     User authenticateUser(String username, String password);
+
+    Optional<User> findUserByResetToken(String resetToken);
+
+    boolean updatePassword(String password, String username);
+
+    boolean isUserExists(String username);
 }

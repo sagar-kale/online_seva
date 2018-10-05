@@ -1,7 +1,6 @@
 package com.online.seva.service;
 
 import com.online.seva.domain.Job;
-import com.online.seva.domain.JobSubDetails;
 import com.online.seva.repositories.jpa.JobRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

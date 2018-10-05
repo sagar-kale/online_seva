@@ -11,9 +11,10 @@ header{
     
 }
 header img{
-height: 50px;
-    width: 50px;
+    height: 25px;
+    width: 25px;
     float: left;
+    margin-right: 10px;
 
 }
 header .Actons .arrow{
@@ -116,4 +117,43 @@ header .sitelogotext{
     cursor: pointer;
     border-top: solid 1px #fff;
 
+}
+.headeroptions{
+    float: left;
+    width: 87%;
+    margin-top: -21px;
+}
+.headeroptions ul{
+    margin: 0px;
+    padding: 0px;
+    float: right;
+    padding-top: 0px;
+    margin-top: -20px;
+}
+.headeroptions ul li {
+        list-style-type: none;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 34px;
+    /* padding-top: 20px; */
+    /* background: red; */
+    cursor: pointer;
+        -webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s, height 4s;
+}
+/*.headeroptions ul li:hover{
+     width: 300px;
+     font-size: 20px;
+     background-color: red;
+}*/
+.userUl{
+     /*   margin-top: -15px !important;
+    background: #136f94;
+    !* height: 79px; *!
+    padding-bottom: 10px !important;*/
+    padding-left: 38px !important;
+}
+.userUl li{
+        display: block !important;
 }
