@@ -14,9 +14,8 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
                 function(res){
                     console.log("jkhaksdkja", res.data);
                     $state.go("login")
-                    window.location.reload(true);
                     swal("", res.data.message, res.data.msgType);
-
+                    window.location.reload(true);
                 },
                 function(error) {
                     console.log(error);
