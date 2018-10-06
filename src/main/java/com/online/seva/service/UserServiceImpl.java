@@ -127,6 +127,7 @@ public class UserServiceImpl implements UserService {
     public boolean updateUserActiveStatus(String username) {
 
         User byUsername = jpaUserRepository.findByUsername(username);
+        logger.info("fetched user for updation" + byUsername);
         if (null == byUsername)
             return false;
         logger.info("updating user status :::: current status:: " + byUsername.isActive());

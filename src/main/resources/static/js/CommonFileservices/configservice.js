@@ -78,6 +78,57 @@
                         deferred.reject(e);
                     });
                     return deferred.promise;
+                },
+             httpPut: function(url, data) {
+                    var deferred = $q.defer();
+                    $rootScope.onAjax={};
+                    var uniqueID = this.uniqueID();
+                    $http({
+                        method: 'PUT',
+                        url:  url,
+                         headers : {
+                        "Access-Control-Allow-Origin": "*"
+                     },
+                        data: data,
+                        beforeSend: function() {
+                            $rootScope.onAjax[uniqueID] = true;
+                        }
+                    }).then(function mySucces(response) {
+                        deferred.resolve(response);
+                        delete $rootScope.onAjax[uniqueID];
+                    }, function myError(e) {
+                        console.log(e)
+                        delete $rootScope.onAjax[uniqueID];
+                        deferred.reject(e);
+                    });
+                    return deferred.promise;
+                },
+
+
+                 httpDelete: function(url) {
+                    var deferred = $q.defer();
+                    $rootScope.onAjax={};
+                    var uniqueID = this.uniqueID();
+                    $http({
+                        method: 'DELETE',
+                        url: url,
+                        headers : {
+                        //'Authorization' : $rootScope.token
+                        "Access-Control-Allow-Origin": "*"
+                        },
+                        beforeSend: function() {
+                            $rootScope.onAjax[uniqueID] = true;
+                        }
+                    }).then(function mySucces(response) {
+                        delete $rootScope.onAjax[uniqueID];
+                        deferred.resolve(response);
+                    }, function myError(e) {
+                        console.log(e)
+                        delete $rootScope.onAjax[uniqueID] ;
+                        deferred.reject(e);
+                    });
+                    return deferred.promise;
                 }
+
             };
         }]);

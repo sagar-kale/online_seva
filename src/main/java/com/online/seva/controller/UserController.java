@@ -156,13 +156,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/update/status", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Response updateStatus(@RequestParam String username, HttpServletRequest request) {
+    public Response updateStatus(@RequestBody String username, HttpServletRequest request) {
         boolean isAdmin = false;
         Response response = new Response();
         logger.info("fetching all users");
 
         if (username == null) {
-            response.setMessage("Please Enter Username");
+            response.setMessage("User name should not be null:::" + username);
             response.setMsgType(AppConstant.ERROR);
             return response;
         }
@@ -170,16 +170,17 @@ public class UserController {
         User loggedUser = sessionService.getLoggedUser(request);
         if (null == loggedUser) {
             response.setMsgType(AppConstant.ERROR);
-            response.setMsgType("Session expired .. please login again");
+            response.setMessage("Session expired .. please login again");
             return response;
         }
-        logger.info("logged User ::: " + loggedUser);
+        logger.info("logged User update stats ::: " + loggedUser);
 
         for (Role role : loggedUser.getRoles()) {
             logger.info("User Role::" + role.getRole());
             if (role.getRole().equalsIgnoreCase("admin"))
                 isAdmin = true;
         }
+        logger.info("isAdmin ::: " + isAdmin);
 
         if (!isAdmin) {
             response.setMsgType(AppConstant.ERROR);
