@@ -19,7 +19,6 @@ public interface JpaUserRepository extends JpaRepository<User, String> {
     @Query("update user_details u set u.password = :password where u.username = :username")
     void updatePassword(@Param("password") String password, @Param("username") String username);
 
-    void deleteUserByUsername(String username);
     boolean existsByUsername(String username);
 
 }

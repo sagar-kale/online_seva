@@ -157,9 +157,9 @@ public class UserController {
 
     @RequestMapping(value = "/user/update/status", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Response updateStatus(@RequestBody String username, HttpServletRequest request) {
+        logger.info("Under Update status");
         boolean isAdmin = false;
         Response response = new Response();
-        logger.info("fetching all users");
 
         if (username == null) {
             response.setMessage("User name should not be null:::" + username);
@@ -196,6 +196,50 @@ public class UserController {
         }
         response.setMsgType(AppConstant.SUCCESS);
         response.setMessage("Updated.... ");
+        return response;
+    }
+
+    @RequestMapping(value = "/remove/user", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response removeUser(@RequestBody String username, HttpServletRequest request) {
+        logger.info("Under User Remove");
+        boolean isAdmin = false;
+        Response response = new Response();
+
+        if (username == null) {
+            response.setMessage("User name should not be null:::");
+            response.setMsgType(AppConstant.ERROR);
+            return response;
+        }
+
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+        logger.info("logged User responsible for remove user ::: " + loggedUser);
+
+        for (Role role : loggedUser.getRoles()) {
+            logger.info("User Role::" + role.getRole());
+            if (role.getRole().equalsIgnoreCase("admin"))
+                isAdmin = true;
+        }
+        logger.info("isAdmin ::: " + isAdmin);
+
+        if (!isAdmin) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMsgType("You are not allowed to delete user");
+            return response;
+        }
+        logger.info("Removing User :::" + username);
+        boolean isRemoved = userService.removeUser(username);
+        if (!isRemoved) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("User Not found in database...");
+            return response;
+        }
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setMessage("User Removed SuccessFully");
         return response;
     }
 }

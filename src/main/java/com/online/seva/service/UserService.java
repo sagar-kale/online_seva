@@ -30,4 +30,6 @@ public interface UserService {
     boolean isUserExists(String username);
 
     boolean updateUserActiveStatus(String username);
+
+    boolean removeUser(String username);
 }

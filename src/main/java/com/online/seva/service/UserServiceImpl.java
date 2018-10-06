@@ -140,5 +140,20 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    @Override
+    public boolean removeUser(String username) {
+        User byUsername = jpaUserRepository.findByUsername(username);
+        if (null == byUsername)
+            return false;
+        try {
+            jpaUserRepository.delete(byUsername);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+
+    }
+
 
 }

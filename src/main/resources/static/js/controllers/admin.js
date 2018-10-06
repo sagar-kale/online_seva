@@ -182,7 +182,6 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
             	}
             	else{
             		 swal("", res.data.message, res.data.msgType);
-
             	}
 
             },
