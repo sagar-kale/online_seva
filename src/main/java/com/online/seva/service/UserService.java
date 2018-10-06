@@ -28,4 +28,6 @@ public interface UserService {
     boolean updatePassword(String password, String username);
 
     boolean isUserExists(String username);
+
+    boolean updateUserActiveStatus(String username);
 }

@@ -4,6 +4,7 @@ package com.online.seva.controller;
 import com.online.seva.config.listeners.SessionCounter;
 import com.online.seva.domain.OnlineUsers;
 import com.online.seva.domain.Response;
+import com.online.seva.domain.Role;
 import com.online.seva.domain.User;
 import com.online.seva.service.SessionService;
 import com.online.seva.service.UserService;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
@@ -150,6 +152,49 @@ public class UserController {
         logins.remove(session, user.getUsername());
         response.setMsgType(AppConstant.SUCCESS);
         response.setMessage("SuccessFully Logged Out");
+        return response;
+    }
+
+    @RequestMapping(value = "/user/update/status", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response updateStatus(@RequestParam String username, HttpServletRequest request) {
+        boolean isAdmin = false;
+        Response response = new Response();
+        logger.info("fetching all users");
+
+        if (username == null) {
+            response.setMessage("Please Enter Username");
+            response.setMsgType(AppConstant.ERROR);
+            return response;
+        }
+
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMsgType("Session expired .. please login again");
+            return response;
+        }
+        logger.info("logged User ::: " + loggedUser);
+
+        for (Role role : loggedUser.getRoles()) {
+            logger.info("User Role::" + role.getRole());
+            if (role.getRole().equalsIgnoreCase("admin"))
+                isAdmin = true;
+        }
+
+        if (!isAdmin) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMsgType("You are not allowed to update user status");
+            return response;
+        }
+        logger.info("Updating user status :::" + username);
+        boolean updated = userService.updateUserActiveStatus(username);
+        if (!updated) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("User Not found in database...");
+            return response;
+        }
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setMessage("Updated.... ");
         return response;
     }
 }
