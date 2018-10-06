@@ -8,3 +8,5 @@ applications:
     - route: online-seva.cfapps.io
   services:
      - online_seva_db
+  buildpacks:
+     - https://github.com/cloudfoundry/java-buildpack.git

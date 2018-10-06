@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
         if (user.getName().equalsIgnoreCase("sagar kale") || user.getName().equalsIgnoreCase("mohan randive")) {
             Role adminRole = userRoleRepository.findByRole("admin");
             user.setRoles(new ArrayList<>(Arrays.asList(adminRole)));
+            user.setActive(true);
         } else {
             Role userRole = userRoleRepository.findByRole("user");
             user.setRoles(new ArrayList<>(Arrays.asList(userRole)));

@@ -83,6 +83,12 @@ public class UserController {
             response.setMessage("Invalid Username and Password");
             return response;
         }
+        if (!loggedUser.isActive()) {
+            response = new Response();
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("User is not activated !! please contact admin");
+            return response;
+        }
         logger.info("Logged User success::: " + loggedUser);
         httpSession.setAttribute("user", loggedUser);
         response = new Response();
@@ -112,7 +118,6 @@ public class UserController {
             response.setMessage("Session Expired ... Please Login");
             return response;
         }
-
         response.setMsgType(AppConstant.SUCCESS);
         response.setMessage("Successfully logged in...");
         response.setUser(loggedUser);

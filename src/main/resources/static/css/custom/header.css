@@ -1,14 +1,14 @@
 
 header{
-	       height: 70px;
+    height: 70px;
     width: 100%;
     position: fixed;
-   background-color: #102933;
+    background-color: #102933;
     top: 0px;
     padding-top: 6px;
-  z-index: 9999;
-        padding-right: 0px;
-    
+    z-index: 9999;
+    padding-right: 0px;
+
 }
 header img{
     height: 25px;
@@ -18,7 +18,7 @@ header img{
 
 }
 header .Actons .arrow{
-	         float: right;
+    float: right;
     height: 25px;
     width: 25px;
     margin-top: 28px;
@@ -26,25 +26,25 @@ header .Actons .arrow{
     margin-right: 11px;
 }
 header .sitelogotext{
-	    font-size: 25px;
+    font-size: 25px;
     color: #fff;
     padding-left: 25px;
     margin-top: 16px;
     float: left;
-        font-weight: bold;
+    font-weight: bold;
 }
 .Actons{
-	float: right;
+    float: right;
     padding-top: 3px;
     /* min-width: 170px; */
     position: relative;
     min-width: 180px;
 }
 .rotateArrow{
-	transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 .arrowimgDiv{
-     position: absolute;
+    position: absolute;
     right: 0;
     top: -7px;
     z-index: 999999;
@@ -57,7 +57,7 @@ header .sitelogotext{
     background: #0e3a4c;
 }
 .welcome{
-      font-size: 21px;
+    font-size: 21px;
     font-weight: normal;
     color: #fff;
     float: left;
@@ -65,7 +65,7 @@ header .sitelogotext{
     margin-left: 16px;
 }
 .userName{
-	     font-size: 15px;
+    font-size: 15px;
     font-weight: normal;
     color: #fff;
     padding-right: 33px;
@@ -73,25 +73,25 @@ header .sitelogotext{
     margin-left: 16px;
 }
 .menulistDiv ul :nth-child(1) {
-       background-image: url(/../images/admin.png);
-    
+    background-image: url(/../images/admin.png);
+
 }
 .menulistDiv ul :nth-child(2) {
-       background-image: url(/../images/admin.png);
- }
- .menulistDiv ul :nth-child(3) {
-       background-image: url(/../images/contact.png);
- }
- .menulistDiv ul :nth-child(4) {
-       background-image: url(/../images/logout.png);
- }
+    background-image: url(/../images/admin.png);
+}
+.menulistDiv ul :nth-child(3) {
+    background-image: url(/../images/contact.png);
+}
+.menulistDiv ul :nth-child(4) {
+    background-image: url(/../images/logout.png);
+}
 .menulistDiv ul{
-	padding: 0px;
-	margin: 0px;
+    padding: 0px;
+    margin: 0px;
 
 }
 .menulistDiv ul li{
-	font-size: 14px;
+    font-size: 14px;
     font-weight: normal;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -106,32 +106,29 @@ header .sitelogotext{
     color: #fff;
 }
 .menulistDiv{
-      position: fixed;
+    position: fixed;
     right: 0;
     top: 70px;
     right: 0;
-       background: #0e3a4c;
-  
+    background: #0e3a4c;
+
     width: 170px;
-  
+
     cursor: pointer;
     border-top: solid 1px #fff;
 
 }
 .headeroptions{
-    float: left;
-    width: 87%;
-    margin-top: -21px;
+    float: right;
 }
 .headeroptions ul{
     margin: 0px;
     padding: 0px;
     float: right;
-    padding-top: 0px;
-    margin-top: -20px;
+    padding-top: 17px;
 }
 .headeroptions ul li {
-        list-style-type: none;
+    list-style-type: none;
     color: #fff;
     display: inline-block;
     font-size: 16px;
@@ -139,7 +136,7 @@ header .sitelogotext{
     /* padding-top: 20px; */
     /* background: red; */
     cursor: pointer;
-        -webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
+    -webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
     transition: width 2s, height 4s;
 }
 /*.headeroptions ul li:hover{
@@ -148,12 +145,12 @@ header .sitelogotext{
      background-color: red;
 }*/
 .userUl{
-     /*   margin-top: -15px !important;
+    margin-top: -15px !important;
     background: #136f94;
-    !* height: 79px; *!
-    padding-bottom: 10px !important;*/
+    /* height: 79px; */
+    padding-bottom: 10px !important;
     padding-left: 38px !important;
 }
 .userUl li{
-        display: block !important;
+    display: block !important;
 }
