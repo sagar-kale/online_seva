@@ -2,9 +2,9 @@ server.port: 8080
 
 logging:
   level:
-    org.springframework.web: debug
-    org.hibernate: debug
-    org.apache.http: debug
+    org.springframework.web: error
+    org.hibernate: error
+    org.apache.http: error
 
 spring:
   mail:
