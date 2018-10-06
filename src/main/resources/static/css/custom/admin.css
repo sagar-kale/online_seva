@@ -278,3 +278,9 @@ background: #0ac712;
 .odd{
     background-color: #797979 !important;
 }
+.activeUser{
+    color: green;
+}
+.inactiveUser{
+    color: red;
+}

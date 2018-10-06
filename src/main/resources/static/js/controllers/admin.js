@@ -1,10 +1,10 @@
 app.controller('adminContrl',['$scope','$state','apiLink','APIService', function($scope, $state,apiLink,APIService) {
 	
-	/*if($scope.currentUser.roles[0].role != "admin"){
+	if($scope.currentUser.roles[0].role != "admin"){
          swal("","You are not authorised to access admin page", "error");
-         //$scope.logoutApp(); 
+         //$scope.logoutApp();
 		 $state.go("header.home");
-	}*/
+	}
 
 	$scope.activeTab = "show1";
 	$scope.toggleTabs = function(tab){

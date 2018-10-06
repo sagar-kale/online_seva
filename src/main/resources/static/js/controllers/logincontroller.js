@@ -17,13 +17,12 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
         var url = apiLink.currentUserSession;
                     APIService.httpGet(url).then(
                   function(res){
-                    if(res.msgType !='error'){
+                    if(res.data.msgType !='error'){
+
                          userService.setUser(res.data.user);
                          $state.go("header.home");
                     }                  
-                    else{
-                    swal("", res.data.message, "error");
-                    }
+
                 
                   
                   },
@@ -31,6 +30,9 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
                     console.log(error);
                   });
     }
+             $scope.checkCurrentUserSession();
+
+
 
     $scope.saveLoginForm = function () {
         var data = {
