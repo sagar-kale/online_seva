@@ -8,7 +8,7 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
                     console.log("jkhaksdkja", res.data);
                     $state.go("login")
                     swal("", res.data.message, res.data.msgType);
-                    window.location.reload(true);
+                    location.href='/';
                 },
                 function(error) {
                     console.log(error);
