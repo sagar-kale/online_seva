@@ -1,34 +1,7 @@
 app.controller('headerContrl',['$scope', '$state','userService','apiLink','APIService',function($scope, $state,userService,apiLink,APIService) {
 	console.log("inside headerContrl");
-	 $scope.checkCurrentUserSession = function(){
-
-
-            var url = apiLink.currentUserSession;
-                        APIService.httpGet(url).then(
-                      function(res){
-                        if(res.data.msgType !='error'){
-
-                             userService.setUser(res.data.user);
-
-                        }
-                        else{
-                          $state.go("login");
-                        }
-
-
-
-                      },
-                      function(error) {
-                        console.log(error);
-                      });
-        }
-                 $scope.checkCurrentUserSession();
-	$scope.currentUser = userService.getUser();
-
-		$scope.openMenu = false;
-		
-
-		$scope.logoutApp = function(){
+	$scope.openMenu = false;
+	$scope.logoutApp = function(){
             var url = apiLink.logout;
             APIService.httpGet(url).then(
                 function(res){
@@ -47,8 +20,4 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
 		$scope.gotoAdmin = function(){
 			$state.go("header.admin")
 		}
-
-		
-		
-		
 }]);

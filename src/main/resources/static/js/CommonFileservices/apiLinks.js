@@ -12,7 +12,9 @@ app.service('apiLink', function () {
          'saveJobDetails':urlBase + 'jobs/save',
          'currentUserSession':urlBase + 'current/user',
           'updateUser':urlBase+'user/update/status',
-           'removeUser':urlBase+'remove/user'
+           'removeUser':urlBase+'remove/user',
+           "saveStudent":urlBase+"student/register",
+           "getAllStudents":urlBase+"student/all"
     }
 
 });

@@ -1,11 +1,5 @@
 app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', function($scope, $state, apiLink, APIService) {
 
-    if ($scope.currentUser.roles[0].role != "admin") {
-        swal("", "You are not authorised to access admin page", "error");
-        //$scope.logoutApp();
-        $state.go("header.home");
-    }
-
     $scope.activeTab = "show1";
     $scope.toggleTabs = function(tab) {
         $scope.activeTab = tab;
@@ -102,9 +96,10 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                 if (res.data.msgType == 'error') {
                     swal("", res.data.message, res.data.msgType);
                 } else {
-                    $scope.firstsection.$setPristine();
-                    $scope.secondsection.$setPristine();
-                    $scope.thirdsection.$setPristine();
+                    $scope.basicsJob ={};
+                     $scope.subDetails = {};
+//                    $scope.secondsection.$setPristine();
+//                    $scope.thirdsection.$setPristine();
                     console.log("saved", res.data);
                     swal("", res.data.message, res.data.msgType);
 

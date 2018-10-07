@@ -1,4 +1,4 @@
-app.controller('courcesCntrl',['$scope', '$state' ,function($scope, $state) {
+app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', function($scope, $state, apiLink, APIService) {
 
 	$scope.listOfCources = ["MSCIT","DTP","CCC","TALLY","HTML","CSS","CPP","Java"];	
 	$scope.selectedDiv = "Register";
