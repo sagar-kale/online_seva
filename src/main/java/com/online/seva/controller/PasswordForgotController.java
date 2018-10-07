@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -38,6 +39,7 @@ public class PasswordForgotController {
     }
 
     @RequestMapping(value = "/forgot-password", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @Transactional
     public String processForgotPasswordForm(String email, HttpServletRequest request, Model model) {
         logger.info("under processForgotPasswordForm");
         logger.info("Email :: " + email);
@@ -70,7 +72,7 @@ public class PasswordForgotController {
         String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
         emailModel.put("resetUrl", url + "/reset-password?token=" + token.getToken());
         mail.setModel(emailModel);
-        if(!emailService.sendSimpleMessage(mail)) {
+        if (!emailService.sendSimpleMessage(mail)) {
             model.addAttribute("errorMsg", "Something went wront !! please contact administrator");
         }
         model.addAttribute("reset", true);

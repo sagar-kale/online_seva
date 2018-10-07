@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,11 +47,11 @@ public class UserServiceImpl implements UserService {
 
         if (user.getName().equalsIgnoreCase("sagar kale") || user.getName().equalsIgnoreCase("mohan randive")) {
             Role adminRole = userRoleRepository.findByRole("admin");
-            user.setRoles(new ArrayList<>(Arrays.asList(adminRole)));
+            user.setRole(adminRole.getRole());
             user.setActive(true);
         } else {
             Role userRole = userRoleRepository.findByRole("user");
-            user.setRoles(new ArrayList<>(Arrays.asList(userRole)));
+            user.setRole(userRole.getRole());
         }
         jpaUserRepository.save(user);
     }
@@ -72,7 +71,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         //user.setActive(true);
         Role userRole = userRoleRepository.findByRole("admin");
-        user.setRoles(new ArrayList<>(Arrays.asList(userRole)));
+        user.setRole(userRole.getRole());
         jpaUserRepository.save(user);
     }
 
@@ -81,7 +80,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 //        user.setActive(true);
         Role userRole = userRoleRepository.findByRole("admin");
-        user.setRoles(new ArrayList<>(Arrays.asList(userRole)));
+        user.setRole(userRole.getRole());
         jpaUserRepository.save(user);
     }
 

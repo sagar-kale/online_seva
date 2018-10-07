@@ -8,13 +8,20 @@
     font-size: 21px;">
             Welcome
         </li>
+        <#if loggedUser??>
         <li>
-            {{currentUser.name}}
+            ${loggedUser.name}
         </li>
+        </#if>
     </ul>
 
         <ul>
-            <li ng-click="gotoAdmin()" ng-if="currentUser.roles[0].role === 'admin'"><img src="../images/admin-with-cogwheels.png"/>Admin</li>
+            <#if loggedUser??>
+            <#if loggedUser.role == 'admin'>
+            <li ng-click="gotoAdmin()"><img src="../images/admin-with-cogwheels.png"/>Admin</li>
+        </#if>
+    </#if>
+
             <li  ng-click="gotoHome()">
                 <img src="../images/home.png" style="    height: 24px;
     width: 24px;
@@ -39,15 +46,25 @@
 
     <div class="menulistDiv hideshowAnimation zoomIn" ng-show="openMenu" style="display: none;">
         <ul>
-            <li ng-click="gotoAdmin()" ng-if="currentUser.roles[0].role === 'admin'">Admin</li>
+            <#if loggedUser??>
+            <#if loggedUser.role == 'admin'>
+            <li ng-click="gotoAdmin()">Admin</li>
+            </#if>
+            </#if>
 
-
-            <li>About Us</li>
+            <li>${loggedUser.role}</li>
             <li>Contact Us</li>
             <li ng-click="logoutApp()">Log out</li>
         </ul>
 
     </div>
 </header>
+
+<!--<script type="text/javascript">
+var myvariable = "${loggedUser.role}";
+function myfunction(){
+    alert(myvariable);
+}
+</script>-->
 
 <div style="float: left;width:100%;height:100%;" ui-view></div>

@@ -4,7 +4,6 @@ package com.online.seva.controller;
 import com.online.seva.config.listeners.SessionCounter;
 import com.online.seva.domain.OnlineUsers;
 import com.online.seva.domain.Response;
-import com.online.seva.domain.Role;
 import com.online.seva.domain.User;
 import com.online.seva.service.SessionService;
 import com.online.seva.service.UserService;
@@ -13,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
@@ -110,8 +108,8 @@ public class UserController {
         return userService.findAll();
     }
 
-    @RequestMapping(value = "/current/user", method = RequestMethod.GET)
-    public Response getAllUsers(HttpServletRequest request) {
+    @RequestMapping(value = "/current/user", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response getCurrentUsers(HttpServletRequest request) {
         Response response = new Response();
         logger.info("fetching current user");
         User loggedUser = sessionService.getLoggedUser(request);
@@ -158,7 +156,6 @@ public class UserController {
     @RequestMapping(value = "/user/update/status", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Response updateStatus(@RequestBody String username, HttpServletRequest request) {
         logger.info("Under Update status");
-        boolean isAdmin = false;
         Response response = new Response();
 
         if (username == null) {
@@ -174,15 +171,8 @@ public class UserController {
             return response;
         }
         logger.info("logged User update stats ::: " + loggedUser);
-
-        for (Role role : loggedUser.getRoles()) {
-            logger.info("User Role::" + role.getRole());
-            if (role.getRole().equalsIgnoreCase("admin"))
-                isAdmin = true;
-        }
-        logger.info("isAdmin ::: " + isAdmin);
-
-        if (!isAdmin) {
+        logger.info("User Role::" + loggedUser.getRole());
+        if (!sessionService.isAdmin(loggedUser)) {
             response.setMsgType(AppConstant.ERROR);
             response.setMsgType("You are not allowed to update user status");
             return response;
@@ -202,7 +192,6 @@ public class UserController {
     @RequestMapping(value = "/remove/user", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Response removeUser(@RequestBody String username, HttpServletRequest request) {
         logger.info("Under User Remove");
-        boolean isAdmin = false;
         Response response = new Response();
 
         if (username == null) {
@@ -219,14 +208,7 @@ public class UserController {
         }
         logger.info("logged User responsible for remove user ::: " + loggedUser);
 
-        for (Role role : loggedUser.getRoles()) {
-            logger.info("User Role::" + role.getRole());
-            if (role.getRole().equalsIgnoreCase("admin"))
-                isAdmin = true;
-        }
-        logger.info("isAdmin ::: " + isAdmin);
-
-        if (!isAdmin) {
+        if (!sessionService.isAdmin(loggedUser)) {
             response.setMsgType(AppConstant.ERROR);
             response.setMsgType("You are not allowed to delete user");
             return response;

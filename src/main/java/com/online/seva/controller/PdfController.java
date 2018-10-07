@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +27,11 @@ public class PdfController {
             produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> generatePdf(HttpServletResponse response) throws IOException {
         Map<String, Object> model = new HashMap<>();
-        model.put("img", "img/profile.jpg");
+        model.put("name", "Sagar Kale");
+        model.put("course", "MS-CIT");
+        model.put("img", "https://res.cloudinary.com/sgrkale/image/upload/v1538544230/twyctbv8k4zcvyxijref.jpg");
+        model.put("grade", "71%");
+        model.put("date", new Date(System.currentTimeMillis()));
 
         ByteArrayInputStream pdf = pdfGenarator.createPdf("/pdf/index.html", model);
         pdfGenarator.createPdf("/pdf/index.html", model);
