@@ -13,7 +13,7 @@ public interface StudentService {
 
     List<Student> findAll();
 
-    List<Student> findAll(String user);
+    List<Student> findAll(String student);
 
     boolean isExists(String email);
 

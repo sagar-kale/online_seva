@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service("studentService")
 @Slf4j
@@ -38,6 +39,7 @@ public class StudentServiceImpl implements StudentService {
         if (!all.isEmpty()) {
             for (Student student : all) {
                 student.setUsername(student.getUser().getUsername());
+                student.getUser().setPassword(null);
             }
             return all;
         }
@@ -51,7 +53,10 @@ public class StudentServiceImpl implements StudentService {
             log.error("User does not exists in db");
             return new ArrayList<>();
         }
-        return studentRepository.findAllByUser(byUsername);
+        return studentRepository.findAllByUser(byUsername).stream().map(student -> {
+            student.getUser().setPassword(null);
+            return student;
+        }).collect(Collectors.toList());
     }
 
     @Override

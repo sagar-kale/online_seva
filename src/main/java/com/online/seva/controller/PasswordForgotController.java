@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
@@ -40,7 +41,7 @@ public class PasswordForgotController {
 
     @RequestMapping(value = "/forgot-password", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @Transactional
-    public String processForgotPasswordForm(String email, HttpServletRequest request, Model model) {
+    public String processForgotPasswordForm(String email, HttpServletRequest request, Model model, RedirectAttributes redirectAttributes) {
         logger.info("under processForgotPasswordForm");
         logger.info("Email :: " + email);
         if (email == null) {
@@ -75,9 +76,9 @@ public class PasswordForgotController {
         if (!emailService.sendSimpleMessage(mail)) {
             model.addAttribute("errorMsg", "Something went wront !! please contact administrator");
         }
-        model.addAttribute("reset", true);
+        redirectAttributes.addFlashAttribute("reset", true);
         logger.info("Leaving processForgotPasswordForm");
-        return "forgot-password";
+        return "redirect:/forgot-password";
 
     }
 }

@@ -12,10 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.transaction.Transactional;
@@ -51,7 +48,7 @@ public class PasswordResetController {
 
     @RequestMapping(value = "/reset-password", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @Transactional
-    public String handlePasswordReset(PasswordResetDto form, RedirectAttributes redirectAttributes, Model model) {
+    public String handlePasswordReset(PasswordResetDto form, RedirectAttributes redirectAttributes) {
         logger.info("under handle password rest");
         logger.info("Password reset form:::" + form);
 
@@ -68,11 +65,17 @@ public class PasswordResetController {
         PasswordResetToken token = tokenRepository.findByToken(form.getToken());
         User user = token.getUser();
         String updatedPassword = passwordEncoder.encode(form.getPassword());
-        logger.info("upading user::" + user);
+        logger.info("updating user password::" + user);
         userService.updatePassword(updatedPassword, user.getUsername());
+        logger.info("deleting reset token...");
         tokenRepository.delete(token);
-        model.addAttribute("reset", true);
+        redirectAttributes.addFlashAttribute("reset", true);
         logger.info("leaving handlePassword reset");
+        return "redirect:/reset-success";
+    }
+
+    @GetMapping("/reset-success")
+    public String resetSuccess() {
         return "reset-password";
     }
 

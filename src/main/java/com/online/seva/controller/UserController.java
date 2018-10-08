@@ -103,9 +103,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/all", method = RequestMethod.GET)
-    public List<User> getAllUsers() {
+    public Response getAllUsers(HttpServletRequest request) {
         logger.info("fetching all users");
-        return userService.findAll();
+
+        Response response = new Response();
+        User loggedUser = sessionService.getLoggedUser(request);
+        logger.info("checking logged user  ");
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+        logger.info("logged user:: true");
+        response.setMsgType(AppConstant.SUCCESS);
+        List<User> all = userService.findAll();
+        response.setDataList(all);
+        return response;
     }
 
     @RequestMapping(value = "/current/user", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

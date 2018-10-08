@@ -1,6 +1,5 @@
 package com.online.seva.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -26,10 +25,10 @@ public class Student {
     private String district;
     private String city;
     private String pincode;
+    private String courseName;
 
     @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "username")
-    @JsonIgnore
     private User user;
 
     @CreatedDate
