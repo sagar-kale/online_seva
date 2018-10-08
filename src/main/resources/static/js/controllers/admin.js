@@ -58,6 +58,24 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
     }
     $scope.getAllUserList();
 
+     $scope.getAllStudents = function() {
+        var url = apiLink.getAllStudents;
+        APIService.httpGet(url).then(
+            function(res) {
+                $scope.studentList = res.data;
+                console.log("studentList", $scope.studentList);
+
+
+            },
+            function(error) {
+                console.log(error);
+            });
+    }
+  
+
+
+
+
 
     $scope.saveJobDetails = function() {
 
@@ -184,5 +202,8 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                 console.log(error);
             });
    }
+$scope.approveStd = function(std){
+
+}
 
 }]);

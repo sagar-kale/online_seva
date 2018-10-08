@@ -104,3 +104,49 @@
         padding-left: 15px;
 }
 .regTextInputDiv select{    background-color: #1e21212e;}
+
+    td{
+        font-size: 14px;
+    }
+    .searchDiv{
+            float: left;
+    width: 100%;
+    margin-bottom: 26px;
+    border-bottom: solid 1px #fff;
+    }
+    .searchDiv input{
+       background-color: transparent;
+    height: 43px;
+    border-radius: 5px;
+    border: solid 1px #fff;
+    float: right;
+    margin-bottom: 25px;
+    font-size: 14px;
+    width: 300px;
+    padding-left: 43px;
+    
+    background-image: url(/images/search.png);
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 9px;
+}
+.activeLi{
+    background-color: #136f94 !important;
+}
+.coursepageContent {
+   float: left;
+    width: 100%;
+    background: #a29e9e;
+    border-top: solid 1px #fff;
+}
+.userActionsDiv {
+    float: left;
+    width: 20%;
+    /* margin-top: 10px; */
+    min-height: calc(100vh - 70px);
+    background: #102933;
+        border-right: solid 1px#fff;
+}
+.activeBtnBg{
+    background-color: green !important;color: #fff;
+}
