@@ -3,6 +3,7 @@ package com.online.seva.controller;
 import com.online.seva.domain.Response;
 import com.online.seva.domain.Student;
 import com.online.seva.domain.User;
+import com.online.seva.service.SessionService;
 import com.online.seva.service.StudentService;
 import com.online.seva.service.UserService;
 import com.online.seva.util.AppConstant;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -24,11 +26,22 @@ public class StudentController {
     private StudentService studentService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private SessionService sessionService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Response registration(@RequestBody Student student) {
-        log.info("Under Student controller :: register");
+    public Response registration(@RequestBody Student student, HttpServletRequest request) {
         Response response;
+        log.info("Under Student controller :: register");
+        User loggedUser = sessionService.getLoggedUser(request);
+        log.info("checking logged user  ");
+        if (null == loggedUser) {
+            response = new Response();
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+        log.info("logged user:: true");
         log.info("Student Email::: " + student.getEmail());
         log.info("registering Student:: " + student);
         if (null == student) {
@@ -64,10 +77,22 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Student> getAllStudent(@RequestBody String username) {
+    public Response getAllStudent(@RequestBody String username, HttpServletRequest request) {
+        Response response = new Response();
+        log.info("Under Student controller :: register");
+        User loggedUser = sessionService.getLoggedUser(request);
+        log.info("checking logged user  ");
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+        log.info("logged user:: true");
         log.info("fetching all student corresponds to :: " + username);
-        return studentService.findAll(username);
-
+        response.setMsgType(AppConstant.SUCCESS);
+        List<Student> all = studentService.findAll(username);
+        response.setDataList(all);
+        return response;
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
