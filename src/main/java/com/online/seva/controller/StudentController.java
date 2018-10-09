@@ -96,10 +96,57 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Student> fetchStdents() {
+    public Response fetchStdents(HttpServletRequest request) {
         log.info("fetching all student");
-        return studentService.findAll();
+        Response response = new Response();
+        User loggedUser = sessionService.getLoggedUser(request);
+        log.info("checking logged user..");
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+        log.info("logged user:: true");
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setDataList(studentService.findAll());
+        return response;
 
+    }
+
+    @RequestMapping(value = "/update/status", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response changeStatus(@RequestBody String email, HttpServletRequest request) {
+        log.info("Under Student Update status");
+        Response response = new Response();
+
+        if (email == null) {
+            response.setMessage("User name should not be null:::" + email);
+            response.setMsgType(AppConstant.ERROR);
+            return response;
+        }
+
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+        log.info("logged User ::: True");
+        log.info("User Role::" + loggedUser.getRole());
+        if (!sessionService.isAdmin(loggedUser)) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMsgType("You are not allowed to update user status");
+            return response;
+        }
+        log.info("Updating student approve status :::" + email);
+        boolean updated = studentService.updateStudentApproveStatus(email);
+        if (!updated) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("User Not found in database...");
+            return response;
+        }
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setMessage("Updated.... ");
+        return response;
     }
 
 

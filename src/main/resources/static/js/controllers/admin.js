@@ -1,15 +1,15 @@
-app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', function($scope, $state, apiLink, APIService) {
+app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', function ($scope, $state, apiLink, APIService) {
 
     $scope.activeTab = "show1";
-    $scope.toggleTabs = function(tab) {
+    $scope.toggleTabs = function (tab) {
         $scope.activeTab = tab;
     }
 
     $scope.showSection2 = false;
-    $scope.addmoreDetails = function() {
+    $scope.addmoreDetails = function () {
         $scope.showSection2 = true;
     }
-    $(function() {
+    $(function () {
 
         function toggleChevron(e) {
             $(e.target)
@@ -22,62 +22,67 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
         $('#accordion').on('hide.bs.collapse', toggleChevron);
         $('#accordion').on('show.bs.collapse', toggleChevron);
     });
-    angular.element(document).ready(function() {
+    angular.element(document).ready(function () {
         dTable = $('#user_table')
         dTable.DataTable();
     });
-    $scope.clickedNext = function() {
+    $scope.clickedNext = function () {
         var target = $("#headingTwo");
         $("#headingTwo").click();
     }
 
     $scope.readOnlyFirst = false;
-    $scope.saveFirstSection = function() {
+    $scope.saveFirstSection = function () {
         $scope.readOnlyFirst = true;
         $scope.clickedNext();
 
 
     }
-    $scope.editFirstSection = function() {
+    $scope.editFirstSection = function () {
         $scope.readOnlyFirst = false;
     }
 
 
-    $scope.getAllUserList = function() {
+    $scope.getAllUserList = function () {
         var url = apiLink.getAllUsers;
         APIService.httpGet(url).then(
-            function(res) {
-                $scope.userList = res.data;
-                console.log("jkhaksdkja", $scope.userList);
+            function (res) {
+                if (res.data.msgType == 'error') {
 
+                    swal("", res.data.message, res.data.msgType);
+                    $state.go("login");
+                }
+                $scope.userList = res.data.dataList;
+                console.log("UserList", $scope.userList);
 
             },
-            function(error) {
+            function (error) {
                 console.log(error);
             });
     }
-    $scope.getAllUserList();
+    /* $scope.getAllUserList();*/
 
-     $scope.getAllStudents = function() {
+    $scope.getAllStudents = function () {
         var url = apiLink.getAllStudents;
         APIService.httpGet(url).then(
-            function(res) {
-                $scope.studentList = res.data;
-                console.log("studentList", $scope.studentList);
+            function (res) {
+                if (res.data.msgType == 'error') {
+
+                    swal("", res.data.message, res.data.msgType);
+                    $state.go("login");
+                }
+                $scope.studentList = res.data.dataList;
+                console.log("studentList in admin", $scope.studentList);
 
 
             },
-            function(error) {
+            function (error) {
                 console.log(error);
             });
     }
-  
 
 
-
-
-
-    $scope.saveJobDetails = function() {
+    $scope.saveJobDetails = function () {
 
         var jobdata = {
 
@@ -109,13 +114,13 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
 
 
         APIService.httpPostJson(url, jobdata).then(
-            function(res) {
+            function (res) {
 
                 if (res.data.msgType == 'error') {
                     swal("", res.data.message, res.data.msgType);
                 } else {
-                    $scope.basicsJob ={};
-                     $scope.subDetails = {};
+                    $scope.basicsJob = {};
+                    $scope.subDetails = {};
 //                    $scope.secondsection.$setPristine();
 //                    $scope.thirdsection.$setPristine();
                     console.log("saved", res.data);
@@ -124,86 +129,109 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                 }
 
             },
-            function(error) {
+            function (error) {
                 console.log(error);
             });
-
 
 
     }
 
-   // ************* admin actions **********
+    // ************* admin actions **********
 
-   $scope.activateUser = function(user){
+    $scope.activateUser = function (user) {
 
-   			var url = apiLink.updateUser;
+        var url = apiLink.updateUser;
 
-                APIService.httpPut(url,user.username).then(
-                    function(res) {
+        APIService.httpPut(url, user.username).then(
+            function (res) {
 
-                    	if(res.data.msgType=='success'){
-                    		 swal("", "user successfully activated", "success");
-                    		 user.active = true;
-                    	}
-                    	else{
-                    		 swal("", res.data.message, res.data.msgType);
+                if (res.data.msgType == 'success') {
+                    swal("", "user successfully activated", "success");
+                    user.active = true;
+                }
+                else {
+                    swal("", res.data.message, res.data.msgType);
 
-                    	}
-
-                    },
-                    function(error) {
-                        console.log(error);
-                    });
-
-
-   };
-
-
-    $scope.deActivateUser = function(user){
-    		var url = apiLink.updateUser;
-         //   var data = {"username":user.username};
-        APIService.httpPut(url,user.username).then(
-            function(res) {
-
-            	if(res.data.msgType=='success'){
-            		 swal("", "user successfully Deactivated", "success");
-            		 user.active = false;
-            	}
-            	else{
-            		 swal("", res.data.message, res.data.msgType);
-
-            	}
+                }
 
             },
-            function(error) {
+            function (error) {
                 console.log(error);
             });
 
 
-   }
+    };
 
-   $scope.removeUser = function(user){
+
+    $scope.deActivateUser = function (user) {
+        var url = apiLink.updateUser;
+        //   var data = {"username":user.username};
+        APIService.httpPut(url, user.username).then(
+            function (res) {
+
+                if (res.data.msgType == 'success') {
+                    swal("", "user successfully Deactivated", "success");
+                    user.active = false;
+                }
+                else {
+                    swal("", res.data.message, res.data.msgType);
+
+                }
+
+            },
+            function (error) {
+                console.log(error);
+            });
+
+
+    }
+
+    $scope.removeUser = function (user) {
         var url = apiLink.removeUser;
-         //   var data = {"username":user.username};
-        APIService.httpDelete(url,user.username).then(
-            function(res) {
+        //   var data = {"username":user.username};
+        APIService.httpDelete(url, user.username).then(
+            function (res) {
 
-            	if(res.data.msgType=='success'){
-            	    $scope.getAllUserList();
-            		 swal("", "user removed successfully ", "success");
+                if (res.data.msgType == 'success') {
+                    $scope.getAllUserList();
+                    swal("", "user removed successfully ", "success");
 
-            	}
-            	else{
-            		 swal("", res.data.message, res.data.msgType);
-            	}
+                }
+                else {
+                    swal("", res.data.message, res.data.msgType);
+                }
 
             },
-            function(error) {
+            function (error) {
                 console.log(error);
             });
-   }
-$scope.approveStd = function(std){
+    }
 
-}
+    // ************* Approve Student **********
+
+    $scope.approveStudent = function (std) {
+
+        var url = apiLink.updateStudentStatus;
+
+        APIService.httpPut(url, std.email).then(
+            function (res) {
+
+                if (res.data.msgType == 'success') {
+                    $scope.getAllStudents();
+                    swal("", res.data.message, res.data.msgType);
+                }
+                else {
+                    swal("", res.data.message, res.data.msgType);
+
+                }
+
+            },
+            function (error) {
+                console.log(error);
+            });
+
+
+    };
+
 
 }]);

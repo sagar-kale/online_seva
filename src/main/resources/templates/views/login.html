@@ -1,125 +1,151 @@
 <div style="    background: #242e4cde;    min-height: 100vh;width:100%;">
-<div class="login-wrap" ng-class="{sethieghtToWrapper:!isLoginTab}">
-	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" ng-click="settrue()">Sign In</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"ng-click="setfalse()">Sign Up</label>
-		<div class="login-form">
-			<div class="sign-in-htm" style="        width: 500px !important;
+    <div class="login-wrap" ng-class="{sethieghtToWrapper:!isLoginTab}">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab"
+                                                                                     ng-click="settrue()">Sign
+            In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"
+                                                                             ng-click="setfalse()">Sign Up</label>
+            <div class="login-form">
+                <div class="sign-in-htm" style="        width: 500px !important;
     margin: auto;
     margin-top: 50px;
     border-radius: 10px;" ng-show="isLoginTab">
-				<form name="loginform">
-					<div class="group">
-					<label for="user1" class="label">Username</label>
-					<input id="user1" type="email" class="input" name="userEmail" ng-model="login.username" placeholder="xxx@xxx.xxx" required>
-					<span class="invalidtextColor" ng-show="loginform.userEmail.$error.required && loginform.userEmail.$dirty">required</span>
-   					<span class="invalidtextColor" ng-show="!loginform.userEmail.$error.required && loginform.userEmail.$error.email && loginform.userEmail.$dirty">invalid email</span>
-				</div>
-				<div class="group">
-					<label for="pass1" class="label">Password</label>
-					<input id="pass1" type="password" class="input" data-type="password" ng-model="login.password" name="loginpass" required="">
-					<span class="invalidtextColor" ng-show="loginform.loginpass.$error.required && loginform.loginpass.$dirty">required</span>
-				</div>
-				<div class="group">
-					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span> Keep me Signed in</label>
-				</div>
-				<div class="group">
-					<!-- <input type="submit" class="button" value="Sign In" ng-click="saveLoginForm()" ng-disabled="!loginform.$valid"> -->
-					<input type="submit" class="button" value="Sign In" ng-click="saveLoginForm()">
-				</div>
-				<!-- <div class="hr"></div> -->
-				<div class="foot-lnk">
-					<a href="/forgot-password" style="color: #fff;">Forgot Password?</a>
-				</div>
-				</form>
-				
-			</div>
-			<div class="sign-up-htm rigistrationFrom" ng-show="!isLoginTab">
-				
-				<form name="myForm">
-					<div class="group">
-					<label for="user2" class="label">User Full Name</label>
-					<input id="user2" type="text" class="input" ng-model="formData.fullname" name="fullname1" required/>
-					 <span class="invalidtextColor" ng-show="myForm.fullname1.$error.required && myForm.fullname1.$dirty">required</span>
-				</div>
-				<div class="group">
-					<label for="Email" class="label">Email Address</label>
-					<input id="Email" type="email" class="input" name="email" ng-model="formData.email" required/>
-					 <span class="invalidtextColor" ng-show="myForm.email.$error.required && myForm.email.$dirty">required</span>
-   					<span class="invalidtextColor" ng-show="!myForm.email.$error.required && myForm.email.$error.email && myForm.email.$dirty">invalid email</span>
-				</div>
-				<div class="group">
-						<label for="pass2" class="label">Password</label>
-					   <input type="password" name="EPassword" ng-model="formData.EPassword" required class="form-control" />
-					    <span class="invalidtextColor" ng-show="myForm.EPassword.$error.required && myForm.EPassword.$dirty">required</span>
-						 
-				</div>
-		<div class="group">
-					<label for="password_c" class="label">Confirm Password</label>
-						  <input type="password" name="ECPassword" ng-model="formData.ECPassword" required  class="form-control" />   
-         <span class="invalidtextColor" ng-show="formData.EPassword != formData.ECPassword">  
+                    <form name="loginform">
+                        <div class="group">
+                            <label for="user1" class="label">Username</label>
+                            <input id="user1" type="email" class="input" name="userEmail" ng-model="login.username"
+                                   placeholder="xxx@xxx.xxx" required>
+                            <span class="invalidtextColor"
+                                  ng-show="loginform.userEmail.$error.required && loginform.userEmail.$dirty">required</span>
+                            <span class="invalidtextColor"
+                                  ng-show="!loginform.userEmail.$error.required && loginform.userEmail.$error.email && loginform.userEmail.$dirty">invalid email</span>
+                        </div>
+                        <div class="group">
+                            <label for="pass1" class="label">Password</label>
+                            <input id="pass1" type="password" class="input" data-type="password"
+                                   ng-model="login.password" name="loginpass" required="">
+                            <span class="invalidtextColor"
+                                  ng-show="loginform.loginpass.$error.required && loginform.loginpass.$dirty">required</span>
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div class="group">
+                            <!-- <input type="submit" class="button" value="Sign In" ng-click="saveLoginForm()" ng-disabled="!loginform.$valid"> -->
+                            <input type="submit" class="button" value="Sign In" ng-click="saveLoginForm()">
+                        </div>
+                        <!-- <div class="hr"></div> -->
+                        <div class="foot-lnk">
+                            <a href="/forgot-password" style="color: #fff;">Forgot Password?</a>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="sign-up-htm rigistrationFrom" ng-show="!isLoginTab">
+
+                    <form name="myForm">
+                        <div class="group">
+                            <label for="user2" class="label">User Full Name</label>
+                            <input id="user2" type="text" class="input" ng-model="formData.fullname" name="fullname1"
+                                   required/>
+                            <span class="invalidtextColor"
+                                  ng-show="myForm.fullname1.$error.required && myForm.fullname1.$dirty">required</span>
+                        </div>
+                        <div class="group">
+                            <label for="Email" class="label">Email Address</label>
+                            <input id="Email" type="email" class="input" name="email" ng-model="formData.email"
+                                   required/>
+                            <span class="invalidtextColor"
+                                  ng-show="myForm.email.$error.required && myForm.email.$dirty">required</span>
+                            <span class="invalidtextColor"
+                                  ng-show="!myForm.email.$error.required && myForm.email.$error.email && myForm.email.$dirty">invalid email</span>
+                        </div>
+                        <div class="group">
+                            <label for="SignUppassword" class="label">Password</label>
+                            <input type="password" name="EPassword" ng-model="formData.EPassword" required
+                                   class="form-control" id="SignUppassword"/>
+                            <span class="invalidtextColor"
+                                  ng-show="myForm.EPassword.$error.required && myForm.EPassword.$dirty">required</span>
+
+                        </div>
+                        <div class="group">
+                            <label for="SignUppassword2" class="label">Confirm Password</label>
+                            <input type="password" name="ECPassword" ng-model="formData.ECPassword" required
+                                   class="form-control" id="SignUppassword2"/>
+                            <span class="invalidtextColor" ng-show="formData.EPassword != formData.ECPassword">
             Passwords didn't match.  
-         </span>  
+         </span>
 
-				</div>
-				<div class="group">
-					<label for="CenterName" class="label">Center Name</label>
-					<input id="CenterName" ng-model="formData.CenterName" type="text" name="CenterName" class="input" required/>
-					 <span class="invalidtextColor" ng-show="myForm.CenterName.$error.required 
+                        </div>
+                        <div class="group">
+                            <label for="CenterName" class="label">Center Name</label>
+                            <input id="CenterName" ng-model="formData.CenterName" type="text" name="CenterName"
+                                   class="input" required/>
+                            <span class="invalidtextColor" ng-show="myForm.CenterName.$error.required
 					 && myForm.CenterName.$dirty">required</span>
-				</div>
-				<div class="group">
-					<label for="contact" class="label">Contact Number</label>
-					<input id="contact" ng-model="formData.contact" name ="contact" type="number" class="input" required />
-					 <span class="invalidtextColor" ng-show="myForm.contact.$error.required && myForm.contact.$dirty">required</span>
-				</div>
-				<div class="group">
-					<label for="dob" class="label">DOB</label>
-					<input id="dob"  ng-model="formData.dob" type="date" class="input" name="dob" required>
-					<span class="invalidtextColor" ng-show="myForm.dob.$error.required && myForm.dob.$dirty">required</span>
-				</div>
-				<div class="group">
-					<label for="Addhar" class="label">Addhar</label>
-					<input id="Addhar" ng-model="formData.Addhar" name="Addhar" type="number" class="input" required>
-						<span class="invalidtextColor" ng-show="myForm.Addhar.$error.required 
+                        </div>
+                        <div class="group">
+                            <label for="contact" class="label">Contact Number</label>
+                            <input id="contact" ng-model="formData.contact" name="contact" type="number" class="input"
+                                   required/>
+                            <span class="invalidtextColor"
+                                  ng-show="myForm.contact.$error.required && myForm.contact.$dirty">required</span>
+                        </div>
+                        <div class="group">
+                            <label for="dob" class="label">DOB</label>
+                            <input id="dob" ng-model="formData.dob" type="date" class="input" name="dob" required>
+                            <span class="invalidtextColor" ng-show="myForm.dob.$error.required && myForm.dob.$dirty">required</span>
+                        </div>
+                        <div class="group">
+                            <label for="Addhar" class="label">Addhar</label>
+                            <input id="Addhar" ng-model="formData.Addhar" name="Addhar" type="number" class="input"
+                                   required>
+                            <span class="invalidtextColor" ng-show="myForm.Addhar.$error.required
 						&& myForm.Addhar.$dirty">required</span>
-				</div>
+                        </div>
 
-				<div class="group">
-					<label for="State" class="label">State</label>
-					<select   style="padding:6px 20px !important;" ng-model="formData.State" id="State"  class="input" name="State" required>
-						<option value="Maharastra" selected>Maharastra</option>
-					</select>
-					<span class="invalidtextColor" ng-show="myForm.State.$error.required 
+                        <div class="group">
+                            <label for="State" class="label">State</label>
+                            <select style="padding:6px 20px !important;" ng-model="formData.State" id="State"
+                                    class="input" name="State" required>
+                                <option value="Maharastra" selected>Maharastra</option>
+                            </select>
+                            <span class="invalidtextColor" ng-show="myForm.State.$error.required
 						&& myForm.State.$dirty">required</span>
-				</div>
-				<div class="group">
-					<label for="District" class="label">District</label>					
-					<select style="padding:6px 20px !important;" id="District"  ng-model="formData.District" class="input" name="District" required ng-model="selectedName" ng-options="x for x in districtList">
-					</select>
-					<span class="invalidtextColor" ng-show="myForm.District.$error.required 
+                        </div>
+                        <div class="group">
+                            <label for="District" class="label">District</label>
+                            <select style="padding:6px 20px !important;" id="District" ng-model="formData.District"
+                                    class="input" name="District" required ng-model="selectedName"
+                                    ng-options="x for x in districtList">
+                            </select>
+                            <span class="invalidtextColor" ng-show="myForm.District.$error.required
 						&& myForm.District.$dirty">required</span>
-				</div>
-				<div class="group">
-					<label for="City" class="label" >City</label>
-					<input id="City" type="text" class="input" name="City" ng-model="formData.City" required>
-				</div>
-				<div class="group">
-					<label for="pincode" class="label">pincode</label>
-					<input id="pincode" type="text" class="input" name="pincode" ng-model="formData.pincode" required>
-				</div>
-				<div class="group saveButton">
-				   <button type="submit" class="btn" ng-disabled="!myForm.$valid" ng-click="regitserUser(formData);">Submit</button>
-				</div>
-				
-			<!-- 	<div class="foot-lnk">
-					<label for="tab-1">Already Member?</label>
-				</div> -->
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
+                        </div>
+                        <div class="group">
+                            <label for="City" class="label">City</label>
+                            <input id="City" type="text" class="input" name="City" ng-model="formData.City" required>
+                        </div>
+                        <div class="group">
+                            <label for="pincode" class="label">pincode</label>
+                            <input id="pincode" type="text" class="input" name="pincode" ng-model="formData.pincode"
+                                   required>
+                        </div>
+                        <div class="group saveButton">
+                            <button type="submit" class="btn" ng-disabled="!myForm.$valid"
+                                    ng-click="regitserUser(formData);">Submit
+                            </button>
+                        </div>
+
+                        <!-- 	<div class="foot-lnk">
+                                <label for="tab-1">Already Member?</label>
+                            </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

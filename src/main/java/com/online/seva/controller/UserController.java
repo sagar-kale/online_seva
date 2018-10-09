@@ -67,8 +67,18 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Response login(@RequestBody User user, HttpSession httpSession) {
         logger.info("Under Login");
-        logger.info("request User" + user);
+
         Response response;
+        User isLogged = (User) httpSession.getAttribute("user");
+        if (null != isLogged) {
+            logger.info("already logged in ....");
+            response = new Response();
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Already Logged in please refresh browser");
+            return response;
+        }
+        logger.info("request User" + user);
+
         if (null == user.getUsername() || null == user.getPassword()) {
             response = new Response();
             response.setMsgType(AppConstant.ERROR);

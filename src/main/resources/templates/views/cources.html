@@ -3,225 +3,253 @@
 
 </style>
 <div class=" pgaeContainer" style="padding: 0px;">
-	<div class="courcesTabs" style="padding: 25px;    display: none;">
-		<ul>
-			<li ng-repeat = "course in listOfCources" ng-click="getCourseData(course)">
-				{{course}}
-			</li>
-		</ul>
-	</div>
-	<div class="coursepageContent">
-		<div class="userActionsDiv">
-			<ul>
-				<li ng-click="toggleForms('Register')" class="activeLi">Register New Student</li>
-				<li  ng-click="toggleForms('Admit Cards')">Check Admit Cards</li>
-				<li ng-click="toggleForms('getAllStd');getAllApprovedStudentsList();">All Students</li>
-				<li ng-click="toggleForms('Bonafide')">Generate Bonafide</li>
-				<li ng-click="toggleForms('Learning')"> Learning</li>
-			</ul>
-		</div>
-		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Register'">
-			<div class="titleForm">
-				Register here
-			 </div>
+    <div class="courcesTabs" style="padding: 25px;    display: none;">
+        <ul>
+            <li ng-repeat="course in listOfCources" ng-click="getCourseData(course)">
+                {{course}}
+            </li>
+        </ul>
+    </div>
+    <div class="coursepageContent">
+        <div class="userActionsDiv">
+            <ul>
+                <li ng-click="toggleForms('Register')" class="activeLi">Register New Student</li>
+                <li ng-click="toggleForms('Admit Cards')">Check Admit Cards</li>
+                <li ng-click="toggleForms('getAllStd');getAllApprovedStudentsList();">All Students</li>
+                <li ng-click="toggleForms('Bonafide')">Generate Bonafide</li>
+                <li ng-click="toggleForms('Learning')"> Learning</li>
+            </ul>
+        </div>
+        <div class="corsePageLeftContent" ng-show="selectedDiv == 'Register'">
+            <div class="titleForm">
+                Register here
+            </div>
 
-			<div class="regFormCource">	
-				<form name="stdRegForm">
-					<div class="userData">
-					<div class="regUserName">Student Name</div>
-					<div class="regTextInputDiv">
-						<input type="text" name="stdName" ng-model="student.name" required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdName.$error.required 
-						&& stdRegForm.stdName.$dirty">required</div>
-
-						
-					</div>
-				</div>
-				<div class="userData">
-					<div class="regUserName">email id</div>
-					<div class="regTextInputDiv">
-						<input type="email" name="stdEmail" ng-model="student.email"required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdEmail.$error.required 
-						&& stdRegForm.stdEmail.$dirty">required</div>
-
-						<div class="invalidtextColor" ng-show="!stdRegForm.stdEmail.$error.required && stdRegForm.stdEmail.$error.email && stdRegForm.stdEmail.$dirty">invalid email</div>
-					</div>
-				</div>
-					
-				<div class="userData">
-					<div class="regUserName">Addhar Number</div>
-					<div class="regTextInputDiv">
-						<input type="number" name="stdaddhar"  ng-minlength="12" ng-maxlength="12" ng-model="student.addhar"required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdaddhar.$error.required 
-						&& stdRegForm.stdaddhar.$dirty">required</div>
-
-						<div class="invalidtextColor" ng-show="stdRegForm.stdaddhar.$error.minlength">Addhar number is too short!</div>
-         				 <div class="invalidtextColor" ng-show="stdRegForm.stdaddhar.$error.maxlength">Addhar number is too long!</div>
-					</div>
-				</div>
-
-				<div class="userData">
-					<div class="regUserName">Contact Number</div>
-					<div class="regTextInputDiv">
-						<input type="number" name="stdContact" ng-minlength="10" ng-maxlength="10" ng-model="student.Contact"required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdContact.$error.required 
-						&& stdRegForm.stdContact.$dirty">required</div>
-
-						<div class="invalidtextColor" ng-show="stdRegForm.stdContact.$error.minlength">Number is too short!</div>
-         				 <div class="invalidtextColor" ng-show="stdRegForm.stdContact.$error.maxlength">Number is too long!</div>
+            <div class="regFormCource">
+                <form name="stdRegForm">
+                    <div class="userData">
+                        <div class="regUserName">Student Name</div>
+                        <div class="regTextInputDiv">
+                            <input type="text" name="stdName" ng-model="student.name" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdName.$error.required
+						&& stdRegForm.stdName.$dirty">required
+                            </div>
 
 
-					</div>
-				</div>
+                        </div>
+                    </div>
+                    <div class="userData">
+                        <div class="regUserName">email id</div>
+                        <div class="regTextInputDiv">
+                            <input type="email" name="stdEmail" ng-model="student.email" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdEmail.$error.required
+						&& stdRegForm.stdEmail.$dirty">required
+                            </div>
 
-				<div class="userData">
-					<div class="regUserName">DOB</div>
-					<div class="regTextInputDiv">
-						<input type="date" name="stddob" ng-model="student.dob"required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stddob.$error.required 
-						&& stdRegForm.stddob.$dirty">required</div>
-					</div>
-				</div>
-				<div class="userData">
-					<div class="regUserName">Select Course Name</div>
-					<div class="regTextInputDiv">
-						<select  ng-model="student.courseName" name="stdcourseName" required>
-								<option value="MSCIT" selected="MSCIT">MSCIT</option>
-								<option value="MSCIT" selected="CCC">CCC</option>
-								<option value="MSCIT" selected="DTP">DTP</option>
-								<option value="MSCIT" selected="TALLY">TALLY</option>
-						</select>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdcourseName.$error.required 
-						&& stdRegForm.stdcourseName.$dirty">required</div>
-					</div>
-				</div>
-				<div class="userData" >
-					<div class="regUserName">Select Center Name</div>
-					<div class="regTextInputDiv">						
-						<input type="text" name="stdcenterName"  ng-model="student.centerName" required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdcenterName.$error.required 
-						&& stdRegForm.stdcenterName.$dirty">required</div>
+                            <div class="invalidtextColor"
+                                 ng-show="!stdRegForm.stdEmail.$error.required && stdRegForm.stdEmail.$error.email && stdRegForm.stdEmail.$dirty">
+                                invalid email
+                            </div>
+                        </div>
+                    </div>
 
-					</div>
-				</div>
-			
-				<div class="userData">
-					<div class="regUserName">State</div>
-					<div class="regTextInputDiv">
-						<select  ng-model="student.state" required name="stdstate">
-								<option value="MSCIT" selected="Maharastra">Maharastra</option>
-								
-						</select>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdstate.$error.required 
-						&& stdRegForm.stdstate.$dirty">required</div>
-					</div>
-				</div>
-				<div class="userData">
-					<div class="regUserName">District</div>
-					<div class="regTextInputDiv">
-						<!-- <select  ng-model="student.district"required>
-								<option value="MSCIT" selected="MSCIT">MSCIT</option>
-								<option value="MSCIT" selected="CCC">CCC</option>
-								<option value="MSCIT" selected="DTP">DTP</option>
-								<option value="MSCIT" selected="TALLY">TALLY</option>
-						</select> -->
-							<select  ng-model="student.district" class="input" name="stdDistrict" required ng-options="x for x in districtList">
-					</select>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdDistrict.$error.required 
-						&& stdRegForm.stdDistrict.$dirty">required</div>
-					</div>
-				</div>
-				<div class="userData">
-					<div class="regUserName">City</div>
-					<div class="regTextInputDiv">
-						<input type="text" name="stdCity "  ng-model="student.city"required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdCity.$error.required 
-						&& stdRegForm.stdCity.$dirty">required</div>
-					</div>
-				</div>
-				<div class="userData">
-					<div class="regUserName">Address</div>
-					<div class="regTextInputDiv">
-						<input type="text" name="stdAddress "  ng-model="student.Address"required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdAddress.$error.required 
-						&& stdRegForm.stdAddress.$dirty">required</div>
-					</div>
-				</div>
-				<div class="userData">
-					<div class="regUserName">Pincode</div>
-					<div class="regTextInputDiv">
-						<input type="number" name="stdPincode "  ng-model="student.pincode"required>
-						<div class="invalidtextColor" ng-show="stdRegForm.stdPincode.$error.required 
-						&& stdRegForm.stdPincode.$dirty">required</div>
-					</div>
-				</div>
-					
-				<button type="btn" ng-click="saveStudent(student)" ng-disabled=" !stdRegForm.$valid" class="saveStdBtn"ng-class = "{'activeBtnBg':stdRegForm.$valid}">Save</button>	
+                    <div class="userData">
+                        <div class="regUserName">Addhar Number</div>
+                        <div class="regTextInputDiv">
+                            <input type="number" name="stdaddhar" ng-minlength="12" ng-maxlength="12"
+                                   ng-model="student.addhar" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdaddhar.$error.required
+						&& stdRegForm.stdaddhar.$dirty">required
+                            </div>
 
-				</form>
-				
-					
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdaddhar.$error.minlength">Addhar number
+                                is too short!
+                            </div>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdaddhar.$error.maxlength">Addhar number
+                                is too long!
+                            </div>
+                        </div>
+                    </div>
 
-		
-			</div>
-	
-			
-		</div>
-		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Admit Cards'">
-			Admit Cards
-		</div>
-		<div class="corsePageLeftContent" ng-show="selectedDiv == 'getAllStd'">
-			<div class="searchDiv">
+                    <div class="userData">
+                        <div class="regUserName">Contact Number</div>
+                        <div class="regTextInputDiv">
+                            <input type="number" name="stdContact" ng-minlength="10" ng-maxlength="10"
+                                   ng-model="student.Contact" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdContact.$error.required
+						&& stdRegForm.stdContact.$dirty">required
+                            </div>
+
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdContact.$error.minlength">Number is too
+                                short!
+                            </div>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdContact.$error.maxlength">Number is too
+                                long!
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="userData">
+                        <div class="regUserName">DOB</div>
+                        <div class="regTextInputDiv">
+                            <input type="date" name="stddob" ng-model="student.dob" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stddob.$error.required
+						&& stdRegForm.stddob.$dirty">required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userData">
+                        <div class="regUserName">Select Course Name</div>
+                        <div class="regTextInputDiv">
+                            <select ng-model="student.courseName" name="stdcourseName" required>
+                                <option value="MSCIT">MSCIT</option>
+                                <option value="CCC">CCC</option>
+                                <option value="DTP">DTP</option>
+                                <option value="TALLY">TALLY</option>
+                            </select>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdcourseName.$error.required
+						&& stdRegForm.stdcourseName.$dirty">required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userData">
+                        <div class="regUserName">Select Center Name</div>
+                        <div class="regTextInputDiv">
+                            <input type="text" name="stdcenterName" ng-model="student.centerName" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdcenterName.$error.required
+						&& stdRegForm.stdcenterName.$dirty">required
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="userData">
+                        <div class="regUserName">State</div>
+                        <div class="regTextInputDiv">
+                            <select ng-model="student.state" required name="stdstate">
+                                <option value="Maharastra" selected="Maharastra">Maharastra</option>
+
+                            </select>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdstate.$error.required
+						&& stdRegForm.stdstate.$dirty">required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userData">
+                        <div class="regUserName">District</div>
+                        <div class="regTextInputDiv">
+                            <!-- <select  ng-model="student.district"required>
+                                    <option value="MSCIT" selected="MSCIT">MSCIT</option>
+                                    <option value="MSCIT" selected="CCC">CCC</option>
+                                    <option value="MSCIT" selected="DTP">DTP</option>
+                                    <option value="MSCIT" selected="TALLY">TALLY</option>
+                            </select> -->
+                            <select ng-model="student.district" class="input" name="stdDistrict" required
+                                    ng-options="x for x in districtList">
+                            </select>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdDistrict.$error.required
+						&& stdRegForm.stdDistrict.$dirty">required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userData">
+                        <div class="regUserName">City</div>
+                        <div class="regTextInputDiv">
+                            <input type="text" name="stdCity " ng-model="student.city" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdCity.$error.required
+						&& stdRegForm.stdCity.$dirty">required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userData">
+                        <div class="regUserName">Address</div>
+                        <div class="regTextInputDiv">
+                            <input type="text" name="stdAddress " ng-model="student.Address" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdAddress.$error.required
+						&& stdRegForm.stdAddress.$dirty">required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userData">
+                        <div class="regUserName">Pincode</div>
+                        <div class="regTextInputDiv">
+                            <input type="number" name="stdPincode " ng-model="student.pincode" required>
+                            <div class="invalidtextColor" ng-show="stdRegForm.stdPincode.$error.required
+						&& stdRegForm.stdPincode.$dirty">required
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="btn" ng-click="saveStudent(student)" ng-disabled=" !stdRegForm.$valid"
+                            class="saveStdBtn" ng-class="{'activeBtnBg':stdRegForm.$valid}">Save
+                    </button>
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+        <div class="corsePageLeftContent" ng-show="selectedDiv == 'Admit Cards'">
+            Admit Cards
+        </div>
+        <div class="corsePageLeftContent" ng-show="selectedDiv == 'getAllStd'">
+            <div class="searchDiv">
 				<span style="    float: left;
     font-size: 16px;
     padding-top: 23px;">Check All Students Data</span>
-				<input type="text" name="searchStd" ng-model="stdSearch">
-				
-			</div>
-			<table width="100%" cellspacing="0" border="1">  
-    <thead id="TblHead">  
-        <tr class="headerTr">  
-            <td>Student Name</td>  
-            <td>Email</td>  
-            <td>Course</td>  
-            <td>Payment</td>             
-            <td>Bonafide</td>  
-            <td>Admit Card</td> 
-            <td>Remove</td>   
-           
-            
-        </tr>  
-    </thead>  
-    <tbody>  
-        <tr ng-repeat="std in stdList.dataList | filter:stdSearch" class="dataTr" ng-class="{'even':$even,'odd':$odd}">            
-            <td>{{std.name}}</td>  
-            <td>{{std.email}}</td>  
-            <td>MSCIT</td>  
-          	  <td>
-            			Incomplete
-				</td>  
-              
+                <input type="text" name="searchStd" ng-model="stdSearch">
 
-              <td >              	
-              	<button type="btn" class="approvebtn">Download</button>
-              </td>
-              
-              <td><button type="btn" class="approvebtn">Download</button></td>
-                <td><button type="btn" class="approvebtn" style="background-color: red">Remove</button></td>  
-            
-           
-              
-        </tr>  
-    </tbody>  
-</table>  
-		</div>
-		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Bonafide'">
-			Bonafide
-		</div>
-		<div class="corsePageLeftContent" ng-show="selectedDiv == 'Learning'">
-			Learning
-		</div>
+            </div>
+            <table width="100%" cellspacing="0" border="1">
+                <thead id="TblHead">
+                <tr class="headerTr">
+                    <td>Student Name</td>
+                    <td>Email</td>
+                    <td>Course</td>
+                    <td>Payment</td>
+                    <td>Bonafide</td>
+                    <td>Admit Card</td>
+                    <td>Remove</td>
 
-		
-	</div>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="std in stdList.dataList | filter:stdSearch" class="dataTr"
+                    ng-class="{'even':$even,'odd':$odd}">
+                    <td>{{std.name}}</td>
+                    <td>{{std.email}}</td>
+                    <td>{{std.courseName}}</td>
+                    <td>
+                        Incomplete
+                    </td>
+
+
+                    <td>
+                        <a type="btn" href="{{std.bonafideUrl}}" class="approvebtn" target="_blank">Download</a>
+                    </td>
+
+                    <td><a type="btn" href="{{std.admitCardUrl}}" class="approvebtn" target="_blank">Download</a></td>
+                    <td>
+                        <button type="btn" class="approvebtn" style="background-color: red">Remove</button>
+                    </td>
+
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="corsePageLeftContent" ng-show="selectedDiv == 'Bonafide'">
+            Bonafide
+        </div>
+        <div class="corsePageLeftContent" ng-show="selectedDiv == 'Learning'">
+            Learning
+        </div>
+
+
+    </div>
 </div>

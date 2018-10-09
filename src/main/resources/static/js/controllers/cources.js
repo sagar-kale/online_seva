@@ -1,12 +1,12 @@
-app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', function($scope, $state, apiLink, APIService) {
+app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', function ($scope, $state, apiLink, APIService) {
 
-    $scope.listOfCources = ["MSCIT","DTP","CCC","TALLY","HTML","CSS","CPP","Java"]; 
+    $scope.listOfCources = ["MSCIT", "DTP", "CCC", "TALLY", "HTML", "CSS", "CPP", "Java"];
     $scope.selectedDiv = "Register";
-    
-    $scope.toggleForms = function(str){
+
+    $scope.toggleForms = function (str) {
         $scope.selectedDiv = str;
     }
- $scope.districtList = [
+    $scope.districtList = [
         "Ahmednagar",
         "Akola",
         "Amravati",
@@ -44,26 +44,26 @@ app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', fun
         "Washim",
         "Yavatmal"
     ];
-    $scope.saveStudent = function(student){
+    $scope.saveStudent = function (student) {
 
-        var data = 
-        {
-        "email": student.email,
-        "username":$("#unamefrmserver").val(),
-        "name": student.name,
-        "phone": student.Contact,
-        "address": student.Address,
-        "dob": student.dob,
-        "aadhar": student.addhar,
-        "state": student.state,
-        "district": student.district,
-        "city": student.city,
-        "pincode": student.pincode
-        //"courseName":student.courseName,
-        
-        }
-        console.log("studentInfo:::",data);
-        var url = apiLink.saveStudent;   
+        var data =
+            {
+                "email": student.email,
+                "username": $("#unamefrmserver").val(),
+                "name": student.name,
+                "phone": student.Contact,
+                "address": student.Address,
+                "dob": student.dob,
+                "aadhar": student.addhar,
+                "state": student.state,
+                "district": student.district,
+                "city": student.city,
+                "pincode": student.pincode,
+                "courseName":student.courseName,
+
+            }
+        console.log("studentInfo:::", data);
+        var url = apiLink.saveStudent;
 
         APIService.httpPostJson(url, data).then(
             function (res) {
@@ -72,9 +72,9 @@ app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', fun
                 }
                 else {
                     console.log("student saved", res.data);
-                    swal("", res.data.message, res.data.msgType);                    
-                    $scope.student = {};                   
-                   // $scope.student.$setPristine();                   
+                    swal("", res.data.message, res.data.msgType);
+                    $scope.student = {};
+                    // $scope.student.$setPristine();
                 }
 
             },
@@ -82,28 +82,32 @@ app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', fun
                 console.log(error);
             });
     }
-        
-$scope.getAllApprovedStudentsList= function() {
-        var url = apiLink.getAllStudents;
-       // var data = {"username":$("#unamefrmserver").val()}
-        APIService.httpPostJson(url,$("#unamefrmserver").val()).then(
-            function(res) {
-                $scope.stdList = res.data;
-                console.log("jkhaksdkja", $scope.stdList);
 
+    $scope.getAllApprovedStudentsList = function () {
+        var url = apiLink.getAllStudents;
+        // var data = {"username":$("#unamefrmserver").val()}
+        APIService.httpPostJson(url, $("#unamefrmserver").val()).then(
+            function (res) {
+                if (res.data.msgType == 'error') {
+
+                    swal("", res.data.message, res.data.msgType);
+                    $state.go("login");
+                }
+                $scope.stdList = res.data;
+                console.log("StudentList", $scope.stdList);
 
             },
-            function(error) {
+            function (error) {
                 console.log(error);
             });
     }
-   // $scope.getAllApprovedStudentsList();
+    // $scope.getAllApprovedStudentsList();
 
-    $('.userActionsDiv ul li').click(function(e) {
-        $('.userActionsDiv ul li').removeClass('activeLi');     
+    $('.userActionsDiv ul li').click(function (e) {
+        $('.userActionsDiv ul li').removeClass('activeLi');
         $(this).addClass('activeLi');
-        
+
     });
 
 
-    }]);
+}]);

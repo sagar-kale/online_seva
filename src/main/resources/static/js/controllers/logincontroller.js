@@ -48,7 +48,7 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
                 if (res.data.msgType == 'error') {
 
                     swal("", res.data.message, "error");
-
+                    // $state.go("header.admin");
                 }
                 else {
                     console.log("success", res.data);

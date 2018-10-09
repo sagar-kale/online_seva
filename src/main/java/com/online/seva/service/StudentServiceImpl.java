@@ -38,7 +38,6 @@ public class StudentServiceImpl implements StudentService {
         List<Student> all = studentRepository.findAll();
         if (!all.isEmpty()) {
             for (Student student : all) {
-                student.setUsername(student.getUser().getUsername());
                 student.getUser().setPassword(null);
             }
             return all;
@@ -55,6 +54,8 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentRepository.findAllByUser(byUsername).stream().map(student -> {
             student.getUser().setPassword(null);
+            if (student.isApproved())
+                student.setBonafideUrl("/pdfreport/" + student.getEmail());
             return student;
         }).collect(Collectors.toList());
     }
@@ -96,6 +97,24 @@ public class StudentServiceImpl implements StudentService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean updateStudentApproveStatus(String email) {
+        Optional<Student> byEmail = studentRepository.findByEmail(email);
+        if (!byEmail.isPresent())
+            return false;
+        Student student = byEmail.get();
+        log.info("fetched student for updating" + student);
+
+        log.info("updating student status :::: current status:: " + student.isApproved());
+        if (student.isApproved())
+            student.setApproved(false);
+        else
+            student.setApproved(true);
+        Student save = studentRepository.save(student);
+        log.info("updated Student status :::: current status:: " + save.isApproved());
+        return true;
     }
 
 }

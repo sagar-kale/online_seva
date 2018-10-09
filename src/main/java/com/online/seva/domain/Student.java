@@ -18,7 +18,6 @@ public class Student {
 
     private String name;
     private String phone;
-    private String centerName;
     private String dob;
     private String aadhar;
     private String state;
@@ -26,6 +25,9 @@ public class Student {
     private String city;
     private String pincode;
     private String courseName;
+    private String admitCardUrl;
+    private String bonafideUrl;
+    private boolean approved;
 
     @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "username")

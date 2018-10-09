@@ -1,97 +1,98 @@
 <div class="pgaeContainer">
-	<div class="currentjobsop">Current Job Openings</div>
+    <div class="currentjobsop">Current Job Openings</div>
 
-	<div class="JobListTable">
-		<ul class="headerUl">
-			<li class="bigColumn">Job Title</li>
-			<li class="bigColumn">Sector</li>
-			<li>Qualfication</li>
-			<li>Last Date</li>
-			<li>Action</li>
-		</ul>
-		<ul class="evenrow" ng-repeat="job in jobdata">
-			<li ng-click="showJobDetails=!showJobDetails" class="linksClass bigColumn">{{job.title}} -{{job.totalPosts}} Posts</li>
-			<li class="bigColumn">{{job.sector}}</li>
-			<li>{{job.qualification}}</li>
-			<li>{{job.lastDate}}</li>
-			<li>
-					<button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button>
-				<button ng-show="showJobDetails" ng-click="showJobDetails=!showJobDetails;">Hide Details</button>
-			</li>
-			<div class ="jobdetailsData evenrow" ng-show="showJobDetails">
-				<h2>Job Details:</h2>
-				
-				<div class="jobDescription ">
-					{{job.aboutJob}}
-				</div>
-				<div class="jobInfo">
-					<div>
-						<span>Start Date : </span>
-						<span>{{job.startDate}}</span>
-					</div>
-					<div>
-						<span>Last Date : </span>
-						<span>{{job.lastDate}}</span>
-					</div>
-				</div>	
-				<div class="jobInfo">
-					<div>
-						<span>Post Name : </span>
-						<span>{{job.jobSubDetails.postName}}</span>
-					</div>
-					<div>
-						<span>Total Vacancies : </span>
-						<span>{{job.jobSubDetails.totalVacancies}}</span>
-					</div>
-					<div>
-						<span>Salary/pay scale : </span>
-						<span>{{job.jobSubDetails.salaryScale}}</span>
-					</div>
-					<div>
-						<span>Job Location : </span>
-						<span>{{job.jobSubDetails.jobLocation}}</span>
-					</div>
+    <div class="JobListTable">
+        <ul class="headerUl">
+            <li class="bigColumn">Job Title</li>
+            <li class="bigColumn">Sector</li>
+            <li>Qualfication</li>
+            <li>Last Date</li>
+            <li>Action</li>
+        </ul>
+        <ul class="evenrow" ng-repeat="job in jobdata">
+            <li ng-click="showJobDetails=!showJobDetails" class="linksClass bigColumn">{{job.title}} -{{job.totalPosts}}
+                Posts
+            </li>
+            <li class="bigColumn">{{job.sector}}</li>
+            <li>{{job.qualification}}</li>
+            <li>{{job.lastDate}}</li>
+            <li>
+                <button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button>
+                <button ng-show="showJobDetails" ng-click="showJobDetails=!showJobDetails;">Hide Details</button>
+            </li>
+            <div class="jobdetailsData evenrow" ng-show="showJobDetails">
+                <h2>Job Details:</h2>
 
-				</div>
-				<div class="jobInfo">
-					<div>Eligibility Criteria for post : </div>
-					<div>
-						<span>Educational Qualification : </span>
-						<span>{{job.jobSubDetails.educationalQualifiction}}</span>
-					</div>
-					<div>
-						<span>Age Limit: </span>
-						<span>{{job.jobSubDetails.ageLimit}}</span>
-					</div>
-					<div>
-						<span>Selection Process : </span>
-						<span> {{job.jobSubDetails.selectionProcess}}</span>
-					</div>
-					<div>
-						<span>Application Fee : </span>
-						<span>{{job.jobSubDetails.applicationFee}}</span>
-					</div>
+                <div class="jobDescription ">
+                    {{job.aboutJob}}
+                </div>
+                <div class="jobInfo">
+                    <div>
+                        <span>Start Date : </span>
+                        <span>{{job.startDate}}</span>
+                    </div>
+                    <div>
+                        <span>Last Date : </span>
+                        <span>{{job.lastDate}}</span>
+                    </div>
+                </div>
+                <div class="jobInfo">
+                    <div>
+                        <span>Post Name : </span>
+                        <span>{{job.jobSubDetails.postName}}</span>
+                    </div>
+                    <div>
+                        <span>Total Vacancies : </span>
+                        <span>{{job.jobSubDetails.totalVacancies}}</span>
+                    </div>
+                    <div>
+                        <span>Salary/pay scale : </span>
+                        <span>{{job.jobSubDetails.salaryScale}}</span>
+                    </div>
+                    <div>
+                        <span>Job Location : </span>
+                        <span>{{job.jobSubDetails.jobLocation}}</span>
+                    </div>
 
-					<div>
-						<span>How to Apply : </span>
-						<span>{{job.jobSubDetails.howToApplay}}</span>
-					</div>
+                </div>
+                <div class="jobInfo">
+                    <div>Eligibility Criteria for post :</div>
+                    <div>
+                        <span>Educational Qualification : </span>
+                        <span>{{job.jobSubDetails.educationalQualifiction}}</span>
+                    </div>
+                    <div>
+                        <span>Age Limit: </span>
+                        <span>{{job.jobSubDetails.ageLimit}}</span>
+                    </div>
+                    <div>
+                        <span>Selection Process : </span>
+                        <span> {{job.jobSubDetails.selectionProcess}}</span>
+                    </div>
+                    <div>
+                        <span>Application Fee : </span>
+                        <span>{{job.jobSubDetails.applicationFee}}</span>
+                    </div>
 
-					<div>
-						<div>Important links</div>
-						<a href="https://www.youtube.com/"></a><br>
-						<a href="https://www.youtube.com/"></a><br>
-						<a href="https://www.youtube.com/"></a>
+                    <div>
+                        <span>How to Apply : </span>
+                        <span>{{job.jobSubDetails.howToApplay}}</span>
+                    </div>
 
-					</div>
+                    <div>
+                        <div>Important links</div>
+                        <a href="https://www.youtube.com/"></a><br>
+                        <a href="https://www.youtube.com/"></a><br>
+                        <a href="https://www.youtube.com/"></a>
+
+                    </div>
 
 
-				</div>
-			</div>
-		</ul>
-	
+                </div>
+            </div>
+        </ul>
 
-				
-	</div>
+
+    </div>
 
 </div>

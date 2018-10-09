@@ -22,4 +22,6 @@ public interface StudentService {
     boolean updateEmail(String oldEmail, String newEmail);
 
     boolean updateStudent(Student student);
+
+    boolean updateStudentApproveStatus(String email);
 }
