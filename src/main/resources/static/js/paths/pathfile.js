@@ -1,38 +1,57 @@
+var app = angular.module('demoApp', ['ui.router'])
+    .directive('loading', ['$http', function ($http) {
+        return {
+            restrict: 'A',
+            link: function (scope, elm, attrs) {
+                scope.isLoading = function () {
+                    return $http.pendingRequests.length > 0;
+                };
 
-var app = angular.module('demoApp', ['ui.router']);
+                scope.$watch(scope.isLoading, function (v) {
+                    if (v) {
+                        elm.show();
+                    } else {
+                        elm.hide();
+                    }
+                });
+            }
+        };
+
+    }]);
+
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
     $stateProvider
         .state("login", {
             url: "/login",
             templateUrl: "pagerouting/login",
-            controller : "logincontroller"
+            controller: "logincontroller"
         })
-          .state("header", {
+        .state("header", {
             url: "/header",
             templateUrl: "pagerouting/header",
-            controller : "headerContrl"
+            controller: "headerContrl"
         })
         .state("header.home", {
             url: "/home",
             templateUrl: "pagerouting/home",
-            controller : "homeController"
+            controller: "homeController"
         })
         .state("header.jobs", {
             url: "/jobdetails",
             templateUrl: "pagerouting/jobDetails",
-            controller : "jobsController"
+            controller: "jobsController"
         })
-         .state("header.admin", {
+        .state("header.admin", {
             url: "/admin",
-             templateUrl: "pagerouting/admin",
-            controller : "adminContrl"
-             
+            templateUrl: "pagerouting/admin",
+            controller: "adminContrl"
+
         })
-            .state("header.cources", {
+        .state("header.cources", {
             url: "/cources",
             templateUrl: "pagerouting/cources",
-            controller : "courcesCntrl"
+            controller: "courcesCntrl"
         })
 
 });
