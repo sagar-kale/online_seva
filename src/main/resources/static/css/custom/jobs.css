@@ -1,19 +1,22 @@
-.JobListTable{
-	float: left;
+.JobListTable {
+    float: left;
     width: 100%;
-  /*   background-color: #3e343830; */
+    /*   background-color: #3e343830; */
     background-color: #fff;
     border: solid 1px #928c8c;
-border-right: 0px;
-border-top: 0px;
+    border-right: 0px;
+    border-top: 0px;
 }
-.JobListTable ul{
-	margin: 0px;
-	padding: 0px;
-	float: left;width: 100%;
+
+.JobListTable ul {
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    width: 100%;
 }
-.JobListTable ul li{
-	     list-style-type: none;
+
+.JobListTable ul li {
+    list-style-type: none;
     display: inline-block;
     list-style-type: none;
     display: inline-block;
@@ -25,28 +28,32 @@ border-top: 0px;
     /* color: #fff; */
 
     float: left;
-        border-right: solid 1px #928c8c;
+    border-right: solid 1px #928c8c;
 }
 
-.bigColumn{
- width: 25% !important;
+.bigColumn {
+    width: 25% !important;
 }
-.headerUl li{
-min-height: 40px !important;
+
+.headerUl li {
+    min-height: 40px !important;
     background: #3e343830;
     color: #fff;
     font-size: 16px;
     color: #fff;
-    
+
 }
-.JobListTable ul{
-	    /*border-left: solid 1px #928c8c;*/
+
+.JobListTable ul {
+    /*border-left: solid 1px #928c8c;*/
 }
-.evenrow{
-	
+
+.evenrow {
+
 }
-.jobdetailsData{
-	    /* bottom: 0; */
+
+.jobdetailsData {
+    /* bottom: 0; */
     float: left;
     width: 100%;
     border-top: solid 1px #928c8c;
@@ -58,37 +65,44 @@ min-height: 40px !important;
     padding-left: 100px;
     padding-right: 100px;
 }
-.{
-	    margin-top: 15px;
-    margin-bottom: 15px;
-    color: #fff;
-    font-size: 20px;
-}
-.currentjobsop{
 
-	    margin-top: 15px;
+. {
+    margin-top: 15px;
     margin-bottom: 15px;
     color: #fff;
     font-size: 20px;
 }
-.jobInfo{
-	float: left;
-	width: 100%;
-	    margin-top: 40px;
+
+.currentjobsop {
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 20px;
 }
-.jobInfo  div{
-	    margin-bottom: 15px;s
+
+.jobInfo {
+    float: left;
+    width: 100%;
+    margin-top: 40px;
 }
-.linksClass{
-	    color: #173b75;
+
+.jobInfo div {
+    margin-bottom: 15px;
+    s
+}
+
+.linksClass {
+    color: #173b75;
     text-decoration: underline;
     cursor: pointer;
 }
-.JobListTable ul li button{
+
+.JobListTable ul li button {
     border: none;
     height: 36px;
     width: 72%;
-     background: #152479;
+    background: #152479;
     color: #fff;
     margin-top: 9px;
     border-radius: 5px;
@@ -99,13 +113,16 @@ min-height: 40px !important;
     background-size: 18px 15px;
     background-position: 113px;
 }
-.jobtitletext{
+
+.jobtitletext {
     font-size: 18px;
     color: #173b75;
 }
-.jobTextValue{
-	    font-size: 16px;
+
+.jobTextValue {
+    font-size: 16px;
 }
-.jobInfo a{
+
+.jobInfo a {
     font-size: 20px;
-    }
+}

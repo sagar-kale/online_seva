@@ -1,50 +1,56 @@
 
-header{
-	       height: 70px;
+header {
+    height: 70px;
     width: 100%;
     position: fixed;
-   background-color: #102933;
+    background-color: #102933;
     top: 0px;
     padding-top: 6px;
-  z-index: 9999;
-        padding-right: 0px;
-    
+    z-index: 9999;
+    padding-right: 0px;
+
 }
-header img{
+
+header img {
     height: 25px;
     width: 25px;
     float: left;
     margin-right: 10px;
 
 }
-header .Actons .arrow{
-	         float: right;
+
+header .Actons .arrow {
+    float: right;
     height: 25px;
     width: 25px;
     margin-top: 28px;
     cursor: pointer;
     margin-right: 11px;
 }
-header .sitelogotext{
-	    font-size: 25px;
+
+header .sitelogotext {
+    font-size: 25px;
     color: #fff;
     padding-left: 25px;
     margin-top: 16px;
     float: left;
-        font-weight: bold;
+    font-weight: bold;
 }
-.Actons{
-	float: right;
+
+.Actons {
+    float: right;
     padding-top: 3px;
     /* min-width: 170px; */
     position: relative;
     min-width: 180px;
 }
-.rotateArrow{
-	transform: rotate(180deg);
+
+.rotateArrow {
+    transform: rotate(180deg);
 }
-.arrowimgDiv{
-     position: absolute;
+
+.arrowimgDiv {
+    position: absolute;
     right: 0;
     top: -7px;
     z-index: 999999;
@@ -53,45 +59,54 @@ header .sitelogotext{
     /* padding-right: 13px; */
     width: 50px;
 }
-.setbgOnActive{
+
+.setbgOnActive {
     background: #0e3a4c;
 }
-.welcome{
-      font-size: 21px;
+
+.welcome {
+    font-size: 21px;
     font-weight: normal;
     color: #fff;
     float: left;
     width: 58%;
     margin-left: 16px;
 }
-.userName{
-	     font-size: 15px;
+
+.userName {
+    font-size: 15px;
     font-weight: normal;
     color: #fff;
     padding-right: 33px;
     float: left;
     margin-left: 16px;
 }
+
 .menulistDiv ul :nth-child(1) {
-       background-image: url(/../images/admin.png);
-    
-}
-.menulistDiv ul :nth-child(2) {
-       background-image: url(/../images/admin.png);
- }
- .menulistDiv ul :nth-child(3) {
-       background-image: url(/../images/contact.png);
- }
- .menulistDiv ul :nth-child(4) {
-       background-image: url(/../images/logout.png);
- }
-.menulistDiv ul{
-	padding: 0px;
-	margin: 0px;
+    background-image: url(/../images/admin.png);
 
 }
-.menulistDiv ul li{
-	font-size: 14px;
+
+.menulistDiv ul :nth-child(2) {
+    background-image: url(/../images/admin.png);
+}
+
+.menulistDiv ul :nth-child(3) {
+    background-image: url(/../images/contact.png);
+}
+
+.menulistDiv ul :nth-child(4) {
+    background-image: url(/../images/logout.png);
+}
+
+.menulistDiv ul {
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.menulistDiv ul li {
+    font-size: 14px;
     font-weight: normal;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -105,30 +120,34 @@ header .sitelogotext{
     background-position-y: 4px;
     color: #fff;
 }
-.menulistDiv{
-      position: fixed;
+
+.menulistDiv {
+    position: fixed;
     right: 0;
     top: 70px;
     right: 0;
-       background: #0e3a4c;
-  
+    background: #0e3a4c;
+
     width: 170px;
-  
+
     cursor: pointer;
     border-top: solid 1px #fff;
 
 }
-.headeroptions{
-   float: right;
+
+.headeroptions {
+    float: right;
 }
-.headeroptions ul{
+
+.headeroptions ul {
     margin: 0px;
     padding: 0px;
-        float: right;
-            padding-top: 17px;
+    float: right;
+    padding-top: 17px;
 }
+
 .headeroptions ul li {
-        list-style-type: none;
+    list-style-type: none;
     color: #fff;
     display: inline-block;
     font-size: 16px;
@@ -136,41 +155,50 @@ header .sitelogotext{
     /* padding-top: 20px; */
     /* background: red; */
     cursor: pointer;
-        -webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
+    -webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
     transition: width 2s, height 4s;
 }
+
 /*.headeroptions ul li:hover{
      width: 300px;
      font-size: 20px;
      background-color: red;
 }*/
-.userUl{
-        margin-top: -15px !important;
+.userUl {
+    margin-top: -15px !important;
     background: #136f94;
     /* height: 79px; */
     padding-bottom: 10px !important;
     padding-left: 38px !important;
 }
-.userUl li{
-        display: block !important;
+
+.userUl li {
+    display: block !important;
 }
 
-.userProfileDiv{
-          position: fixed;
+.userUl li a:focus, a:hover, a:visited {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.userProfileDiv {
+    position: fixed;
     right: 0px;
     background-color: #fff;
     min-height: 230px;
     min-width: 400px;
     z-index: 9999;
-    top: 70px;
+    top: 70px;s
     padding-bottom: 17px;
 
 }
+
 .arrow_box {
     position: relative;
-   /* background: #88b7d5;
-    border: 4px solid #c2e1f5;*/
+    /* background: #88b7d5;
+     border: 4px solid #c2e1f5;*/
 }
+
 .arrow_box:after, .arrow_box:before {
     bottom: 100%;
     left: 50%;
@@ -183,45 +211,51 @@ header .sitelogotext{
 }
 
 .arrow_box:after {
-   border-bottom-color: #d9dee0;
+    border-bottom-color: #d9dee0;
     border-width: 8px;
     margin-left: 14%;
 }
+
 .arrow_box:before {
-   border-color: rgba(187, 194, 199, 0);
+    border-color: rgba(187, 194, 199, 0);
     border-bottom-color: #c3c7ca;
     border-width: 8px;
     margin-left: 14%;
 }
-.userDataProfile{
-   float: left;
+
+.userDataProfile {
+    float: left;
     width: 100%;
     background: #e4ebf1;
     /* height: 100px; */
     padding: 30px;
-        border-bottom: solid 1px #d0d4d8;
-            margin-bottom: 13px;
-   
+    border-bottom: solid 1px #d0d4d8;
+    margin-bottom: 13px;
+
 }
-.userDataProfile .userBasicInfo{
-float: left;
-width: 100%;
- 
-}s
-.userDataProfile .userBasicInfo img{
-        height: 60px;
+
+.userDataProfile .userBasicInfo {
+    float: left;
+    width: 100%;
+
+}
+
+.userDataProfile .userBasicInfo img {
+    height: 60px;
     width: 60px;
 }
-.arrowImgmenu{
-        float: right !important;
+
+.arrowImgmenu {
+    float: right !important;
     margin-left: 16px;
     margin-top: -1px;
-    height: 20px; 
+    height: 20px;
     width: 20px;
     cursor: pointer;
 }
-.menuBackdrop{
-      position: fixed;
+
+.menuBackdrop {
+    position: fixed;
     /* right: 0px; */
     background-color: #00000073;
     min-height: 230px;
@@ -229,7 +263,7 @@ width: 100%;
     z-index: 999;
     top: 70px;
     padding-bottom: 17px;
-    height: %;
+    height:%;
     height: 100%;
     width: 100%;
 }

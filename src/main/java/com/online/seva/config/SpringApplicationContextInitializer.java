@@ -115,7 +115,7 @@ public class SpringApplicationContextInitializer implements ApplicationContextIn
         Map<String, Object> properties = Collections.singletonMap("spring.autoconfigure.exclude",
                 StringUtils.collectionToCommaDelimitedString(exclude));
 
-        PropertySource<?> propertySource = new MapPropertySource("springMusicAutoConfig", properties);
+        PropertySource<?> propertySource = new MapPropertySource("onlineSevaConfigcf", properties);
 
         environment.getPropertySources().addFirst(propertySource);
     }

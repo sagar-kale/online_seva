@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AppController {
     private static final String TEMPLATE_PREFIX = "views/";
     private static final String ADMIN_PAGE = "admin";
+    private static final String forbidden = "/forbidden";
     private static final Logger logger = LoggerFactory.getLogger(AppController.class);
     @Autowired
     private SessionService sessionService;
@@ -30,11 +31,23 @@ public class AppController {
 
     }
 
+    @RequestMapping("/chat")
+    public String chat(ModelMap modal, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            redirectAttributes.addFlashAttribute("routed", true);
+            redirectAttributes.addFlashAttribute("logged", false);
+            return "redirect:" + forbidden;
+        }
+        modal.addAttribute("loggedUser", loggedUser);
+        return "views/chat";
+
+    }
+
     @RequestMapping("/pagerouting/{page}")
     String partialHandler(@PathVariable("page") final String page, HttpServletRequest request, RedirectAttributes redirectAttributes, HttpServletResponse response, Model model) {
         logger.error("page::" + page);
         String view = TEMPLATE_PREFIX + page.trim();
-        String forbidden = "/forbidden";
         if (!page.equalsIgnoreCase("login")) {
             User loggedUser = sessionService.getLoggedUser(request);
             if (null == loggedUser) {

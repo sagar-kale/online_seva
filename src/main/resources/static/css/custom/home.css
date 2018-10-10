@@ -1,33 +1,36 @@
-.homepageImgesParent{
+.homepageImgesParent {
     float: left;
     width: 100%;
     height: 370px;
-   /* background: #b9aeae;*/
+    /* background: #b9aeae;*/
     margin-top: 30px;
     margin-bottom: 30px;
     background: #fff;
     display: none;
 }
+
 .homepageImgesParent img {
     float: left;
     height: 100%;
     width: 100%;
-   
+
 }
-.homepageText{
-          padding: 40px;
+
+.homepageText {
+    padding: 40px;
     font-size: 19px;
     float: left;
     width: 65%;
     font-style: italic;
-        color: #102933;
+    color: #102933;
     padding-top: 17px;
 }
-.serviceCard{
-	position: relative;
-	    float: left;
+
+.serviceCard {
+    position: relative;
+    float: left;
     width: 250px;
-    background:#fff;;
+    background: #fff;;
 
     margin-right: 25px;
     margin-top: 25px;
@@ -36,17 +39,22 @@
     border-radius: 5px;
 
 }
-.serviceCard .cardImg{
-	    height: 140px;
+
+.serviceCard .cardImg {
+    height: 140px;
     background: #dadada;
 
 }
-.bannerDiv{font-size: 18px;
+
+.bannerDiv {
+    font-size: 18px;
     margin-top: 28px;
-    color: #fff;}
-.serviceCard .cardTitle{
-	 
-padding-top: 5px;
+    color: #fff;
+}
+
+.serviceCard .cardTitle {
+
+    padding-top: 5px;
     padding-bottom: 5px;
     font-size: 18px;
     text-align: center;
@@ -54,40 +62,47 @@ padding-top: 5px;
     opacity: 0.8;
 
 }
-.serviceCard .decription{
-	     font-size: 15px;
-    opacity: 0.8;ss
+
+.serviceCard .decription {
+    font-size: 15px;
+    opacity: 0.8;
+    ss
 
 }
-.serviceIcon{
-	       height: 140px;
+
+.serviceIcon {
+    height: 140px;
     width: 100%;
 
 }
-.serviceIcon img{
-	width: 100%;
-	height: 100%;
+
+.serviceIcon img {
+    width: 100%;
+    height: 100%;
 }
-.Activebg{
-    
+
+.Activebg {
+
     border-bottom: solid 4px #FF5722 !important;
     color: #FF5722;
     font-weight: bold !important;
 }
-.viewMoreBtnDiv{
-	    border-bottom-right-radius: 5px;
+
+.viewMoreBtnDiv {
+    border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     position: absolute;
     left: 0;
     bottom: -1px;
     width: 100%;
-        background: #e2dcdc61;
+    background: #e2dcdc61;
     height: 60px;
     text-align: center;
     border-top: solid 1px #dadada;
 }
-.viewMoreBtnDiv button{
-      border: none;
+
+.viewMoreBtnDiv button {
+    border: none;
     height: 38px;
     width: 62%;
     background: #152479;
