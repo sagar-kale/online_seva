@@ -51,7 +51,7 @@ public class PdfController {
         model.put("grade", "71%");
         model.put("date", new Date(System.currentTimeMillis()));
 
-        ByteArrayInputStream pdf = pdfGenarator.createPdf("/pdf/certificate.html", model);
+        ByteArrayInputStream pdf = pdfGenarator.createPdf("/pdf/certificate.pdf", model);
         String filename = student.getEmail() + "_certificate.html";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=" + filename);

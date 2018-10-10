@@ -149,5 +149,38 @@ public class StudentController {
         return response;
     }
 
+    @RequestMapping(value = "/remove", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response removeStudent(@RequestBody String email, HttpServletRequest request) {
+        log.info("Under Student Remove");
+        Response response = new Response();
 
+        if (email == null) {
+            response.setMessage("Student email should not be null:::");
+            response.setMsgType(AppConstant.ERROR);
+            return response;
+        }
+
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+
+        /*if (!sessionService.isAdmin(loggedUser)) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMsgType("You are not allowed to delete user");
+            return response;
+        }*/
+        log.info("Removing Student :::" + email);
+        boolean isRemoved = studentService.removeStudent(email);
+        if (!isRemoved) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Student Not found in database...");
+            return response;
+        }
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setMessage("Student Removed SuccessFully");
+        return response;
+    }
 }

@@ -67,8 +67,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean removeStudent(String email) {
+        Optional<Student> byEmail = studentRepository.findByEmail(email);
         try {
-            studentRepository.deleteByEmail(email);
+            if (byEmail.isPresent()) {
+                studentRepository.delete(byEmail.get());
+            }
         } catch (Exception e) {
             log.error("Error while remove::" + e);
             return false;
