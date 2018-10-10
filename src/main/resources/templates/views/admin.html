@@ -265,10 +265,18 @@ td {
 			</div>
 
 		</div>
-		<div class="JobDetailsDivParent" ng-show="activeTab=='show2'">
+		<div class="" ng-show="activeTab=='show2'">
+		<div class="searchUser">
+			<div class="searchLableDiv">
+				All Users Data 
+			</div>
+			<div class="searchtextDiv">
+				<input type="text" name="searchUser" ng-model="searchUser"><span>Search Here </span> 
+			</div>
+		</div>
 
-
-			<table width="100%" cellspacing="0" border="1">
+			<div class="JobDetailsDivParent concatTable">
+			<table width="100%" cellspacing="0" border="1" style="position:relative;">
 				<thead id="TblHead">
 					<tr class="headerTr">
 						<td>User Name</td>
@@ -283,7 +291,7 @@ td {
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="user in userList" class="dataTr"
+					<tr ng-repeat="user in userList | filter:searchUser" class="dataTr"
 						ng-class="{'even':$even,'odd':$odd}">
 						<td>{{user.name}}</td>
 						<td>{{user.username}}</td>
@@ -307,12 +315,30 @@ td {
 
 
 					</tr>
+					<div ng-if="userList.length==0" class="emptyImgDiv">
+               
+	                 <img src="../images/empty.png" />
+	                 <div class="nodata">
+	              	   No Data Found
+                	 </div>
+                
+                </div>
 				</tbody>
 			</table>
-		</div>
+			
+			</div>
+					</div>
 		<div class="JobDetailsDivParent" ng-show="activeTab=='show3'">
-
-			<table width="100%" cellspacing="0" border="1">
+			<div class="searchUser" style="margin-top: 0px;">
+			<div class="searchLableDiv">
+				All Students Data 
+			</div>
+			<div class="searchtextDiv">
+				<input type="text" name="searchUser" ng-model="searchStudent"><span>Search Here </span> 
+			</div>
+		</div>
+		<div class="JobDetailsDivParent concatTable">
+			<table width="100%" cellspacing="0" border="1" style="position:relative">
 				<thead id="TblHead">
 					<tr class="headerTr">
 						<td>Std Name</td>
@@ -326,7 +352,7 @@ td {
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="std in studentList" class="dataTr"
+					<tr ng-repeat="std in studentList | filter:searchStudent" class="dataTr"
 						ng-class="{'even':$even,'odd':$odd}">
 						<td>{{std.name}}</td>
 						<td>{{std.email}}</td>
@@ -342,8 +368,18 @@ td {
 						</td>
 
 					</tr>
+				<div ng-if="studentList.length==0" class="emptyImgDiv">
+               
+	                 <img src="../images/empty.png"/>
+	                 <div class="nodata">
+	              	   No Data Found
+                	 </div>
+                
+                </div>
 				</tbody>
 			</table>
+		</div>
+			
 		</div>
 	</div>
 </div>

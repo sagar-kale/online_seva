@@ -99,7 +99,7 @@
     background: transparent;
     width: 77%;
     height: 40px;
-       
+       background: #464444;
         font-size: 16px;;
         padding-left: 15px;
 }
@@ -136,7 +136,7 @@
 .coursepageContent {
    float: left;
     width: 100%;
-    background: #a29e9e;
+    background: #464444;
     border-top: solid 1px #fff;
 }
 .userActionsDiv {
@@ -149,4 +149,12 @@
 }
 .activeBtnBg{
     background-color: green !important;color: #fff;
+}
+.saveStdBtn{
+	width: 134px;
+    height: 40px;
+      margin-top: 4px;
+    background: #dad6d6;
+    border: none;
+    border-radius: 5px;
 }

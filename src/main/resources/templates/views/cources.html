@@ -110,11 +110,11 @@
                                 <option value="TALLY">TALLY</option>
                             </select>
                             <div class="invalidtextColor" ng-show="stdRegForm.stdcourseName.$error.required
-						&& stdRegForm.stdcourseName.$dirty">required
+						&& stdRegForm.stdcourseNames.$dirty">required
                             </div>
                         </div>
                     </div>
-                    <div class="userData">
+                 <!--    <div class="userData">
                         <div class="regUserName">Select Center Name</div>
                         <div class="regTextInputDiv">
                             <input type="text" name="stdcenterName" ng-model="student.centerName" required>
@@ -123,7 +123,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="userData">
                         <div class="regUserName">State</div>
@@ -197,14 +197,15 @@
             Admit Cards
         </div>
         <div class="corsePageLeftContent" ng-show="selectedDiv == 'getAllStd'">
-            <div class="searchDiv">
-				<span style="    float: left;
-    font-size: 16px;
-    padding-top: 23px;">Check All Students Data</span>
-                <input type="text" name="searchStd" ng-model="stdSearch">
-
-            </div>
-            <table width="100%" cellspacing="0" border="1">
+            	<div class="searchUser" style="margin-top: 0px;">
+			<div class="searchLableDiv">
+				All Students Data 
+			</div>
+			<div class="searchtextDiv">
+				<input type="text" name="searchUser" ng-model="stdSearch"><span>Search Here </span> 
+			</div>
+		</div>
+            <table width="100%" cellspacing="0" border="1" style="border-top: solid 1px #fff;position:relative">
                 <thead id="TblHead">
                 <tr class="headerTr">
                     <td>Student Name</td>
@@ -219,8 +220,9 @@
                 </tr>
                 </thead>
                 <tbody>
+               
                 <tr ng-repeat="std in stdList.dataList | filter:stdSearch" class="dataTr"
-                    ng-class="{'even':$even,'odd':$odd}">
+                    ng-class="{'even':$even,'odd':$odd}">                   
                     <td>{{std.name}}</td> 
                     <td>{{std.email}}</td>
                     <td>{{std.courseName}}</td>
@@ -243,8 +245,16 @@
                         <button type="btn" class="approvebtn" style="background-color: red" ng-click="removeStudent(std)">Remove</button>
                     </td>
 
-
+ 
                 </tr>
+                <div ng-if="stdList.dataList.length==0" class="emptyImgDiv" style="top:50%;left:50%;s">
+               
+                 <img src="../images/empty.png" ng-if="stdList.dataList.length==0"/>
+                 <div class="nodata">
+              	   No Data Found
+                 </div>
+                
+                </div>
                 </tbody>
             </table>
         </div>

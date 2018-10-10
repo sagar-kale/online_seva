@@ -1,7 +1,7 @@
 
 <header>
 
-    <span class="sitelogotext" ng-click="gotoHome()">ONLINE SEVA</span>
+    <span class="sitelogotext" ng-click="reDirectTo('home')"ss>ONLINE SEVA</span>
     <div class="headeroptions
 ">  <ul class="userUl">
         <li style="    display: block;
@@ -20,18 +20,18 @@
         <ul>
             <#if loggedUser??>
             <#if loggedUser.role == 'admin'>
-            <li ng-click="gotoAdmin()"><img src="../images/admin-with-cogwheels.png"/>Admin</li>
+            <li ng-click="reDirectTo('admin')"><img src="../images/admin-with-cogwheels.png"/>Admin</li>
         </#if>
     </#if>
 
-            <li  ng-click="gotoHome()">
+            <li  ng-click="reDirectTo('home')">
                 <img src="../images/home.png" style="    height: 24px;
     width: 24px;
 "/>Home
             </li>
-            <li ng-click="gotoJobs();"><img src="../images/customer.png" />Jobs</li>
-            <li ng-click="reDirectToCources();"><img src="../images/care-about-planet.png" />Students</li>
-            <li ui-sref="header.accessdenied"><img src="../images/contact.png"/>Contact Us</li>
+            <li ng-click="reDirectTo('jobs')"><img src="../images/customer.png" />Jobs</li>
+            <li ng-click="reDirectTo('students')"><img src="../images/care-about-planet.png" />Students</li>
+            <li ng-click="reDirectTo('students')"><img src="../images/contact.png"/>Contact Us</li>
            <!--  <li ng-click="logoutApp()"><img src="../images/logout.png"/>Log out</li> -->
         </ul>
 
@@ -61,17 +61,18 @@
 
     </div>
 </header>
-<div class="userProfileDiv" ng-show="menuCliked">
+<div class="userProfileDiv" ng-show="menuCliked" style="">
     <div class="arrow_box"></div>
     <div class="userDataProfile">
         <div class="userBasicInfo">
-            <img src="images/user.png">
+            <img style="" src="images/user.png" style="    background: #ff610d;
+    border-radius: 50%;">
             <span style="font-size: 24px;
     margin-left: 20px;
 "> ${loggedUser.name}</span>
             <div style="margin-top: -19px;
     margin-left: 86px;
-    color: #136f94;
+       
     text-decoration: underline;"> ${loggedUser.username}</div>
         </div>      
 
@@ -112,5 +113,6 @@ function myfunction(){
     alert(myvariable);
 }
 </script>-->
+<div class="menuBackdrop" ng-show="menuCliked" ng-click="menuCliked = !menuCliked"></div>
 
 <div style="float: left;width:100%;height:100%;" ui-view></div>

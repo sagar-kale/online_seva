@@ -222,11 +222,14 @@ width: 100%;
 }
 .menuBackdrop{
       position: fixed;
-    right: 0px;
-    background-color: #fff;
+    /* right: 0px; */
+    background-color: #00000073;
     min-height: 230px;
     min-width: 400px;
-    z-index: 9999;
+    z-index: 999;
     top: 70px;
     padding-bottom: 17px;
+    height: %;
+    height: 100%;
+    width: 100%;
 }

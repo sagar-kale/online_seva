@@ -5,6 +5,8 @@
    /* background: #b9aeae;*/
     margin-top: 30px;
     margin-bottom: 30px;
+    background: #fff;
+    display: none;
 }
 .homepageImgesParent img {
     float: left;
@@ -18,14 +20,14 @@
     float: left;
     width: 65%;
     font-style: italic;
-    color: #eef1f3;
+        color: #102933;
     padding-top: 17px;
 }
 .serviceCard{
 	position: relative;
 	    float: left;
     width: 250px;
-    background:#a0919169;;
+    background:#fff;;
 
     margin-right: 25px;
     margin-top: 25px;
@@ -44,16 +46,17 @@
     color: #fff;}
 .serviceCard .cardTitle{
 	 
-    padding-top: 5px;
+padding-top: 5px;
     padding-bottom: 5px;
     font-size: 18px;
     text-align: center;
-    color: #fff;
+    /* color: #9a8d8d; */
+    opacity: 0.8;
 
 }
 .serviceCard .decription{
 	     font-size: 15px;
-    color: #fff;;
+    opacity: 0.8;ss
 
 }
 .serviceIcon{
@@ -78,7 +81,7 @@
     left: 0;
     bottom: -1px;
     width: 100%;
-        background: #0c0c0c61;
+        background: #e2dcdc61;
     height: 60px;
     text-align: center;
     border-top: solid 1px #dadada;
@@ -87,7 +90,7 @@
       border: none;
     height: 38px;
     width: 62%;
-    background: #102933ad;
+    background: #152479;
     color: #fff;
     margin-top: 9px;
     border-radius: 5px;

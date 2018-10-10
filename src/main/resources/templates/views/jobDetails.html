@@ -2,7 +2,7 @@
     <div class="currentjobsop">Current Job Openings</div>
 
     <div class="JobListTable">
-        <ul class="headerUl">
+        <ul class="headerUl" style="    background: #102933;">
             <li class="bigColumn">Job Title</li>
             <li class="bigColumn">Sector</li>
             <li>Qualfication</li>
@@ -23,67 +23,67 @@
             <div class="jobdetailsData evenrow" ng-show="showJobDetails">
                 <h2>Job Details:</h2>
 
-                <div class="jobDescription ">
-                    {{job.aboutJob}}
+                <div class="jobDescription jobTextValue"s>
+                    {{job.jobSubDetails.aboutJob}}
                 </div>
                 <div class="jobInfo">
                     <div>
-                        <span>Start Date : </span>
-                        <span>{{job.startDate}}</span>
+                        <span class="jobtitletext">Start Date : </span>
+                        <span class="jobTextValue">{{job.startDate}}</span>
                     </div>
                     <div>
-                        <span>Last Date : </span>
-                        <span>{{job.lastDate}}</span>
+                        <span class="jobtitletext">Last Date : </span>
+                        <span class="jobTextValue">{{job.lastDate}}</span>
                     </div>
                 </div>
                 <div class="jobInfo">
                     <div>
-                        <span>Post Name : </span>
-                        <span>{{job.jobSubDetails.postName}}</span>
+                        <span class="jobtitletext">Post Name : </span>
+                        <span class="jobTextValue">{{job.jobSubDetails.postName}}</span>
                     </div>
                     <div>
-                        <span>Total Vacancies : </span>
-                        <span>{{job.jobSubDetails.totalVacancies}}</span>
+                        <span class="jobtitletext">Total Vacancies : </span>
+                        <span class="jobTextValue">{{job.jobSubDetails.totalVacancies}}</span>
                     </div>
                     <div>
-                        <span>Salary/pay scale : </span>
-                        <span>{{job.jobSubDetails.salaryScale}}</span>
+                        <span class="jobtitletext">Salary/pay scale : </span>
+                        <span class="jobTextValue">{{job.jobSubDetails.salaryScale}}</span>
                     </div>
                     <div>
-                        <span>Job Location : </span>
-                        <span>{{job.jobSubDetails.jobLocation}}</span>
+                        <span class="jobtitletext">Job Location : </span>
+                        <span class="jobTextValue"> {{job.jobSubDetails.jobLocation}}</span>
                     </div>
 
                 </div>
                 <div class="jobInfo">
-                    <div>Eligibility Criteria for post :</div>
+                    <div class="jobtitletext">Eligibility Criteria for post :</div>
                     <div>
-                        <span>Educational Qualification : </span>
-                        <span>{{job.jobSubDetails.educationalQualifiction}}</span>
+                        <span class="jobtitletext">Educational Qualification : </span>
+                        <span class="jobTextValue">{{job.jobSubDetails.educationalQualifiction}}</span>
                     </div>
                     <div>
-                        <span>Age Limit: </span>
-                        <span>{{job.jobSubDetails.ageLimit}}</span>
+                        <span class="jobtitletext">Age Limit: </span>
+                        <span class="jobTextValue">{{job.jobSubDetails.ageLimit}}</span>
                     </div>
                     <div>
-                        <span>Selection Process : </span>
-                        <span> {{job.jobSubDetails.selectionProcess}}</span>
+                        <span class="jobtitletext">Selection Process : </span>
+                        <span class="jobTextValue"> {{job.jobSubDetails.selectionProcess}}</span>
                     </div>
                     <div>
-                        <span>Application Fee : </span>
-                        <span>{{job.jobSubDetails.applicationFee}}</span>
-                    </div>
-
-                    <div>
-                        <span>How to Apply : </span>
-                        <span>{{job.jobSubDetails.howToApplay}}</span>
+                        <span class="jobtitletext">Application Fee : </span>
+                        <span class="jobTextValue">{{job.jobSubDetails.applicationFee}}</span>
                     </div>
 
                     <div>
-                        <div>Important links</div>
-                        <a href="https://www.youtube.com/"></a><br>
-                        <a href="https://www.youtube.com/"></a><br>
-                        <a href="https://www.youtube.com/"></a>
+                        <span class="jobtitletext">How to Apply : </span>
+                        <span class="jobTextValue">{{job.jobSubDetails.howToApplay}}</span>
+                    </div>
+
+                    <div class="jobInfo">
+                        <div class="jobtitletext">Important links</div>
+                        <a href="https://www.youtube.com/">https://www.youtube.com</a></br>
+                        <a href="https://www.youtube.com/">https://www.youtube.com</a></br>
+                        <a href="https://www.youtube.com/">https://www.youtube.com</a>
 
                     </div>
 

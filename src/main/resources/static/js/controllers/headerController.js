@@ -15,16 +15,35 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
                     console.log(error);
                 });
 		}
-		$scope.gotoHome = function(){
-			$state.go("header.home")
-		}
-		$scope.gotoAdmin = function(){
-			$state.go("header.admin")
-		}
-		$scope.gotoJobs = function(){
-			$state.go("header.jobs");
-		}
-		$scope.reDirectToCources = function(){
-			$state.go("header.cources");
+//		$scope.gotoHome = function(){
+//			$state.go("header.home")
+//		}
+//		$scope.gotoAdmin = function(){
+//			$state.go("header.admin")
+//		}
+//		$scope.gotoJobs = function(){
+//			$state.go("header.jobs");
+//		}
+//		$scope.reDirectToCources = function(){
+//			$state.go("header.cources");
+//		}
+		
+		$scope.reDirectTo = function(path){
+			$scope.menuCliked = false;
+			if (path == 'home') {
+				$state.go("header.home");
+			}
+			else if(path == 'admin'){
+				$state.go("header.admin")
+			}
+			else if(path == 'jobs'){
+				$state.go("header.jobs");
+			}
+			else if(path == 'home'){
+				$state.go("header.admin")
+			}
+			else if(path == 'students'){
+				$state.go("header.cources");
+			}
 		}
 }]);

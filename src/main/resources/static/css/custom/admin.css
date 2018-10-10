@@ -284,3 +284,50 @@ background: #0ac712;
 .inactiveUser{
     color: red;
 }
+.searchUser{
+	      float: left;
+    width: 100%;
+    background: #102933;
+    padding: 17px;
+    margin-top: 30px;
+}
+.searchLableDiv,.searchtextDiv{    float: left;
+    width: 50%;
+    font-size: 20px;
+    color: #fff;}
+.searchtextDiv span,.searchtextDiv input{float:right;}
+.searchtextDiv input{
+  height: 35px;
+    width: 60%;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    padding-left: 43px;
+    background-image: url(/images/search.png);
+    background-repeat: no-repeat;
+       background-size: 19px 19px;
+    background-position: 9px;
+    background-color: transparent;
+    color: #fff;
+    }
+    .searchtextDiv span{
+        margin-right: 15px;
+    font-size: 18px;
+    margin-top: 5px;
+    color:#fff;
+    }
+   .concatTable {
+        margin-top: 0px !important;
+    border-top: solid 1px #fff;
+    }
+    .emptyImgDiv{
+        position: absolute;
+    top: calc(50% - 128px);
+    left: calc(50% - 128px);
+    }
+    .nodata{
+        text-align: center;
+    font-size: 20px;
+    color: #fff;
+    }
+  
+
