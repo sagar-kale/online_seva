@@ -15,7 +15,7 @@
             <ul>
                 <li ng-click="toggleForms('Register')" class="activeLi">Register New Student</li>
                 <li ng-click="toggleForms('Admit Cards')">Check Admit Cards</li>
-                <li ng-click="toggleForms('getAllStd');getAllApprovedStudentsList();">All Students</li>
+                <li ng-click="toggleForms('getAllStd');getAllStudentsList();">All Students</li>
                 <li ng-click="toggleForms('Bonafide')">Generate Bonafide</li>
                 <li ng-click="toggleForms('Learning')"> Learning</li>
             </ul>
@@ -221,7 +221,7 @@
                 <tbody>
                 <tr ng-repeat="std in stdList.dataList | filter:stdSearch" class="dataTr"
                     ng-class="{'even':$even,'odd':$odd}">
-                    <td>{{std.name}}</td>
+                    <td>{{std.name}}</td> 
                     <td>{{std.email}}</td>
                     <td>{{std.courseName}}</td>
                     <td>
@@ -230,12 +230,17 @@
 
 
                     <td>
-                        <a type="btn" href="{{std.bonafideUrl}}" class="approvebtn" target="_blank">Download</a>
+                        <a ng-if="std.bonafideUrl" href="{{std.bonafideUrl}}" target="_blank" style="text-decoration: underline;">Download</a>
+                        <span  ng-if="!std.bonafideUrl" style="color:red" >NA</span>
                     </td>
 
-                    <td><a type="btn" href="{{std.admitCardUrl}}" class="approvebtn" target="_blank">Download</a></td>
                     <td>
-                        <button type="btn" class="approvebtn" style="background-color: red">Remove</button>
+                    	
+                   		  <a ng-if="std.admitCardUrl" href="{{std.admitCardUrl}}"  target="_blank" style="text-decoration: underline;">Download</a>
+                        <span ng-if="!std.admitCardUrl" style="color:red">Download</span>
+                    </td>
+                    <td>
+                        <button type="btn" class="approvebtn" style="background-color: red" ng-click="removeStudent(std)">Remove</button>
                     </td>
 
 

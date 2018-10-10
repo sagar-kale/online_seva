@@ -83,7 +83,7 @@ app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', fun
             });
     }
 
-    $scope.getAllApprovedStudentsList = function () {
+    $scope.getAllStudentsList = function () {
         var url = apiLink.getAllStudents;
         // var data = {"username":$("#unamefrmserver").val()}
         APIService.httpPostJson(url, $("#unamefrmserver").val()).then(
@@ -101,13 +101,36 @@ app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', fun
                 console.log(error);
             });
     }
-    // $scope.getAllApprovedStudentsList();
+ 
 
     $('.userActionsDiv ul li').click(function (e) {
         $('.userActionsDiv ul li').removeClass('activeLi');
         $(this).addClass('activeLi');
 
     });
+    
+
+    $scope.removeStudent = function (std) {
+        var url = apiLink.removeStudent;
+        //   var data = {"username":user.username};
+        APIService.httpDelete(url, std.email).then(
+            function (res) {
+
+                if (res.data.msgType == 'success') {
+                   
+                    swal("", res.data.message,res.data.msgType);
+                    $scope.getAllStudentsList();
+
+                }
+                else {
+                    swal("", res.data.message, res.data.msgType);
+                }
+
+            },
+            function (error) {
+                console.log(error);
+            });
+    }
 
 
 }]);

@@ -1,6 +1,7 @@
 app.controller('headerContrl',['$scope', '$state','userService','apiLink','APIService',function($scope, $state,userService,apiLink,APIService) {
-	console.log("inside headerContrl");
-	$scope.openMenu = false;
+ 	$(document).scrollTop(0);
+	$scope.menuCliked = false;
+		$scope.openMenu = false;
 	$scope.logoutApp = function(){
             var url = apiLink.logout;
             APIService.httpGet(url).then(
@@ -19,5 +20,11 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
 		}
 		$scope.gotoAdmin = function(){
 			$state.go("header.admin")
+		}
+		$scope.gotoJobs = function(){
+			$state.go("header.jobs");
+		}
+		$scope.reDirectToCources = function(){
+			$state.go("header.cources");
 		}
 }]);

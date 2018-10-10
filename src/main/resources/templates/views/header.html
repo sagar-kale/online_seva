@@ -11,6 +11,7 @@
         <#if loggedUser??>
         <li>
             ${loggedUser.name}
+              <img class="arrowImgmenu" ng-class="{'rotateArrow':menuCliked}" src="../images/arrow.png" ng-click="menuCliked = !menuCliked">
         </li>
         <input type="hidden" id="unamefrmserver" value="${loggedUser.username}"/>
         </#if>
@@ -28,17 +29,17 @@
     width: 24px;
 "/>Home
             </li>
-            <li><img src="../images/customer.png"/>Jobs</li>
-            <li><img src="../images/care-about-planet.png"/>About Us</li>
+            <li ng-click="gotoJobs();"><img src="../images/customer.png" />Jobs</li>
+            <li ng-click="reDirectToCources();"><img src="../images/care-about-planet.png" />Students</li>
             <li ui-sref="header.accessdenied"><img src="../images/contact.png"/>Contact Us</li>
-            <li ng-click="logoutApp()"><img src="../images/logout.png"/>Log out</li>
+           <!--  <li ng-click="logoutApp()"><img src="../images/logout.png"/>Log out</li> -->
         </ul>
 
     </div>
     <div class="Actons" style="display: none;">
         <img src="../images/user.png"/>
         <div class="welcome">Welcome</div>
-        <div class="userName">{{currentUser.name}}</div>
+        <div class="userName"> ${loggedUser.name}</div>
         <div class="arrowimgDiv" ng-class="{'setbgOnActive':openMenu}">
             <img class="arrow" src="../images/arrow.png" ng-click = "openMenu = !openMenu" ng-class="{'rotateArrow':openMenu}"/>
         </div>
@@ -60,6 +61,50 @@
 
     </div>
 </header>
+<div class="userProfileDiv" ng-show="menuCliked">
+    <div class="arrow_box"></div>
+    <div class="userDataProfile">
+        <div class="userBasicInfo">
+            <img src="images/user.png">
+            <span style="font-size: 24px;
+    margin-left: 20px;
+"> ${loggedUser.name}</span>
+            <div style="margin-top: -19px;
+    margin-left: 86px;
+    color: #136f94;
+    text-decoration: underline;"> ${loggedUser.username}</div>
+        </div>      
+
+    </div>
+     <div class="" style="padding-left: 30px;
+    font-size: 18px;">
+          
+           <span> Center Name : </span>
+           <span> Sai Computer</span>
+           
+        </div>
+        <div style="padding-left: 30px;
+    font-size: 18px;">
+          
+           <span> Role : </span>
+           <span>${loggedUser.role}</span>
+           
+        </div>
+
+        <div style="    margin-top: 10px;
+    padding-left: 30px;
+    border-top: solid 1px #e4ebf1;">
+            <button type="btn" style="    height: 43px;
+    margin-top: 10px;
+    width: 350px;
+    border-radius: 5px;
+    border: none;
+    background: #ff610d;
+    color: #fff;
+    margin-top: 18px;
+    font-size: 20px;" ng-click="logoutApp()"> Sign Out</button>
+        </div>
+</div>
 
 <!--<script type="text/javascript">
 var myvariable = "${loggedUser.role}";

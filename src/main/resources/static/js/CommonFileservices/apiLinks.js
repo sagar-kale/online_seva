@@ -13,7 +13,9 @@ app.service('apiLink', function () {
         'removeUser': urlBase + 'remove/user',
         "saveStudent": urlBase + "student/register",
         "getAllStudents": urlBase + "student/all",
-        "updateStudentStatus": urlBase + "student/update/status"
+        "updateStudentStatus": urlBase + "student/update/status",
+        "removeStudent": urlBase + "student/remove"
+        
     }
 });
     
