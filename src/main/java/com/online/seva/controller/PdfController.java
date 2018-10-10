@@ -37,12 +37,14 @@ public class PdfController {
             produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity generatePdf(@PathVariable("stdEmail") String email, HttpServletRequest request) {
         if (sessionService.getLoggedUser(request) == null)
-            throw new RuntimeException("user not logged in");
+            throw new RuntimeException("User not logged in");
         log.info("Under Pdf Report");
         log.info("Email :::" + email);
         Optional<Student> byEmail = studentService.findByEmail(email);
         if (!byEmail.isPresent())
-            throw new RuntimeException("email not present");
+            throw new RuntimeException("Email not present");
+        if (!byEmail.get().isApproved())
+            throw new RuntimeException("You are not authorize to access your doc.");
         Student student = byEmail.get();
         Map<String, Object> model = new HashMap<>();
         model.put("name", student.getName());
