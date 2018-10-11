@@ -2,7 +2,8 @@
 <header>
 
     <span class="sitelogotext" ng-click="reDirectTo('home')"ss>ONLINE SEVA</span>
-    <div class="headeroptions">  <ul class="userUl">
+    <div class="headeroptions
+">  <ul class="userUl">
         <li style="    display: block;
     font-size: 21px;">
             Welcome
@@ -10,11 +11,11 @@
         <#if loggedUser??>
         <li>
             ${loggedUser.name}
-              <img class="arrowImgmenu" ng-class="{'rotateArrow':menuCliked}" src="../images/arrow.png" ng-click="menuCliked = !menuCliked">
+            <img class="arrowImgmenu" ng-class="{'rotateArrow':menuCliked}" src="../images/arrow.png" ng-click="menuCliked = !menuCliked">
         </li>
         <input type="hidden" id="unamefrmserver" value="${loggedUser.username}"/>
-        </#if>
-    </ul>
+    </#if>
+        </ul>
 
         <ul>
             <#if loggedUser??>
@@ -23,17 +24,16 @@
         </#if>
     </#if>
 
-            <li  ng-click="reDirectTo('home')">
-                <img src="../images/home.png" style="    height: 24px;
+    <li  ng-click="reDirectTo('home')">
+        <img src="../images/home.png" style="    height: 24px;
     width: 24px;
 "/>Home
-            </li>
-           <li><img src="../images/admin-with-cogwheels.png" /><a href="/chat" target="_blank"> Chat</a></li>
-            <li ng-click="reDirectTo('jobs')"><img src="../images/customer.png" />Jobs</li>
-            <li ng-click="reDirectTo('students')"><img src="../images/care-about-planet.png" />Students</li>
-            <li ng-click="reDirectTo('students')"><img src="../images/contact.png"/>Contact Us</li>
-           <!--  <li ng-click="logoutApp()"><img src="../images/logout.png"/>Log out</li> -->
-        </ul>
+    </li>
+    <li ng-click="reDirectTo('jobs')"><img src="../images/customer.png" />Jobs</li>
+    <li ng-click="reDirectTo('students')"><img src="../images/care-about-planet.png" />Students</li>
+    <li ng-click="reDirectTo('students')"><img src="../images/contact.png"/>Contact Us</li>
+    <!--  <li ng-click="logoutApp()"><img src="../images/logout.png"/>Log out</li> -->
+    </ul>
 
     </div>
     <div class="Actons" style="display: none;">
@@ -51,13 +51,13 @@
             <#if loggedUser??>
             <#if loggedUser.role == 'admin'>
             <li ng-click="gotoAdmin()">Admin</li>
-            </#if>
-            </#if>
+        </#if>
+    </#if>
 
-            <li>${loggedUser.role}</li>
-            <li>Contact Us</li>
-            <li ng-click="logoutApp()">Log out</li>
-        </ul>
+    <li>${loggedUser.role}</li>
+    <li>Contact Us</li>
+    <li ng-click="logoutApp()">Log out</li>
+    </ul>
 
     </div>
 </header>
@@ -72,30 +72,30 @@
 "> ${loggedUser.name}</span>
             <div style="margin-top: -19px;
     margin-left: 86px;
-       
+
     text-decoration: underline;"> ${loggedUser.username}</div>
         </div>
 
     </div>
-     <div class="" style="padding-left: 30px;
+    <div class="" style="padding-left: 30px;
     font-size: 18px;">
 
-           <span> Center Name : </span>
-           <span> Sai Computer</span>
+        <span> Center Name : </span>
+        <span> Sai Computer</span>
 
-        </div>
-        <div style="padding-left: 30px;
+    </div>
+    <div style="padding-left: 30px;
     font-size: 18px;">
 
-           <span> Role : </span>
-           <span>${loggedUser.role}</span>
+        <span> Role : </span>
+        <span>${loggedUser.role}</span>
 
-        </div>
+    </div>
 
-        <div style="    margin-top: 10px;
+    <div style="    margin-top: 10px;
     padding-left: 30px;
     border-top: solid 1px #e4ebf1;">
-            <button type="btn" style="    height: 43px;
+        <button type="btn" style="    height: 43px;
     margin-top: 10px;
     width: 350px;
     border-radius: 5px;
@@ -104,7 +104,7 @@
     color: #fff;
     margin-top: 18px;
     font-size: 20px;" ng-click="logoutApp()"> Sign Out</button>
-        </div>
+    </div>
 </div>
 
 <!--<script type="text/javascript">

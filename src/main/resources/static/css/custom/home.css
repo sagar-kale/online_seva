@@ -1,4 +1,4 @@
-.homepageImgesParent {
+.homepageImgesParent{
     float: left;
     width: 100%;
     height: 370px;
@@ -8,15 +8,13 @@
     background: #fff;
     display: none;
 }
-
 .homepageImgesParent img {
     float: left;
     height: 100%;
     width: 100%;
 
 }
-
-.homepageText {
+.homepageText{
     padding: 40px;
     font-size: 19px;
     float: left;
@@ -25,12 +23,11 @@
     color: #102933;
     padding-top: 17px;
 }
-
-.serviceCard {
+.serviceCard{
     position: relative;
     float: left;
     width: 250px;
-    background: #fff;;
+    background:#fff;;
 
     margin-right: 25px;
     margin-top: 25px;
@@ -39,20 +36,15 @@
     border-radius: 5px;
 
 }
-
-.serviceCard .cardImg {
+.serviceCard .cardImg{
     height: 140px;
     background: #dadada;
 
 }
-
-.bannerDiv {
-    font-size: 18px;
+.bannerDiv{font-size: 18px;
     margin-top: 28px;
-    color: #fff;
-}
-
-.serviceCard .cardTitle {
+    color: #fff;}
+.serviceCard .cardTitle{
 
     padding-top: 5px;
     padding-bottom: 5px;
@@ -62,33 +54,27 @@
     opacity: 0.8;
 
 }
-
-.serviceCard .decription {
+.serviceCard .decription{
     font-size: 15px;
-    opacity: 0.8;
-    ss
+    opacity: 0.8;ss
 
 }
-
-.serviceIcon {
+.serviceIcon{
     height: 140px;
     width: 100%;
 
 }
-
-.serviceIcon img {
+.serviceIcon img{
     width: 100%;
     height: 100%;
 }
-
-.Activebg {
+.Activebg{
 
     border-bottom: solid 4px #FF5722 !important;
     color: #FF5722;
     font-weight: bold !important;
 }
-
-.viewMoreBtnDiv {
+.viewMoreBtnDiv{
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     position: absolute;
@@ -100,8 +86,7 @@
     text-align: center;
     border-top: solid 1px #dadada;
 }
-
-.viewMoreBtnDiv button {
+.viewMoreBtnDiv button{
     border: none;
     height: 38px;
     width: 62%;
