@@ -1,15 +1,12 @@
 package com.online.seva.config.interceptor;
 
-import com.online.seva.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Component
@@ -22,17 +19,6 @@ public class HttpHandshakeInterceptor implements HandshakeInterceptor {
 
         log.info("Call beforeHandshake");
 
-        if (request instanceof ServletServerHttpRequest) {
-            ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
-            HttpSession session = servletRequest.getServletRequest().getSession();
-            User user = (User) session.getAttribute("user");
-            if (user != null) {
-                if (session.isNew()) {
-                    if (!session.getId().equals(attributes.get("sessionId")))
-                        attributes.put("sessionId", session.getId());
-                }
-            }
-        }
         return true;
     }
 
