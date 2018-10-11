@@ -1,101 +1,92 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="nav-container" style="    margin-left: 25px;
+    margin-right: 25px;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+            <span class="sitelogotext navbar-brand" ng-click="reDirectTo('home')" style="    padding-top: 20px;">ONLINE SEVA</span>
+        </div>
+        <div class="collapse navbar-collapse">
+        
+              <ul class="nav navbar-nav" style="margin-left: 60px;">
+           
 
-<header>
-
-    <span class="sitelogotext" ng-click="reDirectTo('home')"ss>ONLINE SEVA</span>
-    <div class="headeroptions
-">  <ul class="userUl">
-        <li style="    display: block;
-    font-size: 21px;">
-            Welcome
-        </li>
-        <#if loggedUser??>
-        <li>
-            ${loggedUser.name}
-            <img class="arrowImgmenu" ng-class="{'rotateArrow':menuCliked}" src="../images/arrow.png" ng-click="menuCliked = !menuCliked">
-        </li>
-        <input type="hidden" id="unamefrmserver" value="${loggedUser.username}"/>
-    </#if>
-        </ul>
-
-        <ul>
-            <#if loggedUser??>
+            <li  ng-click="reDirectTo('home')" class="activeLiDiv">
+                <img src="../images/home.png" style="height: 20px;width: 20px;"/>Home
+            </li>
+            <li ng-click="reDirectTo('jobs')"><img src="../images/customer.png" />Jobs</li>
+            <li ng-click="reDirectTo('students')"><img src="../images/care-about-planet.png" />Students</li>
+             <#if loggedUser??>
             <#if loggedUser.role == 'admin'>
             <li ng-click="reDirectTo('admin')"><img src="../images/admin-with-cogwheels.png"/>Admin</li>
         </#if>
     </#if>
-
-    <li  ng-click="reDirectTo('home')">
-        <img src="../images/home.png" style="    height: 24px;
-    width: 24px;
-"/>Home
-    </li>
-    <li ng-click="reDirectTo('jobs')"><img src="../images/customer.png" />Jobs</li>
-    <li ng-click="reDirectTo('students')"><img src="../images/care-about-planet.png" />Students</li>
-    <li ng-click="reDirectTo('students')"><img src="../images/contact.png"/>Contact Us</li>
-    <!--  <li ng-click="logoutApp()"><img src="../images/logout.png"/>Log out</li> -->
+            <li ng-click="reDirectTo('students')"><img src="../images/contact.png"/>Contact Us</li>
+            <li><img src="../images/contact.png"/><a href="/chat" target="_blank">Chat</a></li>
+           <!--  <li ng-click="logoutApp()"><img src="../images/logout.png"/>Log out</li> -->
+        </ul>
+		<ul class="userUl">
+	        <li style="    display: block;
+	    font-size: 21px;">
+	            Welcome
+	        </li>
+	        <#if loggedUser??>
+	        <li>
+	            ${loggedUser.name}
+	              <img class="arrowImgmenu" ng-class="{'rotateArrow':menuCliked}" src="../images/arrow.png" ng-click="menuCliked = !menuCliked">
+	        </li>
+	        <input type="hidden" id="unamefrmserver" value="${loggedUser.username}"/>
+	        </#if>
     </ul>
-
-    </div>
-    <div class="Actons" style="display: none;">
-        <img src="../images/user.png"/>
-        <div class="welcome">Welcome</div>
-        <div class="userName"> ${loggedUser.name}</div>
-        <div class="arrowimgDiv" ng-class="{'setbgOnActive':openMenu}">
-            <img class="arrow" src="../images/arrow.png" ng-click = "openMenu = !openMenu" ng-class="{'rotateArrow':openMenu}"/>
-        </div>
-
+        </div><!--/.nav-collapse -->
+   
     </div>
 
-    <div class="menulistDiv hideshowAnimation zoomIn" ng-show="openMenu" style="display: none;">
-        <ul>
-            <#if loggedUser??>
-            <#if loggedUser.role == 'admin'>
-            <li ng-click="gotoAdmin()">Admin</li>
-        </#if>
-    </#if>
+</div>
 
-    <li>${loggedUser.role}</li>
-    <li>Contact Us</li>
-    <li ng-click="logoutApp()">Log out</li>
-    </ul>
 
-    </div>
-</header>
+
+
 <div class="userProfileDiv" ng-show="menuCliked" style="">
     <div class="arrow_box"></div>
     <div class="userDataProfile">
         <div class="userBasicInfo">
-            <img style="" src="images/user.png" style="    background: #ff610d;
+            <img  src="images/user.png" style="    background: #ff610d;
     border-radius: 50%;">
             <span style="font-size: 24px;
     margin-left: 20px;
 "> ${loggedUser.name}</span>
             <div style="margin-top: -19px;
     margin-left: 86px;
-
+       
     text-decoration: underline;"> ${loggedUser.username}</div>
+        </div>      
+
+    </div>
+     <div class="" style="padding-left: 30px;
+    font-size: 18px;">
+          
+           <span> Center Name : </span>
+           <span> Sai Computer</span>
+           
+        </div>
+        <div style="padding-left: 30px;
+    font-size: 18px;">
+          
+           <span> Role : </span>
+           <span>${loggedUser.role}</span>
+           
         </div>
 
-    </div>
-    <div class="" style="padding-left: 30px;
-    font-size: 18px;">
-
-        <span> Center Name : </span>
-        <span> Sai Computer</span>
-
-    </div>
-    <div style="padding-left: 30px;
-    font-size: 18px;">
-
-        <span> Role : </span>
-        <span>${loggedUser.role}</span>
-
-    </div>
-
-    <div style="    margin-top: 10px;
+        <div style="    margin-top: 10px;
     padding-left: 30px;
     border-top: solid 1px #e4ebf1;">
-        <button type="btn" style="    height: 43px;
+            <button type="btn" style="    height: 43px;
     margin-top: 10px;
     width: 350px;
     border-radius: 5px;
@@ -104,15 +95,10 @@
     color: #fff;
     margin-top: 18px;
     font-size: 20px;" ng-click="logoutApp()"> Sign Out</button>
-    </div>
+        </div>
 </div>
 
-<!--<script type="text/javascript">
-var myvariable = "${loggedUser.role}";
-function myfunction(){
-    alert(myvariable);
-}
-</script>-->
+
 <div class="menuBackdrop" ng-show="menuCliked" ng-click="menuCliked = !menuCliked"></div>
 
 <div style="float: left;width:100%;height:100%;" ui-view></div>

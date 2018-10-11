@@ -28,6 +28,13 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
 //			$state.go("header.cources");
 //		}
 		
+	
+    $('.navbar-nav li').click(function (e) {
+        $('.navbar-nav li').removeClass('activeLiDiv');
+        $(this).addClass('activeLiDiv');
+
+    });
+    
 		$scope.reDirectTo = function(path){
 			$scope.menuCliked = false;
 			if (path == 'home') {

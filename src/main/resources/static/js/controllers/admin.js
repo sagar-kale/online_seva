@@ -135,7 +135,33 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
 
 
     }
+    
 
+     $scope.getval = function(role){
+    	alert(role);
+    };
+  
+  $scope.Roles = [
+	    {
+	      name: 'admin',
+	      id:1
+	    }, 
+	    {
+	      name: 'user',
+	      id:2
+	    }
+	  ];
+  
+  $scope.changedValue=function(item){
+	    //$scope.itemList.push(item.name);
+	   alert(item.name);
+	    }
+	  
+	  //$scope.selectedOption = $scope.options[0].value;
+$scope.changeRole = function(selectedOption){
+	alert(selectedOption);
+} 
+   
     // ************* admin actions **********
 
     $scope.activateUser = function (user) {

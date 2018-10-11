@@ -296,10 +296,17 @@ td {
 						<td>{{user.name}}</td>
 						<td>{{user.username}}</td>
 						<td>{{user.city}}</td>
-						<td><select>
-								<option value="user" selected>User</option>
-								<option value="admin">Admin</option>
-						</select></td>
+						<td>
+							<!-- <select ng-model = "roles" ng-change="getval(roles);">
+									<option value="{{user.role}}" selected>{{user.role}}</option>
+									<option value="user" ng-if="user.role == 'user'">Admin</option>
+									<option value="admin" ng-if="user.role == 'admin'">User</option>
+							</select> -->
+						 <select  ng-model="rolesData" ng-change="changedValue(rolesData)" 
+     data-ng-options="role as role.name for role in Roles">
+    <option value="" >{{user.role}}</option>
+</select>
+						</td>
 						<td ng-show="!user.active" class="inactiveUser">Inactive</td>
 						<td ng-show="user.active" class="activeUser">Active</td>
 

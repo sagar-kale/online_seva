@@ -75,6 +75,7 @@ app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', fun
                     swal("", res.data.message, res.data.msgType);
                     $scope.student = {};
                     // $scope.student.$setPristine();
+                    $scope.stdRegForm.$setPristine();
                 }
 
             },
