@@ -25,11 +25,8 @@ function connect(event) {
 
         stompClient.connect({}, onConnected, onError);
     }
-    //event.preventDefault();
+    event.preventDefault();
 }
-
-connect();
-
 
 function onConnected() {
     // Subscribe to the Public Topic
