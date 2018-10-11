@@ -1,8 +1,6 @@
 'use strict';
 
-var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
-var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
@@ -17,10 +15,9 @@ var colors = [
 ];
 
 function connect(event) {
-    username = document.querySelector('#name').value.trim();
+    username = document.querySelector('#username').innerText.trim();
 
     if (username) {
-        usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
         var socket = new SockJS('/ws');
@@ -28,8 +25,10 @@ function connect(event) {
 
         stompClient.connect({}, onConnected, onError);
     }
-    event.preventDefault();
+    //event.preventDefault();
 }
+
+connect();
 
 
 function onConnected() {
@@ -113,7 +112,8 @@ function getAvatarColor(messageSender) {
     var index = Math.abs(hash % colors.length);
     return colors[index];
 }
-window.onload = function(){
+
+window.onload = function () {
     //document.forms['usernameForm'].submit();
     connect();
 }

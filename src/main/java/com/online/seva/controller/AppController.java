@@ -39,7 +39,7 @@ public class AppController {
             redirectAttributes.addFlashAttribute("logged", false);
             return "redirect:" + forbidden;
         }
-        modal.addAttribute("loggedUser", loggedUser);
+        modal.addAttribute("name", loggedUser.getName());
         return "views/chat";
 
     }
