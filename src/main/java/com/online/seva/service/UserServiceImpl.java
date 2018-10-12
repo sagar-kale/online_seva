@@ -140,6 +140,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean updateUserRole(User user) {
+        User byUsername = jpaUserRepository.findByUsername(user.getUsername());
+        logger.info("fetched user for role update" + byUsername);
+        if (null == byUsername)
+            return false;
+        logger.info("updating user role :::: current role:: " + byUsername.getRole());
+        if (byUsername.getRole().equalsIgnoreCase(user.getRole()))
+            return true;
+        else
+            byUsername.setRole(user.getRole());
+
+        User save = jpaUserRepository.save(byUsername);
+        logger.info("updated user role :::: current role:: " + save.getRole());
+        return true;
+    }
+
+    @Override
     public boolean removeUser(String username) {
         User byUsername = jpaUserRepository.findByUsername(username);
         if (null == byUsername)

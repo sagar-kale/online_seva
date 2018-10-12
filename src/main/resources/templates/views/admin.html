@@ -387,14 +387,70 @@ td {
 					<div class="userActionsDiv">
 						<ul>
 							<li ng-click="toggleForms('allroles')" class="activeLi">ALl Roles</li>
-							<li ng-click="toggleForms('User Roles')">Change User Roles</li>
+							<li ng-click="toggleForms('User Roles');getAllUserList()">Change User Roles</li>
 						</ul>
 					</div>
 					<div class="corsePageLeftContent" ng-show="selectedDiv == 'allroles'">
 						All roles here
 					</div>
 					<div class="corsePageLeftContent" ng-show="selectedDiv == 'User Roles'">
-						Chanage User Role
+                            <div class="searchUser">
+                                <div class="searchLableDiv">
+                                    All Users Data
+                                </div>
+                                <div class="searchtextDiv">
+                                    <input type="text" name="searchUser" ng-model="searchUser"><span>Search Here </span>
+                                </div>
+                            </div>
+
+                            <div class="JobDetailsDivParent concatTable">
+                                <table width="100%" cellspacing="0" border="1" style="position:relative;">
+                                    <thead id="TblHead">
+                                    <tr class="headerTr">
+                                        <td>Email</td>
+                                        <td>Current Role</td>
+                                        <td>Select Role</td>
+                                        <td>Status</td>
+                                        <td>Action</td>
+                                        <!-- <td>Action</td>   -->
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="user in userList | filter:searchUser" class="dataTr"
+                                        ng-class="{'even':$even,'odd':$odd}">
+                                        <td>{{user.username}}</td>
+                                        <td>{{user.role}}</td>
+                                        <td>
+                                            <select ng-model="userrole" name="role" required
+                                                    ng-options="role as role.name for role in roleList">
+                                                <option value="">Select Role</option>
+                                            </select>
+                                        </td>
+                                        <td ng-show="!user.active" class="inactiveUser">Inactive</td>
+                                        <td ng-show="user.active" class="activeUser">Active</td>
+
+                                        <td>
+                                            <button type="btn" class="approvebtn" ng-click="changeUserRole(user,userrole)">Change Role</button>
+                                        </td>
+
+                                        <!-- <td><button type="btn" class="rejectbtn" ng-click="removeUser()">Remove</button></td>   -->
+
+
+                                    </tr>
+                                    <div ng-if="userList.length==0" class="emptyImgDiv">
+
+                                        <img src="../images/empty.png" />
+                                        <div class="nodata">
+                                            No Data Found
+                                        </div>
+
+                                    </div>
+                                    </tbody>
+                                </table>
+
+                            </div>
 					</div>
 
 

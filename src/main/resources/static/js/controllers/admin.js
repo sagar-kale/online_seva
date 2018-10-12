@@ -98,6 +98,7 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                 console.log(error);
             });*/
     }
+    $scope.getAllRoleList();
 
     $scope.getAllStudents = function () {
         var url = apiLink.getAllStudents;
@@ -173,21 +174,6 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
 
     }
 
-
-    $scope.changeRole = function (role) {
-        alert(role);
-    }
-
-
-    $scope.changedValue = function (item) {
-        //$scope.itemList.push(item.name);
-        alert(item.name);
-    }
-
-    //$scope.selectedOption = $scope.options[0].value;
-    $scope.changeRole = function (role) {
-        alert(role.name);
-    }
 
     // ************* admin actions **********
 
@@ -282,6 +268,42 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
             function (error) {
                 console.log(error);
             });
+
+
+    };
+
+    // ************* Change Role **********
+
+    $scope.changeUserRole = function (user, userrole) {
+        var url = apiLink.fetchUserRoleUrl;
+
+        alert(user.username + " " + userrole.name);
+        if (user.role == userrole.name) {
+            swal("Same", "current role and selected role is same, please select different role", "warning");
+        } else {
+            var data = {
+                "username": user.username,
+                "role": userrole.name
+            }
+            alert(url);
+
+            APIService.httpPut(url, data).then(
+                function (res) {
+
+                    if (res.data.msgType == 'success') {
+                        $scope.getAllUserList();
+                        swal("Done", res.data.message, res.data.msgType);
+                    }
+                    else {
+                        swal("error", res.data.message, res.data.msgType);
+
+                    }
+
+                },
+                function (error) {
+                    console.log(error);
+                });
+        }
 
 
     };

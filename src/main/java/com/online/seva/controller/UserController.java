@@ -247,4 +247,41 @@ public class UserController {
         response.setMessage("User Removed SuccessFully");
         return response;
     }
+
+    @RequestMapping(value = "/user/update/role", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response changeRole(@RequestBody User user, HttpServletRequest request) {
+        logger.info("Under Update Role");
+        Response response = new Response();
+
+        if (user.getUsername() == null) {
+            response.setMessage("User name should not be null:::" + user.getUsername());
+            response.setMsgType(AppConstant.ERROR);
+            return response;
+        }
+
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+        logger.info("logged User update stats ::: " + loggedUser);
+        logger.info("User Role::" + loggedUser.getRole());
+        if (!sessionService.isAdmin(loggedUser)) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMsgType("You are not allowed to update user role");
+            return response;
+        }
+        logger.info("Updating user role :::" + user.getUsername());
+        boolean updated = userService.updateUserRole(user);
+        if (!updated) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("User Not found in database...");
+            return response;
+        }
+        response.setMsgType(AppConstant.SUCCESS);
+        response.setMessage("If updated user already logged in... please ask user to re-login for immediate effect");
+        return response;
+    }
+
 }

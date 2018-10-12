@@ -31,5 +31,7 @@ public interface UserService {
 
     boolean updateUserActiveStatus(String username);
 
+    boolean updateUserRole(User user);
+
     boolean removeUser(String username);
 }
