@@ -277,7 +277,6 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
     $scope.changeUserRole = function (user, userrole) {
         var url = apiLink.fetchUserRoleUrl;
 
-        alert(user.username + " " + userrole.name);
         if (user.role == userrole.name) {
             swal("Same", "current role and selected role is same, please select different role", "warning");
         } else {
@@ -285,7 +284,6 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                 "username": user.username,
                 "role": userrole.name
             }
-            alert(url);
 
             APIService.httpPut(url, data).then(
                 function (res) {
