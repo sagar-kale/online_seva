@@ -18,6 +18,9 @@ td {
 			<li ng-click="toggleTabs('show3');getAllStudents()"
 				ng-class="{'Activebg':activeTab =='show3'}">Students Management
 			</li>
+			<li ng-click="toggleTabs('show4');getAllRoleList()"
+				ng-class="{'Activebg':activeTab =='show4'}">Role Management
+			</li>
 		</ul>
 		<div class="JobDetailsDivParent" ng-show="activeTab=='show1'">
 			<div class="container" style="padding: 0px !important; width: 98%;">
@@ -282,7 +285,7 @@ td {
 						<td>User Name</td>
 						<td>Email</td>
 						<td>City</td>
-						<td>Select Role</td>
+						<td>Current Role</td>
 						<td>Status</td>
 						<td>Action</td>
 						<!-- <td>Action</td>   -->
@@ -296,17 +299,7 @@ td {
 						<td>{{user.name}}</td>
 						<td>{{user.username}}</td>
 						<td>{{user.city}}</td>
-						<td>
-							<!-- <select ng-model = "roles" ng-change="getval(roles);">
-									<option value="{{user.role}}" selected>{{user.role}}</option>
-									<option value="user" ng-if="user.role == 'user'">Admin</option>
-									<option value="admin" ng-if="user.role == 'admin'">User</option>
-							</select> -->
-						 <select  ng-model="rolesData" ng-change="changedValue(rolesData)" 
-     data-ng-options="role as role.name for role in Roles">
-    <option value="" >{{user.role}}</option>
-</select>
-						</td>
+						<td>{{user.role}}</td>
 						<td ng-show="!user.active" class="inactiveUser">Inactive</td>
 						<td ng-show="user.active" class="activeUser">Active</td>
 
@@ -387,6 +380,26 @@ td {
 			</table>
 		</div>
 			
+		</div>
+		<div ng-show="activeTab=='show4'">
+
+				<div class="coursepageContent">
+					<div class="userActionsDiv">
+						<ul>
+							<li ng-click="toggleForms('allroles')" class="activeLi">ALl Roles</li>
+							<li ng-click="toggleForms('User Roles')">Change User Roles</li>
+						</ul>
+					</div>
+					<div class="corsePageLeftContent" ng-show="selectedDiv == 'allroles'">
+						All roles here
+					</div>
+					<div class="corsePageLeftContent" ng-show="selectedDiv == 'User Roles'">
+						Chanage User Role
+					</div>
+
+
+				</div>
+
 		</div>
 	</div>
 </div>

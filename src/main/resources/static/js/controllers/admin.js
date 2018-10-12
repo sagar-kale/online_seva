@@ -1,5 +1,15 @@
 app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', function ($scope, $state, apiLink, APIService) {
 
+    $scope.selectedDiv = "allroles";
+
+    $scope.toggleForms = function (str) {
+        $scope.selectedDiv = str;
+    }
+    $('.userActionsDiv ul li').click(function (e) {
+        $('.userActionsDiv ul li').removeClass('activeLi');
+        $(this).addClass('activeLi');
+
+    });
     $scope.activeTab = "show1";
     $scope.toggleTabs = function (tab) {
         $scope.activeTab = tab;
@@ -42,7 +52,6 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
         $scope.readOnlyFirst = false;
     }
 
-
     $scope.getAllUserList = function () {
         var url = apiLink.getAllUsers;
         APIService.httpGet(url).then(
@@ -60,7 +69,35 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                 console.log(error);
             });
     }
-    /* $scope.getAllUserList();*/
+    $scope.getAllRoleList = function () {
+        var url = apiLink.getAllUsers;
+        $scope.roleList = [
+            {
+                name: 'admin',
+                id: 1
+            },
+            {
+                name: 'user',
+                id: 2
+            }
+        ];
+
+
+        /*APIService.httpGet(url).then(
+            function (res) {
+                if (res.data.msgType == 'error') {
+
+                    swal("", res.data.message, res.data.msgType);
+                    $state.go("login");
+                }
+                $scope.userList = res.data.dataList;
+                console.log("UserList", $scope.userList);
+
+            },
+            function (error) {
+                console.log(error);
+            });*/
+    }
 
     $scope.getAllStudents = function () {
         var url = apiLink.getAllStudents;
@@ -135,33 +172,23 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
 
 
     }
-    
 
-     $scope.getval = function(role){
-    	alert(role);
-    };
-  
-  $scope.Roles = [
-	    {
-	      name: 'admin',
-	      id:1
-	    }, 
-	    {
-	      name: 'user',
-	      id:2
-	    }
-	  ];
-  
-  $scope.changedValue=function(item){
-	    //$scope.itemList.push(item.name);
-	   alert(item.name);
-	    }
-	  
-	  //$scope.selectedOption = $scope.options[0].value;
-$scope.changeRole = function(selectedOption){
-	alert(selectedOption);
-} 
-   
+
+    $scope.changeRole = function (role) {
+        alert(role);
+    }
+
+
+    $scope.changedValue = function (item) {
+        //$scope.itemList.push(item.name);
+        alert(item.name);
+    }
+
+    //$scope.selectedOption = $scope.options[0].value;
+    $scope.changeRole = function (role) {
+        alert(role.name);
+    }
+
     // ************* admin actions **********
 
     $scope.activateUser = function (user) {
