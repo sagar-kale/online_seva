@@ -31,6 +31,13 @@ public class AppController {
 
     }
 
+    @RequestMapping("/login")
+    String login(ModelMap modal) {
+        modal.addAttribute("title", "online-seva");
+        return "user_home";
+
+    }
+
     @RequestMapping("/chat")
     public String chat(ModelMap modal, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         User loggedUser = sessionService.getLoggedUser(request);
