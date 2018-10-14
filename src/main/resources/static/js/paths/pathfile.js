@@ -33,6 +33,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "pagerouting/cources",
             controller: "courcesCntrl"
         })
+         .state("header.contact", {
+            url: "/contact",
+            templateUrl: "pagerouting/contact",
+            controller: "contactCntrl"
+        })
 
 });
 

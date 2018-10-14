@@ -1,0 +1,108 @@
+.ContactUsPage{
+       height: 470px;
+    width: 400px;
+    background-color: #f3f3f3;
+    margin-left: calc(50% - 200px);
+    margin-top: 60px;
+    padding: 20px;
+    border-radius: 5px;
+    	-webkit-box-shadow: 17px 13px 15px -6px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 17px 13px 15px -6px rgba(0, 0, 0, 0.75);
+	box-shadow: 17px 13px 15px -6px rgba(0, 0, 0, 0.75);
+}
+.contactUstitle{
+    font-size: 20px;
+    margin-bottom: 11px;
+}
+.conatctFrom{
+	float:left;width:100%;
+}
+.conatctFrom input,.conatctFrom textarea{
+	float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 38px;
+    padding-left: 14px;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.csavebtnContact{
+width: 100%;
+    height: 35px;
+    background: #00b241;
+    border: 0px;
+    color: #fff;
+    font-size: 17px;}
+    
+    
+  /* *************************  */ 
+    
+    .examleftDiv{    float: left;
+    width: 30%;
+     padding: 20px;
+    height: 100vh;
+    background: #ccc;
+    }
+     .examRightDiv{       float: left;
+    width: 70%;
+    bacground-color: red;
+    /* height: 100vh; */
+    background: #dadada;
+    padding: 20px;s
+   }
+   .anserClicked{
+   float: left;
+    width: 100%;
+    background: #fff;
+        padding: 30px;
+    min-width: 200px;
+   }
+    
+   .qestioncircule{
+          height: 40px;
+    width: 40px;
+    float: left;
+    background: red;
+    margin: 5px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    padding-top: 8px;
+   } 
+   .ansercnt{
+       background: #fff;
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+    padding: 18px;
+   }
+    .ansercnt span{
+    font-size: 20px;}
+    .questionAndAnswer{
+       float: left;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    }
+    .questionDivFont{
+        font-size: 20px;
+    margin-bottom: 10px;}
+        .optionDivFont{
+            font-size: 16px;
+            cursor:pointer;
+            }
+    .done{
+    background-color:green;
+    }
+    .textdone{
+    color:green}
+    .qusDivData label{
+    width: 100%;
+    float: left;
+    font-weight: normal;}
+    

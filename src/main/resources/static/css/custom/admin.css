@@ -445,5 +445,37 @@ panel-collapse .collapse.in {
     font-size: 20px;
     color: #fff;
 }
+
+/* *********************** edit job *******************   */
+.srLi{width:7% !important;}
+.EditJobForm .inputDiv{
+	float:left;width:50%;margin-top:20px;
+
+}
+.EditJobForm .inputDiv input{
+	      float: left;
+    width: 80%;
+    height: 40px;
+    padding-left: 6px;
+    font-size: 14px;
+    padding-right: 6px;
+
+}
+.EditJobForm .inputDiv .title{
+	    
+        font-size: 17px;
+}
+.EditJobDivBtn{
+	float:left;width:100%;
+}
+.EditJobDivBtn button{
+	    border: none;
+    height: 36px;
+    width: 200px;
+    background: #152479;
+    color: #fff;
+    margin-top: 9px;
+    border-radius: 5px;
+}
   
 

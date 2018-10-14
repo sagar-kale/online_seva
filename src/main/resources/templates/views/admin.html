@@ -12,7 +12,11 @@ td {
 	<div class="adminTabs">
 		<ul class="topUl">
 			<li ng-click="toggleTabs('show1')"
-				ng-class="{'Activebg':activeTab =='show1'}">Job Management</li>
+				ng-class="{'Activebg':activeTab =='show1'}">Add Job</li>
+				
+				<li ng-click="toggleTabs('show5');"
+				ng-class="{'Activebg':activeTab =='show5'}">Edit Job
+			</li>
 			<li ng-click="toggleTabs('show2');getAllUserList();"
 				ng-class="{'Activebg':activeTab =='show2'}">User Management</li>
 			<li ng-click="toggleTabs('show3');getAllStudents()"
@@ -22,6 +26,161 @@ td {
 				ng-class="{'Activebg':activeTab =='show4'}">Role Management
 			</li>
 		</ul>
+		<div class="JobDetailsDivParent" ng-show="activeTab=='show5'">
+				  <div class="JobListTable">
+        <ul class="headerUl" style="    background: #102933;">
+            <li class="bigColumn">Job Title</li>
+            <li class="bigColumn">Sector</li>
+            <li>Qualfication</li>
+            <li>Last Date</li>
+            <li>Action</li>
+        </ul>
+        <ul class="evenrow" ng-repeat="job in jobdata">
+            <li ng-click="showJobDetails=!showJobDetails" class="linksClass bigColumn">{{job.title}} -{{job.totalPosts}}
+                Posts
+            </li>
+            <li class="bigColumn">{{job.sector}}</li>
+            <li>{{job.qualification}}</li>
+            <li>{{job.lastDate}}</li>
+            <li>
+                <button  ng-click="showJobDetails=!showJobDetails;">Edit Job</button>
+               
+            </li>
+            <div class="jobdetailsData evenrow" ng-show="showJobDetails">
+                <h2>Edit Job Details:</h2>
+				
+						<form name="EditForm" class="EditJobForm">
+											<div class="inputDiv">
+												<div class="title">Job Title</div>
+												<div class="title">
+													<input type="text" name="title" ng-model="job.title"
+														required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">Total Posts</div>
+												<div class="title">
+													<input type="text" name="TotalPosts"
+														ng-model="job.totalPosts" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">Sector</div>
+												<div class="title">
+													<input type="text" name="Sector"
+														ng-model="job.sector" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">Qualification</div>
+												<div class="title">
+													<input type="text" name="Qualification"
+														ng-model="job.qualification" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">Start Date</div>
+												<div class="title">
+													<input type="date" name="LastDate"
+														ng-model="job.startDate" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">Last Date</div>
+												<div class="title">
+													<input type="date" name="LastDate"
+														ng-model="job.lastDate" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+													<div class="title">Job Discription</div>
+													<div class="title">
+														<input type="text" name="aboutJob"
+															ng-model="job.jobSubDetails.aboutJob" required></input>
+													</div>
+												</div>
+												<div class="inputDiv">
+													<div class="title">Post Name</div>
+													<div class="title">
+														<input type="text" name="postName"
+															ng-model="job.jobSubDetails.postName" required />
+													</div>
+												</div>
+												<div class="inputDiv">
+													<div class="title">Total Vacancies</div>
+													<div class="title">
+														<input type="text" name="TotalVacancies"
+															ng-model="job.jobSubDetails.totalVacancies" required />
+													</div>
+												</div>
+												<div class="inputDiv">
+													<div class="title">Salary Scale</div>
+													<div class="title">
+														<input type="text" name="SalaryScale"
+															ng-model="job.jobSubDetails.salaryScale" required />
+													</div>
+												</div>
+												<div class="inputDiv">
+													<div class="title">Job Location</div>
+													<div class="title">
+														<input type="text" name="JobLocation"
+															ng-model="job.jobSubDetails.jobLocation" required />
+													</div>
+												</div>
+												<div class="inputDiv">
+												<div class="title">Educational Qualifiction</div>
+												<div class="title">
+													<input type="text" name="EducationalQualifiction"
+														ng-model="job.jobSubDetails.educationalQualifiction" required></input>
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">Age Limit</div>
+												<div class="title">
+													<input type="text" name="AgeLimit"
+														ng-model="job.jobSubDetails.ageLimit" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">Selection Process</div>
+												<div class="title">
+													<input type="text" name="SelectionProcess"
+														ng-model="job.jobSubDetails.selectionProcess" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">Application Fee</div>
+												<div class="title">
+													<input type="text" name="applicationFee"
+														ng-model="job.jobSubDetails.applicationFee" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">How To Applay</div>
+												<div class="title">
+													<input type="text" name="Applay"
+														ng-model="job.jobSubDetails.howToApplay" required />
+												</div>
+											</div>
+											<div class="inputDiv">
+												<div class="title">YouTube Link</div>
+												<div class="title">
+													<input type="text" name="Applay"
+														ng-model="subDetails.YouTubeLink" required />
+												</div>
+											</div>
+											
+										</form>
+										<div class="EditJobDivBtn">
+										<button ng-click="EditJob(job)">Save Job</button>
+										</div>
+										
+            </div>
+        </ul>
+
+
+    </div>
+		</div>
 		<div class="JobDetailsDivParent" ng-show="activeTab=='show1'">
 			<div class="container" style="padding: 0px !important; width: 98%;">
 				<div class="row">
@@ -383,7 +542,7 @@ td {
 		</div>
 		<div ng-show="activeTab=='show4'">
 
-				<div class="coursepageContent">
+				<div class="coursepageContent" style="margin-top: 20px;">
 					<div class="userActionsDiv">
 						<ul>
 							<li ng-click="toggleForms('allroles')" class="activeLi">ALl Roles</li>

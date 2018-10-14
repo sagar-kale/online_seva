@@ -302,9 +302,24 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                     console.log(error);
                 });
         }
-
-
     };
-
+    //***********  edit job Details **********
+	$scope.loadData = function(){
+	       var url = apiLink.getAllJobs;
+         APIService.httpGet(url).then(
+       function(res){
+       $scope.jobdata = res.data;
+        console.log("jkhaksdkja", $scope.jobdata);
+     
+       
+       },
+       function(error) {
+         console.log(error);
+       });
+};
+$scope.loadData();
+$scope.EditJob = function(editJob){
+	console.log("Edit Job",editJob);
+}
 
 }]);

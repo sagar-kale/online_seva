@@ -29,28 +29,33 @@ app.controller('headerContrl',['$scope', '$state','userService','apiLink','APISe
 //		}
 		
 	
-    $('.navbar-nav li').click(function (e) {
-        $('.navbar-nav li').removeClass('activeLiDiv');
-        $(this).addClass('activeLiDiv');
-
-    });
-    
+//    $('.navbar-nav li').click(function (e) {
+//        $('.navbar-nav li').removeClass('activeLiDiv');
+//        $(this).addClass('activeLiDiv');
+//
+//    });
+//    
 		$scope.reDirectTo = function(path){
-			$scope.menuCliked = false;
-			if (path == 'home') {
-				$state.go("header.home");
-			}
-			else if(path == 'admin'){
-				$state.go("header.admin")
-			}
-			else if(path == 'jobs'){
-				$state.go("header.jobs");
-			}
-			else if(path == 'home'){
-				$state.go("header.admin")
-			}
-			else if(path == 'students'){
-				$state.go("header.cources");
-			}
+			
+			$scope.state =path;
+			$state.go(path); 
+				
+//			$scope.menuCliked = false;
+//			if (path == 'home') {
+//				$state.go("header.home");
+//			}
+//			else if(path == 'admin'){
+//				$state.go("header.admin")
+//			}
+//			else if(path == 'jobs'){
+//				$state.go("header.jobs");
+//			}
+//			else if(path == 'home'){
+//				$state.go("header.admin")
+//			}
+//			else if(path == 'students'){
+//				$state.go("header.cources");
+//			}
 		}
+		$scope.reDirectTo($state.current.name);
 }]);
