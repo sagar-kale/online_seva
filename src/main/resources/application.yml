@@ -1,5 +1,4 @@
 server:
-  port: 8080
   error:
     whitelabel:
       enabled: false
@@ -62,15 +61,28 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL57Dialect
+---
+spring:
+  profiles: mysql_cloud
+  datasource:
+    url: "jdbc:mysql://onlinesevadba.ce6qczkzqui7.ap-south-1.rds.amazonaws.com:3306/online_seva?useUnicode=yes&characterEncoding=UTF-8&verifyServerCertificate=false&useSSL=true"
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: onlineseva
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
 
 ---
+
 spring:
   profiles: postgres
   datasource:
-    url: ${JDBC_DATABASE_URL}
+    url: "jdbc:postgresql://onlinesevadb.ce6qczkzqui7.ap-south-1.rds.amazonaws.com:5432/online_seva"
     driver-class-name: org.postgresql.Driver
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+    username: root
+    password: onlineseva
   jpa:
     properties:
       hibernate:
