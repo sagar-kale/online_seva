@@ -8,14 +8,15 @@ logging:
     org.hibernate: error
     org.apache.http: error
     com.online.seva: info
+email.from: online-seva@hotmail.com
 
 spring:
   mail:
     default-encoding: UTF-8
-    host: smtp.gmail.com
+    host: smtp-mail.outlook.com
     port: 587
-    username: sagarrk.kale@gmail.com
-    password: ENC(PVsJ413hCGFo2hWtupNNtgCxkupMSu9+)
+    username: online-seva@hotmail.com
+    password: ENC(3+WfphBT1QB/PpQGeXJlTzU21JJIc60i)
     properties:
       mail:
         smtp:

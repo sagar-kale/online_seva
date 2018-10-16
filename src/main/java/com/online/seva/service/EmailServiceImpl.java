@@ -5,6 +5,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,8 @@ public class EmailServiceImpl implements EmailService {
     private JavaMailSender emailSender;
     @Autowired
     private Configuration freemarkerConfig;
+    @Value("${email.from}")
+    private String from;
 
     @Override
     public boolean sendSimpleMessage(Email email) {
@@ -35,7 +38,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setTo(email.getTo());
             helper.setText(html, true);
             helper.setSubject(email.getSubject());
-            helper.setFrom(email.getFrom());
+            helper.setFrom(from);
 
             emailSender.send(message);
         } catch (Exception e) {
