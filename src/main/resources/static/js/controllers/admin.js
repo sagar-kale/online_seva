@@ -317,8 +317,27 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
             });
     };
     $scope.loadData();
+
+
     $scope.EditJob = function (editJob) {
+        var url = apiLink.updateJobDetails;
         console.log("Edit Job", editJob);
+        APIService.httpPut(url, editJob).then(
+            function (res) {
+
+                if (res.data.msgType == 'success') {
+                    $scope.getAllUserList();
+                    swal("Done", res.data.message, res.data.msgType);
+                }
+                else {
+                    swal("error", res.data.message, res.data.msgType);
+
+                }
+
+            },
+            function (error) {
+                console.log(error);
+            });
     }
 
 }]);

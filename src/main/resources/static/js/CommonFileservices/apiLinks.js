@@ -8,6 +8,7 @@ app.service('apiLink', function () {
         'logout': urlBase + 'logout',
         'getAllJobs': urlBase + 'jobs/all',
         'saveJobDetails': urlBase + 'jobs/save',
+        "updateJobDetails": urlBase + "jobs/update",
         'currentUserSession': urlBase + 'current/user',
         'updateUser': urlBase + 'user/update/status',
         'removeUser': urlBase + 'remove/user',
