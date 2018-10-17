@@ -44,7 +44,14 @@ public class AppController {
     }
 
     @RequestMapping("/jobs/download/poster/{id}")
-    String downloadPoster(@PathVariable("id") String id, ModelMap modal) {
+    String downloadPoster(@PathVariable("id") String id, ModelMap modal, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            redirectAttributes.addFlashAttribute("routed", true);
+            redirectAttributes.addFlashAttribute("logged", false);
+            return "redirect:" + forbidden;
+        }
+
         logger.info("Id::::: " + id);
         Optional<Job> byID = jobService.findByID(id);
         Job job = byID.get();
