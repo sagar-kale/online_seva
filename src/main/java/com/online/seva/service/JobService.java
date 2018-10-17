@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface JobService {
     boolean saveJob(Job job);
+
     List<Job> retrieveAllJobs();
+
+    boolean updateJob(Job job);
 }

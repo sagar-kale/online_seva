@@ -1,6 +1,7 @@
 package com.online.seva.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -14,8 +15,9 @@ import javax.validation.constraints.NotEmpty;
 public class Job {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
     @Column(name = "title")
     @NotEmpty(message = "*Please Provide Job name")
     @Lob

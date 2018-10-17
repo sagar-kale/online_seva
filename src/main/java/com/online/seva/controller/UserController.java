@@ -197,9 +197,15 @@ public class UserController {
         logger.info("User Role::" + loggedUser.getRole());
         if (!sessionService.isAdmin(loggedUser)) {
             response.setMsgType(AppConstant.ERROR);
-            response.setMsgType("You are not allowed to update user status");
+            response.setMessage("You are not allowed to update user status");
             return response;
         }
+        if (sessionService.checkForSuperAdmin(username)) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("You are not allowed to update super admin status");
+            return response;
+        }
+
         logger.info("Updating user status :::" + username);
         boolean updated = userService.updateUserActiveStatus(username);
         if (!updated) {
@@ -267,9 +273,14 @@ public class UserController {
         }
         logger.info("logged User update stats ::: " + loggedUser);
         logger.info("User Role::" + loggedUser.getRole());
-        if (!sessionService.isAdmin(loggedUser) && !sessionService.checkForSuperAdmin(user)) {
+        if (!sessionService.isAdmin(loggedUser)) {
             response.setMsgType(AppConstant.ERROR);
-            response.setMsgType("You are not allowed to update user role");
+            response.setMessage("You are not allowed to update user role");
+            return response;
+        }
+        if (sessionService.checkForSuperAdmin(user.getUsername())) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("You are not allowed to update super admin role");
             return response;
         }
         logger.info("Updating user role :::" + user.getUsername());

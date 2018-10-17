@@ -36,9 +36,10 @@ public class SessionService {
         return isAdmin;
     }
 
-    public boolean checkForSuperAdmin(User user) {
-        if (user.getUsername().equalsIgnoreCase("sagark.kale@hotmail.com"))
-            return false;
-        return true;
+    public boolean checkForSuperAdmin(String username) {
+        log.info("checking if any action against super admin::" + username);
+        if (username.equalsIgnoreCase("sagark.kale@hotmail.com"))
+            return true;
+        return false;
     }
 }

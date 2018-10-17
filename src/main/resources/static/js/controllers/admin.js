@@ -189,8 +189,7 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                     user.active = true;
                 }
                 else {
-                    swal("", res.data.message, res.data.msgType);
-
+                    swal(res.data.msgType, res.data.message, res.data.msgType);
                 }
 
             },
@@ -213,7 +212,7 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                     user.active = false;
                 }
                 else {
-                    swal("", res.data.message, res.data.msgType);
+                    swal(res.data.msgType, res.data.message, res.data.msgType);
 
                 }
 
@@ -304,22 +303,22 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
         }
     };
     //***********  edit job Details **********
-	$scope.loadData = function(){
-	       var url = apiLink.getAllJobs;
-         APIService.httpGet(url).then(
-       function(res){
-       $scope.jobdata = res.data;
-        console.log("jkhaksdkja", $scope.jobdata);
-     
-       
-       },
-       function(error) {
-         console.log(error);
-       });
-};
-$scope.loadData();
-$scope.EditJob = function(editJob){
-	console.log("Edit Job",editJob);
-}
+    $scope.loadData = function () {
+        var url = apiLink.getAllJobs;
+        APIService.httpGet(url).then(
+            function (res) {
+                $scope.jobdata = res.data;
+                console.log("jkhaksdkja", $scope.jobdata);
+
+
+            },
+            function (error) {
+                console.log(error);
+            });
+    };
+    $scope.loadData();
+    $scope.EditJob = function (editJob) {
+        console.log("Edit Job", editJob);
+    }
 
 }]);

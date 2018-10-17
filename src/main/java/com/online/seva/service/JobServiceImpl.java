@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("jobService")
 @Slf4j
@@ -25,5 +26,15 @@ public class JobServiceImpl implements JobService {
     @Override
     public List<Job> retrieveAllJobs() {
         return jobRepository.findAll();
+    }
+
+    @Override
+    public boolean updateJob(Job job) {
+        Optional<Job> byId = jobRepository.findById(job.getId());
+        if (!byId.isPresent())
+            return false;
+        jobRepository.save(job);
+        return true;
+
     }
 }

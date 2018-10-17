@@ -35,4 +35,17 @@ public class JobController {
         }
         return response;
     }
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public Response updateJob(@RequestBody Job job) {
+        Response response = new Response();
+
+        if (jobService.updateJob(job)) {
+            response.setMessage("Job Details Updated Successfully");
+            response.setMsgType(AppConstant.SUCCESS);
+        } else {
+            response.setMessage("Can't find job in our record");
+            response.setMsgType(AppConstant.ERROR);
+        }
+        return response;
+    }
 }

@@ -134,7 +134,7 @@ public class StudentController {
         log.info("User Role::" + loggedUser.getRole());
         if (!sessionService.isAdmin(loggedUser)) {
             response.setMsgType(AppConstant.ERROR);
-            response.setMsgType("You are not allowed to update user status");
+            response.setMessage("You are not allowed to update user status,Please refresh browser for effect");
             return response;
         }
         log.info("Updating student approve status :::" + email);
