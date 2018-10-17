@@ -4,16 +4,12 @@ import lombok.Data;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Lob;
+import javax.persistence.Transient;
 
 @Data
-//@Entity
-//@Table(name = "job_details")
 @Embeddable
 public class JobSubDetails {
 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.AUTO)
-    //private int id;
     @Lob
     private String aboutJob;
     @Lob
@@ -32,4 +28,6 @@ public class JobSubDetails {
     @Lob
     private String howToApplay;
     private String youTubeLink;
+    @Transient
+    private String downloadPoster;
 }

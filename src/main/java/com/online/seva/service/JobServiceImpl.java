@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service("jobService")
 @Slf4j
@@ -25,7 +26,10 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<Job> retrieveAllJobs() {
-        return jobRepository.findAll();
+        return jobRepository.findAll().stream().map(job -> {
+            job.getJobSubDetails().setDownloadPoster("/jobs/download/poster/" + job.getId());
+            return job;
+        }).collect(Collectors.toList());
     }
 
     @Override
@@ -36,5 +40,10 @@ public class JobServiceImpl implements JobService {
         jobRepository.save(job);
         return true;
 
+    }
+
+    @Override
+    public Optional<Job> findByID(String id) {
+        return jobRepository.findById(id);
     }
 }

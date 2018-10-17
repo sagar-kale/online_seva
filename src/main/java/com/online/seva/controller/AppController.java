@@ -1,6 +1,8 @@
 package com.online.seva.controller;
 
+import com.online.seva.domain.Job;
 import com.online.seva.domain.User;
+import com.online.seva.service.JobService;
 import com.online.seva.service.SessionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 @Controller
 public class AppController {
@@ -23,6 +26,8 @@ public class AppController {
     private static final Logger logger = LoggerFactory.getLogger(AppController.class);
     @Autowired
     private SessionService sessionService;
+    @Autowired
+    private JobService jobService;
 
     @RequestMapping("/")
     String home(ModelMap modal) {
@@ -35,6 +40,17 @@ public class AppController {
     String login(ModelMap modal) {
         modal.addAttribute("title", "online-seva");
         return "user_home";
+
+    }
+
+    @RequestMapping("/jobs/download/poster/{id}")
+    String downloadPoster(@PathVariable("id") String id, ModelMap modal) {
+        logger.info("Id::::: " + id);
+        Optional<Job> byID = jobService.findByID(id);
+        Job job = byID.get();
+        modal.addAttribute("title", job.getTitle());
+        //image path src="../../../images/banner3.jpg"
+        return "pdf/jobPDF";
 
     }
 
