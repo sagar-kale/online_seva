@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        if (user.getName().equalsIgnoreCase("sagar kale") || user.getName().equalsIgnoreCase("mohan randive")) {
+        if (user.getUsername().equalsIgnoreCase("sagark.kale@hotmail.com") || user.getUsername().equalsIgnoreCase("mohanpri93@gmail.com")) {
             Role adminRole = userRoleRepository.findByRole("admin");
             user.setRole(adminRole.getRole());
             user.setActive(true);

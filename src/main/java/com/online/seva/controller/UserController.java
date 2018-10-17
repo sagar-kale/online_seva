@@ -267,7 +267,7 @@ public class UserController {
         }
         logger.info("logged User update stats ::: " + loggedUser);
         logger.info("User Role::" + loggedUser.getRole());
-        if (!sessionService.isAdmin(loggedUser)) {
+        if (!sessionService.isAdmin(loggedUser) && !sessionService.checkForSuperAdmin(user)) {
             response.setMsgType(AppConstant.ERROR);
             response.setMsgType("You are not allowed to update user role");
             return response;
