@@ -8,6 +8,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.context.annotation.ApplicationScope;
 
@@ -17,6 +18,7 @@ import javax.servlet.ServletContextListener;
 @SpringBootApplication
 @ComponentScan("com.online.seva")
 @EntityScan("com.online.seva.domain")
+@EnableScheduling
 public class Application {
 
     public static void main(String[] args) {

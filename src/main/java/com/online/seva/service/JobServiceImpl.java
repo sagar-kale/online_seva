@@ -2,6 +2,7 @@ package com.online.seva.service;
 
 import com.online.seva.domain.Job;
 import com.online.seva.repositories.jpa.JobRepository;
+import com.online.seva.util.FormatDate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ public class JobServiceImpl implements JobService {
 
     @Autowired
     private JobRepository jobRepository;
+    @Autowired
+    private FormatDate formatDate;
 
     @Override
     public boolean saveJob(Job job) {
@@ -28,6 +31,8 @@ public class JobServiceImpl implements JobService {
     public List<Job> retrieveAllJobs() {
         return jobRepository.findAll().stream().map(job -> {
             job.getJobSubDetails().setDownloadPoster("/jobs/download/poster/" + job.getId());
+            job.setStartDate(formatDate.getFormatDate(job.getStartDate()));
+            job.setLastDate(formatDate.getFormatDate(job.getLastDate()));
             return job;
         }).collect(Collectors.toList());
     }
@@ -45,5 +50,12 @@ public class JobServiceImpl implements JobService {
     @Override
     public Optional<Job> findByID(String id) {
         return jobRepository.findById(id);
+    }
+
+    @Override
+    public boolean deleInBatch(List<Job> jobList) {
+        log.info("deleting following jobs..." + jobList);
+        jobRepository.deleteInBatch(jobList);
+        return true;
     }
 }

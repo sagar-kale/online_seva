@@ -25,9 +25,9 @@ public class JobSubDetails {
     private String selectionProcess;
     private String ageLimit;
     private String applicationFee;
-    @Lob
     private String howToApplay;
     private String youTubeLink;
     @Transient
     private String downloadPoster;
+    private String pdfLink;
 }

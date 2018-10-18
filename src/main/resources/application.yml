@@ -5,7 +5,7 @@ server:
 logging:
   level:
     org.springframework.web: error
-    org.hibernate: debug
+    org.hibernate: error
     org.apache.http: error
     com.online.seva: info
 email.from: online-seva@hotmail.com

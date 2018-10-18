@@ -13,4 +13,6 @@ public interface JobService {
     boolean updateJob(Job job);
 
     Optional<Job> findByID(String id);
+
+    boolean deleInBatch(List<Job> jobList);
 }
