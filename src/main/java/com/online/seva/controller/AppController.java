@@ -63,7 +63,7 @@ public class AppController {
         modal.addAttribute("qualification", job.getJobSubDetails().getEducationalQualifiction());
         modal.addAttribute("salary", job.getJobSubDetails().getSalaryScale());
         modal.addAttribute("age", job.getJobSubDetails().getAgeLimit());
-        modal.addAttribute("lastDate", job.getLastDate());
+        modal.addAttribute("lastDate", formatDate.getFormatDate(job.getLastDate()));
         modal.addAttribute("totalPost", job.getTotalPosts());
         modal.addAttribute("center", loggedUser.getCenterName());
         modal.addAttribute("contact", loggedUser.getPhone());

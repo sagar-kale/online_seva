@@ -23,8 +23,8 @@ public class JobServiceImpl implements JobService {
     @Override
     public boolean saveJob(Job job) {
         log.info("Job" + job);
-        job.setStartDate(formatDate.getFormatDate(job.getStartDate()));
-        job.setLastDate(formatDate.getFormatDate(job.getLastDate()));
+        //   job.setStartDate(formatDate.getFormatDate(job.getStartDate()));
+        // job.setLastDate(formatDate.getFormatDate(job.getLastDate()));
         jobRepository.save(job);
         return true;
     }

@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +21,6 @@ public class JobRemoveScheduler {
     @Autowired
     private FormatDate formatDate;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private final AtomicBoolean enabled = new AtomicBoolean(false);
 
     @Scheduled(fixedDelay = 60000)
@@ -39,17 +37,8 @@ public class JobRemoveScheduler {
                     log.info("End date of jobs:::" + lastDate);
                     log.info("Start date of jobs:::" + job.getStartDate());
 
-                    Date parsedLastDate = formatDate.getDateFromFormat(job.getLastDate());//dateFormat.parse(dateFormat.format(dateFormat.parse(lastDate)));
 
-                    log.info("parsed after format:::" + dateFormat.format(parsedLastDate));
-
-                    String curr_date_format = dateFormat.format(new Date());
-                    Date currentDate = dateFormat.parse(curr_date_format);
-                    log.info("current date:::" + dateFormat.format(currentDate));
-
-                    String formattedString = String.format("selected date= %s is before current date=%s", dateFormat.format(parsedLastDate), dateFormat.format(currentDate));
-                    if (parsedLastDate.before(currentDate)) {
-                        log.info(formattedString);
+                    if (formatDate.isJobEndDateExpired(job.getLastDate())) {
                         tobeDeleted.add(job);
                     }
                 }
