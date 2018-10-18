@@ -143,7 +143,8 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
                 "ageLimit": $scope.subDetails.AgeLimit,
                 "applicationFee": $scope.subDetails.applicationFee,
                 "howToApplay": $scope.subDetails.Applay,
-                "youTubeLink": $scope.subDetails.YouTubeLink
+                "youTubeLink": $scope.subDetails.YouTubeLink,
+                "pdfLink":$scope.subDetails.PdfLink
 
             }
 
