@@ -34,6 +34,8 @@ public class UserServiceImpl implements UserService {
         role_user.setRole("user");
         Role role_admin = new Role();
         role_admin.setRole("admin");
+        Role role_content_admin = new Role();
+        role_content_admin.setRole("content_admin");
         List<Role> roleList;
 
         logger.info("Roles count :: " + count);
@@ -41,6 +43,7 @@ public class UserServiceImpl implements UserService {
             roleList = new ArrayList<>();
             roleList.add(role_user);
             roleList.add(role_admin);
+            roleList.add(role_content_admin);
             userRoleRepository.saveAll(roleList);
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
