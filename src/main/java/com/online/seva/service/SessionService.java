@@ -42,7 +42,7 @@ public class SessionService {
         log.info("User Role::" + byUsername.getRole());
         if (byUsername.getRole().equalsIgnoreCase("content_admin"))
             isAdmin = true;
-        log.info("isAdmin ::: " + isAdmin);
+        log.info("is Content Admin ::: " + isAdmin);
         return isAdmin;
     }
 
