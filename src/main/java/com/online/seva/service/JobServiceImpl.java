@@ -23,6 +23,8 @@ public class JobServiceImpl implements JobService {
     @Override
     public boolean saveJob(Job job) {
         log.info("Job" + job);
+        job.setStartDate(formatDate.getFormatDate(job.getStartDate()));
+        job.setLastDate(formatDate.getFormatDate(job.getLastDate()));
         jobRepository.save(job);
         return true;
     }
@@ -31,8 +33,6 @@ public class JobServiceImpl implements JobService {
     public List<Job> retrieveAllJobs() {
         return jobRepository.findAll().stream().map(job -> {
             job.getJobSubDetails().setDownloadPoster("/jobs/download/poster/" + job.getId());
-            job.setStartDate(formatDate.getFormatDate(job.getStartDate()));
-            job.setLastDate(formatDate.getFormatDate(job.getLastDate()));
             return job;
         }).collect(Collectors.toList());
     }

@@ -19,6 +19,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class JobRemoveScheduler {
     @Autowired
     private JobService jobService;
+    @Autowired
+    private FormatDate formatDate;
+
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private final AtomicBoolean enabled = new AtomicBoolean(false);
 
@@ -36,7 +39,7 @@ public class JobRemoveScheduler {
                     log.info("End date of jobs:::" + lastDate);
                     log.info("Start date of jobs:::" + job.getStartDate());
 
-                    Date parsedLastDate = dateFormat.parse(dateFormat.format(dateFormat.parse(lastDate)));
+                    Date parsedLastDate = formatDate.getDateFromFormat(job.getLastDate());//dateFormat.parse(dateFormat.format(dateFormat.parse(lastDate)));
 
                     log.info("parsed after format:::" + dateFormat.format(parsedLastDate));
 

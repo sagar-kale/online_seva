@@ -102,41 +102,40 @@
 	<div class="jobDpf">
 		<div class="jobpdfInner" style="position: relative;">
 			<div class="jobpdfTitle" style="    padding-top: 40px;font-weight: bold;">${title}</div>
-    		<div class="jobPdfpost">वैद्यकीय अधिकारी</div>
+    		<div class="jobPdfpost">${post}</div>
     		<div class="jobpdfBottom">
     			<div class="pdfCriteria">
     				<div class="cruteriaList">
     						<span class="spanfont">शैक्षणिक पात्रता : </span>
-    						<span class="spanfont1">50% गुणांसह मॅकेनिकल/ऑटोमोबाइल/इलेक्ट्रिकल/ टेलीकम्युनिकेशन & इंस्ट्रुमेंटेशन/इलेक्ट्रिकल</span>
+    						<span class="spanfont1">${qualification}</span>
     				</div>
     				<div class="cruteriaList">
     						<span class="spanfont">पगार श्रेणी : </span>
-    						<span class="spanfont1">50000</span>
+    						<span class="spanfont1">${salary}</span>
     				</div>
     				<div class="cruteriaList">
     						<span class="spanfont">वय मर्यादा : </span>
-    						<span class="spanfont1">40 years</span>
+    						<span class="spanfont1">${age}</span>
     				</div>
     				<hr style="height: 4px;"/>
     				<div class="cruteriaList appLastDate">
     					<div>अर्ज सादर करण्याची अंतिम तारीख</div>
-    					<div>12-12-2018 </div>
+    					<div>${lastDate}</div>
     				</div>
 
     			</div>
     				<div class="postCntBox">
     					<div style="font-size: 20px;       font-size: 53px;">पद संख्या </div>
-    					<div class="pdCnt" style="        font-size: 119px;">340</div>
+    					<div class="pdCnt" style="        font-size: 119px;">${totalPost}</div>
     				</div>
     			
     		</div>
     		
-    		<div style="     float: left;
+    		<div style="float: left;
     padding: 20px;
     width: calc(100% - 40px);
     text-align: left;
-    padding-top: 10px;>
-                <!-- <div class="hrLine" style="    margin-bottom: 10px;"></div> -->
+    padding-top: 10px;">
                <hr style="height: 4px;"/>
     			<img src="../../../images/banner3.jpg" style="       height: 90px;
     float: left;
@@ -146,8 +145,8 @@
     margin-left: 20px;
     font-size: 20px;
     font-weight: bold;text-align: left;">
-                    Chatrapati E-Seva Kendr, Padharpur
-                </span>
+                    ${center}
+                </span><br/>
 
                 <span style="width: 70%;
     float: left;
@@ -155,7 +154,7 @@
     font-size: 19px;
     font-weight: bold;
     margin-top: 1px;text-align: left;">
-                    Contact : 9158441328
+                    Contact :  ${contact}
                 </span>
     			<span style="float: left;
     margin-left: 20px;

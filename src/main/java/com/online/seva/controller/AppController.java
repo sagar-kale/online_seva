@@ -4,6 +4,7 @@ import com.online.seva.domain.Job;
 import com.online.seva.domain.User;
 import com.online.seva.service.JobService;
 import com.online.seva.service.SessionService;
+import com.online.seva.util.FormatDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class AppController {
     private SessionService sessionService;
     @Autowired
     private JobService jobService;
+    @Autowired
+    private FormatDate formatDate;
 
     @RequestMapping("/")
     String home(ModelMap modal) {
@@ -56,6 +59,14 @@ public class AppController {
         Optional<Job> byID = jobService.findByID(id);
         Job job = byID.get();
         modal.addAttribute("title", job.getTitle());
+        modal.addAttribute("post", job.getJobSubDetails().getPostName());
+        modal.addAttribute("qualification", job.getJobSubDetails().getEducationalQualifiction());
+        modal.addAttribute("salary", job.getJobSubDetails().getSalaryScale());
+        modal.addAttribute("age", job.getJobSubDetails().getAgeLimit());
+        modal.addAttribute("lastDate", job.getLastDate());
+        modal.addAttribute("totalPost", job.getTotalPosts());
+        modal.addAttribute("center", loggedUser.getCenterName());
+        modal.addAttribute("contact", loggedUser.getPhone());
         //image path src="../../../images/banner3.jpg"
         return "pdf/jobPDF";
 

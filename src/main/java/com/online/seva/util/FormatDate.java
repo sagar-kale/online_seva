@@ -24,4 +24,15 @@ public class FormatDate {
         //System.out.println("formatted date : " + format);
         return format;
     }
+
+    public Date getDateFromFormat(String format) {
+        Date date = null;
+        try {
+            date = dateFormat.parse(format);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //System.out.println("formatted date : " + format);
+        return date;
+    }
 }
