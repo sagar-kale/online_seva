@@ -43,7 +43,7 @@ public class JobController {
         }
         log.info("logged User ::: True");
         log.info("User Role::" + loggedUser.getRole());
-        if (!sessionService.isAdmin(loggedUser)) {
+        if (!sessionService.isAdmin(loggedUser) || !sessionService.isContentAdmin(loggedUser)) {
             response.setMsgType(AppConstant.ERROR);
             response.setMessage("You are not allowed to save jobs,Please contact admin");
             return response;
@@ -70,7 +70,7 @@ public class JobController {
         }
         log.info("logged User ::: True");
         log.info("User Role::" + loggedUser.getRole());
-        if (!sessionService.isAdmin(loggedUser)) {
+        if (!sessionService.isAdmin(loggedUser) || !sessionService.isContentAdmin(loggedUser)) {
             response.setMsgType(AppConstant.ERROR);
             response.setMessage("You are not allowed to save jobs,Please contact admin!!");
             return response;
