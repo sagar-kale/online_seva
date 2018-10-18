@@ -7,179 +7,230 @@ td {
 	background: #0ac712;
 	color: #fff;
 }
+
+.dropdown-menu li [ng-switch="datepickerMode"] {
+	padding: 0 5px !important;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+background: #fff;
+}
 </style>
-<div class="pgaeContainer" style="padding: 0px;">
+<div class="pgaeContainer" style="padding: 0px;" ng-controller ="adminContrl">
 	<div class="adminTabs">
 		<ul class="topUl">
 			<li ng-click="toggleTabs('show1')"
 				ng-class="{'Activebg':activeTab =='show1'}">Add Job</li>
+
+			<li ng-click="toggleTabs('show5');"
+				ng-class="{'Activebg':activeTab =='show5'}">Edit Job</li>
 				
-				<li ng-click="toggleTabs('show5');"
-				ng-class="{'Activebg':activeTab =='show5'}">Edit Job
-			</li>
+			 <#if loggedUser??>
+            <#if loggedUser.role == 'admin'>	
 			<li ng-click="toggleTabs('show2');getAllUserList();"
 				ng-class="{'Activebg':activeTab =='show2'}">User Management</li>
 			<li ng-click="toggleTabs('show3');getAllStudents()"
 				ng-class="{'Activebg':activeTab =='show3'}">Students Management
 			</li>
 			<li ng-click="toggleTabs('show4');getAllRoleList()"
-				ng-class="{'Activebg':activeTab =='show4'}">Role Management
-			</li>
+				ng-class="{'Activebg':activeTab =='show4'}">Role Management</li>
+		</#if>
+		</#if>		
 		</ul>
 		<div class="JobDetailsDivParent" ng-show="activeTab=='show5'">
-				  <div class="JobListTable">
-        <ul class="headerUl" style="    background: #102933;">
-            <li class="bigColumn">Job Title</li>
-            <li class="bigColumn">Sector</li>
-            <li>Qualfication</li>
-            <li>Last Date</li>
-            <li>Action</li>
-        </ul>
-        <ul class="evenrow" ng-repeat="job in jobdata">
-            <li ng-click="showJobDetails=!showJobDetails" class="linksClass bigColumn">{{job.title}} -{{job.totalPosts}}
-                Posts
-            </li>
-            <li class="bigColumn">{{job.sector}}</li>
-            <li>{{job.qualification}}</li>
-            <li>{{job.lastDate}}</li>
-            <li>
-                <button  ng-click="showJobDetails=!showJobDetails;">Edit Job</button>
-               
-            </li>
-            <div class="jobdetailsData evenrow" ng-show="showJobDetails">
-                <h2>Edit Job Details:</h2>
-				
+			<div class="JobListTable">
+				<ul class="headerUl tsTableUl" style="background: #102933;">
+					<li class="bigColumn">Job Title</li>
+					<li class="bigColumn">Sector</li>
+					<li>Qualfication</li>
+					<li>Last Date</li>
+					<li>Action</li>
+				</ul>
+				<ul class="evenrow tsTableUl" ng-repeat="job in jobdata" >
+					<li ng-click="showJobDetails=!showJobDetails"
+						class="linksClass bigColumn">{{job.title}}
+						- {{job.totalPosts}} Posts</li>
+					<li class="bigColumn">{{job.sector}}</li>
+					<li>{{job.qualification}}</li>
+					<li>{{job.lastDate | date}}</li>
+					<li>
+						<button ng-click="showJobDetails=!showJobDetails;" class="jstablebtn">Edit
+							Job</button>
+
+					</li>
+					<div class="jobdetailsData evenrow" ng-show="showJobDetails">
+						<h2>Edit Job Details:</h2>
+
 						<form name="EditForm" class="EditJobForm">
-											<div class="inputDiv">
-												<div class="title">Job Title</div>
-												<div class="title">
-													<input type="text" name="title" ng-model="job.title"
-														required />
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">Total Posts</div>
-												<div class="title">
-													<input type="text" name="TotalPosts"
-														ng-model="job.totalPosts" required />
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">Sector</div>
-												<div class="title">
-													<input type="text" name="Sector"
-														ng-model="job.sector" required />
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">Qualification</div>
-												<div class="title">
-													<input type="text" name="Qualification"
-														ng-model="job.qualification" required />
-												</div>
-											</div>
-									<!-- 		<div class="inputDiv">
-												<div class="title">Start Date</div>
-												<div class="title">
-													<input type="date" name="LastDate"
-														ng-model="job.startDate" required />
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">Last Date</div>
-												<div class="title">
-													<input type="date" name="LastDate"
-														ng-model="job.lastDate" required />
-												</div>
-											</div> -->
-											<div class="inputDiv">
-													<div class="title">Job Discription</div>
-													<div class="title">
-														<input type="text" name="aboutJob"
-															ng-model="job.jobSubDetails.aboutJob" required></input>
-													</div>
-												</div>
-												<div class="inputDiv">
-													<div class="title">Post Name</div>
-													<div class="title">
-														<input type="text" name="postName"
-															ng-model="job.jobSubDetails.postName" required />
-													</div>
-												</div>
-												<div class="inputDiv">
-													<div class="title">Total Vacancies</div>
-													<div class="title">
-														<input type="text" name="TotalVacancies"
-															ng-model="job.jobSubDetails.totalVacancies" required />
-													</div>
-												</div>
-												<div class="inputDiv">
-													<div class="title">Salary Scale</div>
-													<div class="title">
-														<input type="text" name="SalaryScale"
-															ng-model="job.jobSubDetails.salaryScale" required />
-													</div>
-												</div>
-												<div class="inputDiv">
-													<div class="title">Job Location</div>
-													<div class="title">
-														<input type="text" name="JobLocation"
-															ng-model="job.jobSubDetails.jobLocation" required />
-													</div>
-												</div>
-												<div class="inputDiv">
-												<div class="title">Educational Qualifiction</div>
-												<div class="title">
-													<input type="text" name="EducationalQualifiction"
-														ng-model="job.jobSubDetails.educationalQualifiction" required></input>
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">Age Limit</div>
-												<div class="title">
-													<input type="text" name="AgeLimit"
-														ng-model="job.jobSubDetails.ageLimit" required />
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">Selection Process</div>
-												<div class="title">
-													<input type="text" name="SelectionProcess"
-														ng-model="job.jobSubDetails.selectionProcess" required />
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">Application Fee</div>
-												<div class="title">
-													<input type="text" name="applicationFee"
-														ng-model="job.jobSubDetails.applicationFee" required />
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">How To Applay</div>
-												<div class="title">
-													<input type="text" name="Applay"
-														ng-model="job.jobSubDetails.howToApplay" required />
-												</div>
-											</div>
-											<div class="inputDiv">
-												<div class="title">YouTube Link</div>
-												<div class="title">
-													<input type="text" name="Applay"
-														ng-model="subDetails.YouTubeLink" required />
-												</div>
-											</div>
-											
-										</form>
-										<div class="EditJobDivBtn">
-										<button ng-click="EditJob(job)">Save Job</button>
-										</div>
-										
-            </div>
-        </ul>
+							<div class="inputDiv">
+								<div class="title">Job Title</div>
+								<div class="title">
+									<input type="text" name="title" ng-model="job.title" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Total Posts</div>
+								<div class="title">
+									<input type="text" name="TotalPosts" ng-model="job.totalPosts"
+										required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Sector</div>
+								<div class="title">
+									<input type="text" name="Sector" ng-model="job.sector" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Qualification</div>
+								<div class="title">
+									<input type="text" name="Qualification"
+										ng-model="job.qualification" required />
+								</div>
+							</div>
+
+							<div class="inputDiv">
+								<div class="title">Start Date</div>
+								<div class="title" style="position: relative;
+    float: left;
+    width: 100%;">
+									<input readonly type="text" class="form-control"
+										ng-model="job.startDate" 
+										datepicker-popup="d MMM yyyy" datepicker-options="{{options}}"
+										is-open="data.isOpen1" close-text="Close" name="dob1"   required />
 
 
-    </div>
+									<button type="button" ng-click="open($event)" class="btn btn-primary" style="position: absolute; right: 21%; top: 3px; height: 28px; width: 35px;">
+										<i class="glyphicon glyphicon-calendar"></i>
+									</button>
+									
+								</div>
+								
+							</div>
+
+			<div class="inputDiv">
+								<div class="title">Last Date</div>
+								<div class="title" style="position: relative;
+    float: left;
+    width: 100%;">
+									<input readonly type="text" class="form-control"
+										ng-model="job.lastDate" 
+										datepicker-popup="d MMM yyyy" datepicker-options="{{options}}"
+										is-open="data.isOpen2" close-text="Close" name="dob1"   required />
+
+
+									<button type="button" ng-click="open2($event)" class="btn btn-primary" style="position: absolute; right: 21%; top: 3px; height: 28px; width: 35px;">
+										<i class="glyphicon glyphicon-calendar"></i>
+									</button>
+									
+								</div>
+								
+							</div>
+							<!-- <div class="inputDiv" style="position: relative">
+							<div class="group" style="position: relative">
+								<label for="dob" class="label">Last Date</label> <input readonly
+									type="text" class="form-control" ng-model="job.lastDate1"
+									min-date="'1980-07-01T12:00:00.000Z'"
+									max-date="'2018-12-31T12:00:00.000Z'"
+									datepicker-popup="d MMM yyyy" datepicker-options="{{options}}"
+									is-open="opened" close-text="Close" name="dob" required />
+
+												      
+							      <button type="button" class="btn btn-primary" ng-click="openLast($event)" style="    position: absolute;
+    right: 8px;
+    top: 29px;">
+							        <i class="glyphicon glyphicon-calendar"></i>
+							      </button>
+					
+							</div>
+							</div> -->
+							<div class="inputDiv">
+								<div class="title">Job Discription</div>
+								<div class="title">
+									<input type="text" name="aboutJob"
+										ng-model="job.jobSubDetails.aboutJob" required></input>
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Post Name</div>
+								<div class="title">
+									<input type="text" name="postName"
+										ng-model="job.jobSubDetails.postName" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Total Vacancies</div>
+								<div class="title">
+									<input type="text" name="TotalVacancies"
+										ng-model="job.jobSubDetails.totalVacancies" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Salary Scale</div>
+								<div class="title">
+									<input type="text" name="SalaryScale"
+										ng-model="job.jobSubDetails.salaryScale" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Job Location</div>
+								<div class="title">
+									<input type="text" name="JobLocation"
+										ng-model="job.jobSubDetails.jobLocation" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Educational Qualifiction</div>
+								<div class="title">
+									<input type="text" name="EducationalQualifiction"
+										ng-model="job.jobSubDetails.educationalQualifiction" required></input>
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Age Limit</div>
+								<div class="title">
+									<input type="text" name="AgeLimit"
+										ng-model="job.jobSubDetails.ageLimit" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Selection Process</div>
+								<div class="title">
+									<input type="text" name="SelectionProcess"
+										ng-model="job.jobSubDetails.selectionProcess" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">Application Fee</div>
+								<div class="title">
+									<input type="text" name="applicationFee"
+										ng-model="job.jobSubDetails.applicationFee" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">How To Applay</div>
+								<div class="title">
+									<input type="text" name="Applay"
+										ng-model="job.jobSubDetails.howToApplay" required />
+								</div>
+							</div>
+							<div class="inputDiv">
+								<div class="title">YouTube Link</div>
+								<div class="title">
+									<input type="text" name="Applay"
+										ng-model="subDetails.YouTubeLink" required />
+								</div>
+							</div>
+
+						</form>
+						<div class="EditJobDivBtn">
+							<button ng-click="EditJob(job)">Save Job</button>
+						</div>
+
+					</div>
+				</ul>
+
+
+			</div>
 		</div>
 		<div class="JobDetailsDivParent" ng-show="activeTab=='show1'">
 			<div class="container" style="padding: 0px !important; width: 98%;">
@@ -203,7 +254,7 @@ td {
 							</div>
 							<div id="collapseOne" class="panel-collapse collapse"
 								role="tabpanel" aria-labelledby="headingOne">
-								<div class="panel-body animated zoomOut">
+								<div class="panel-body ">
 									<div class="mainDivJobs">
 										<form name="firstsection">
 											<div class="inputDiv">
@@ -279,7 +330,7 @@ td {
 							</div>
 							<div id="collapseTwo" class="panel-collapse collapse"
 								role="tabpanel" aria-labelledby="headingTwo">
-								<div class="panel-body animated zoomOut">
+								<div class="panel-body">
 									<div class="section2Div">
 
 										<div class="mainDivJobs">
@@ -357,7 +408,7 @@ td {
 							</div>
 							<div id="collapseThree" class="panel-collapse collapse"
 								role="tabpanel" aria-labelledby="headingThree">
-								<div class="panel-body animated zoomOut">
+								<div class="panel-body ">
 									<div class="mainDivJobs">
 										<form name="thirdsection">
 											<div class="inputDiv">
@@ -395,7 +446,7 @@ td {
 														ng-model="subDetails.Applay" required />
 												</div>
 											</div>
-												<div class="inputDiv">
+											<div class="inputDiv">
 												<div class="title">Download Pdf Link</div>
 												<div class="title">
 													<input type="text" name="PdfLink"
@@ -434,193 +485,188 @@ td {
 			</div>
 
 		</div>
-		<div class="" ng-show="activeTab=='show2'">
-		<div class="searchUser">
-			<div class="searchLableDiv">
-				All Users Data 
+		<div class="" ng-if="activeTab=='show2'">
+			<div class="searchUser">
+				<div class="searchLableDiv">All Users Data</div>
+				<div class="searchtextDiv"> 
+					<input type="text" name="searchUser" ng-model="searchUser"><span>Search
+						Here </span>
+				</div>
 			</div>
-			<div class="searchtextDiv">
-				<input type="text" name="searchUser" ng-model="searchUser"><span>Search Here </span> 
-			</div>
-		</div>
 
 			<div class="JobDetailsDivParent concatTable">
-			<table width="100%" cellspacing="0" border="1" style="position:relative;">
-				<thead id="TblHead">
-					<tr class="headerTr">
-						<td>User Name</td>
-						<td>Email</td>
-						<td>City</td>
-						<td>Current Role</td>
-						<td>Status</td>
-						<td>Action</td>
-						<!-- <td>Action</td>   -->
+				<table width="100%" cellspacing="0" border="1"
+					style="position: relative;">
+					<thead id="TblHead">
+						<tr class="headerTr">
+							<td>User Name</td>
+							<td>Email</td>
+							<td>City</td>
+							<td>Current Role</td>
+							<td>Status</td>
+							<td>Action</td>
+							<!-- <td>Action</td>   -->
 
 
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="user in userList | filter:searchUser" class="dataTr"
-						ng-class="{'even':$even,'odd':$odd}">
-						<td>{{user.name}}</td>
-						<td>{{user.username}}</td>
-						<td>{{user.city}}</td>
-						<td>{{user.role}}</td>
-						<td ng-show="!user.active" class="inactiveUser">Inactive</td>
-						<td ng-show="user.active" class="activeUser">Active</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in userList | filter:searchUser"
+							class="dataTr" ng-class="{'even':$even,'odd':$odd}">
+							<td>{{user.name}}</td>
+							<td>{{user.username}}</td>
+							<td>{{user.city}}</td>
+							<td>{{user.role}}</td>
+							<td ng-show="!user.active" class="inactiveUser">Inactive</td>
+							<td ng-show="user.active" class="activeUser">Active</td>
 
-						<td>
-							<button type="btn" class="approvebtn" ng-show="!user.active"
-								ng-click="activateUser(user)">Activate</button>
-							<button type="btn" class="approvebtn" ng-show="user.active"
-								ng-click="deActivateUser(user)" style="background: red;">Deactivate
-							</button>
-						</td>
+							<td>
+								<button type="btn" class="approvebtn" ng-show="!user.active"
+									ng-click="activateUser(user)">Activate</button>
+								<button type="btn" class="approvebtn" ng-show="user.active"
+									ng-click="deActivateUser(user)" style="background: red;">Deactivate
+								</button>
+							</td>
 
-						<!-- <td><button type="btn" class="rejectbtn" ng-click="removeUser()">Remove</button></td>   -->
+							<!-- <td><button type="btn" class="rejectbtn" ng-click="removeUser()">Remove</button></td>   -->
 
 
-					</tr>
-					<div ng-if="userList.length==0" class="emptyImgDiv">
-               
-	                 <img src="../images/empty.png" />
-	                 <div class="nodata">
-	              	   No Data Found
-                	 </div>
-                
-                </div>
-				</tbody>
-			</table>
-			
+						</tr>
+						<div ng-if="userList.length==0" class="emptyImgDiv">
+
+							<img src="../images/empty.png" />
+							<div class="nodata">No Data Found</div>
+
+						</div>
+					</tbody>
+				</table>
+
 			</div>
-					</div>
-		<div class="JobDetailsDivParent" ng-show="activeTab=='show3'">
+		</div>
+		<div class="JobDetailsDivParent" ng-if="activeTab=='show3'">
 			<div class="searchUser" style="margin-top: 0px;">
-			<div class="searchLableDiv">
-				All Students Data 
-			</div>
-			<div class="searchtextDiv">
-				<input type="text" name="searchUser" ng-model="searchStudent"><span>Search Here </span> 
-			</div>
-		</div>
-		<div class="JobDetailsDivParent concatTable">
-			<table width="100%" cellspacing="0" border="1" style="position:relative">
-				<thead id="TblHead">
-					<tr class="headerTr">
-						<td>Std Name</td>
-						<td>std Email</td>
-						<td>Course Name</td>
-						<td>Center Name</td>
-						<td>Owner Name</td>
-						<td>Approve</td>
-
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="std in studentList | filter:searchStudent" class="dataTr"
-						ng-class="{'even':$even,'odd':$odd}">
-						<td>{{std.name}}</td>
-						<td>{{std.email}}</td>
-						<td>{{std.courseName}}</td>
-						<td>{{std.user.centerName}}</td>
-						<td>{{std.user.name}}</td>
-						<td>
-							<button type="btn" class="approvebtn" ng-show="!std.approved"
-								ng-click="approveStudent(std);">Approve</button>
-							<button type="btn" class="approvebtn" ng-show="std.approved"
-								ng-click="approveStudent(std);" style="background: red;">De-Approve
-							</button>
-						</td>
-
-					</tr>
-				<div ng-if="studentList.length==0" class="emptyImgDiv">
-               
-	                 <img src="../images/empty.png"/>
-	                 <div class="nodata">
-	              	   No Data Found
-                	 </div>
-                
-                </div>
-				</tbody>
-			</table>
-		</div>
-			
-		</div>
-		<div ng-show="activeTab=='show4'">
-
-				<div class="coursepageContent" style="margin-top: 20px;">
-					<div class="userActionsDiv">
-						<ul>
-							<li ng-click="toggleForms('allroles')" class="activeLi">ALl Roles</li>
-							<li ng-click="toggleForms('User Roles');getAllUserList()">Change User Roles</li>
-						</ul>
-					</div>
-					<div class="corsePageLeftContent" ng-show="selectedDiv == 'allroles'">
-						All roles here
-					</div>
-					<div class="corsePageLeftContent" ng-show="selectedDiv == 'User Roles'">
-                            <div class="searchUser">
-                                <div class="searchLableDiv">
-                                    All Users Data
-                                </div>
-                                <div class="searchtextDiv">
-                                    <input type="text" name="searchUser" ng-model="searchUser"><span>Search Here </span>
-                                </div>
-                            </div>
-
-                            <div class="JobDetailsDivParent concatTable">
-                                <table width="100%" cellspacing="0" border="1" style="position:relative;">
-                                    <thead id="TblHead">
-                                    <tr class="headerTr">
-                                        <td>Email</td>
-                                        <td>Current Role</td>
-                                        <td>Select Role</td>
-                                        <td>Status</td>
-                                        <td>Action</td>
-                                        <!-- <td>Action</td>   -->
-
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="user in userList | filter:searchUser" class="dataTr"
-                                        ng-class="{'even':$even,'odd':$odd}">
-                                        <td>{{user.username}}</td>
-                                        <td>{{user.role}}</td>
-                                        <td>
-                                            <select ng-model="userrole" name="role" required
-                                                    ng-options="role as role.name for role in roleList">
-                                                <option value="">Select Role</option>
-                                            </select>
-                                        </td>
-                                        <td ng-show="!user.active" class="inactiveUser">Inactive</td>
-                                        <td ng-show="user.active" class="activeUser">Active</td>
-
-                                        <td>
-                                            <button type="btn" class="approvebtn" ng-click="changeUserRole(user,userrole)">Change Role</button>
-                                        </td>
-
-                                        <!-- <td><button type="btn" class="rejectbtn" ng-click="removeUser()">Remove</button></td>   -->
-
-
-                                    </tr>
-                                    <div ng-if="userList.length==0" class="emptyImgDiv">
-
-                                        <img src="../images/empty.png" />
-                                        <div class="nodata">
-                                            No Data Found
-                                        </div>
-
-                                    </div>
-                                    </tbody>
-                                </table>
-
-                            </div>
-					</div>
-
-
+				<div class="searchLableDiv">All Students Data</div>
+				<div class="searchtextDiv">
+					<input type="text" name="searchUser" ng-model="searchStudent"><span>Search
+						Here </span>
 				</div>
+			</div>
+			<div class="JobDetailsDivParent concatTable">
+				<table width="100%" cellspacing="0" border="1"
+					style="position: relative">
+					<thead id="TblHead">
+						<tr class="headerTr">
+							<td>Std Name</td>
+							<td>std Email</td>
+							<td>Course Name</td>
+							<td>Center Name</td>
+							<td>Owner Name</td>
+							<td>Approve</td>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="std in studentList | filter:searchStudent"
+							class="dataTr" ng-class="{'even':$even,'odd':$odd}">
+							<td>{{std.name}}</td>
+							<td>{{std.email}}</td>
+							<td>{{std.courseName}}</td>
+							<td>{{std.user.centerName}}</td>
+							<td>{{std.user.name}}</td>
+							<td>
+								<button type="btn" class="approvebtn" ng-show="!std.approved"
+									ng-click="approveStudent(std);">Approve</button>
+								<button type="btn" class="approvebtn" ng-show="std.approved"
+									ng-click="approveStudent(std);" style="background: red;">De-Approve
+								</button>
+							</td>
+
+						</tr>
+						<div ng-if="studentList.length==0" class="emptyImgDiv">
+
+							<img src="../images/empty.png" />
+							<div class="nodata">No Data Found</div>
+
+						</div>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+		<div ng-if="activeTab=='show4'">
+
+			<div class="coursepageContent" style="margin-top: 20px;">
+				<div class="userActionsDiv">
+					<ul>
+						<li ng-click="toggleForms('allroles')" class="activeLi">ALl
+							Roles</li>
+						<li ng-click="toggleForms('User Roles');getAllUserList()">Change
+							User Roles</li>
+					</ul>
+				</div>
+				<div class="corsePageLeftContent"
+					ng-show="selectedDiv == 'allroles'">All roles here</div>
+				<div class="corsePageLeftContent"
+					ng-show="selectedDiv == 'User Roles'">
+					<div class="searchUser">
+						<div class="searchLableDiv">All Users Data</div>
+						<div class="searchtextDiv">
+							<input type="text" name="searchUser" ng-model="searchUser"><span>Search
+								Here </span>
+						</div>
+					</div>
+
+					<div class="JobDetailsDivParent concatTable">
+						<table width="100%" cellspacing="0" border="1"
+							style="position: relative;">
+							<thead id="TblHead">
+								<tr class="headerTr">
+									<td>Email</td>
+									<td>Current Role</td>
+									<td>Select Role</td>
+									<td>Status</td>
+									<td>Action</td>
+									<!-- <td>Action</td>   -->
+
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="user in userList | filter:searchUser"
+									class="dataTr" ng-class="{'even':$even,'odd':$odd}">
+									<td>{{user.username}}</td>
+									<td>{{user.role}}</td>
+									<td><select ng-model="userrole" name="role" required
+										ng-options="role as role.name for role in roleList">
+											<option value="">Select Role</option>
+									</select></td>
+									<td ng-show="!user.active" class="inactiveUser">Inactive</td>
+									<td ng-show="user.active" class="activeUser">Active</td>
+
+									<td>
+										<button type="btn" class="approvebtn"
+											ng-click="changeUserRole(user,userrole)">Change Role</button>
+									</td>
+
+									<!-- <td><button type="btn" class="rejectbtn" ng-click="removeUser()">Remove</button></td>   -->
+
+
+								</tr>
+								<div ng-if="userList.length==0" class="emptyImgDiv">
+
+									<img src="../images/empty.png" />
+									<div class="nodata">No Data Found</div>
+
+								</div>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+
+
+			</div>
 
 		</div>
 	</div>

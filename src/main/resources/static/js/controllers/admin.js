@@ -10,6 +10,35 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
         $(this).addClass('activeLi');
 
     });
+    
+  //  *************  date functions strats **************
+    
+    $scope.optionsStartDate ={
+      	     formatDay: 'd1',
+      	         showWeeks: false	
+      };
+    
+  
+    $scope.data = {};
+    $scope.data.isOpen1 = false;
+    $scope.data.isOpen2 = false;
+    
+    $scope.optionsStartDate = false
+    $scope.open= function($event){
+      	   $event.preventDefault();
+             $event.stopPropagation();
+             $scope.data.isOpen1 = true;  
+        }
+    $scope.open2= function($event){
+   	   $event.preventDefault();
+          $event.stopPropagation();
+          $scope.data.isOpen2 = true;  
+     }
+    
+    
+//  *************  date functions strats **************  
+    
+    
     $scope.activeTab = "show1";
     $scope.toggleTabs = function (tab) {
         $scope.activeTab = tab;
@@ -79,6 +108,10 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
             {
                 name: 'user',
                 id: 2
+            },
+            {
+                name: 'content_admin',
+                id: 3
             }
         ];
 
@@ -119,7 +152,8 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
             });
     }
 
-
+    
+ 
     $scope.saveJobDetails = function () {
 
         var jobdata = {
@@ -149,9 +183,8 @@ app.controller('adminContrl', ['$scope', '$state', 'apiLink', 'APIService', func
             }
 
         };
+
         var url = apiLink.saveJobDetails;
-
-
         APIService.httpPostJson(url, jobdata).then(
             function (res) {
 

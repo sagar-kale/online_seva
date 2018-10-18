@@ -1,4 +1,4 @@
-var app = angular.module('demoApp', ['ui.router']);
+var app = angular.module('demoApp', ['ui.router','ui.bootstrap']);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
     $stateProvider
@@ -38,6 +38,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "pagerouting/contact",
             controller: "contactCntrl"
         })
+        .state("header.exam", {
+            url: "/exam",
+            templateUrl: "pagerouting/exampage",
+            controller: "contactCntrl"
+        })
+
 
 });
 

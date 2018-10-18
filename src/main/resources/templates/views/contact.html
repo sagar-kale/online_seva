@@ -1,6 +1,6 @@
 
 
-<div class="pgaeContainer" style="    background-color: #00b241; display:none">
+<div class="pgaeContainer" >
 	<div class="ContactUsPage"> 
 	   	<div class="contactUstitle">Contact Us </div>
 	   	<form name="conatctFrom" class="conatctFrom">
@@ -21,46 +21,3 @@
 
 
 
-<div class="pgaeContainer" style="background-color: #fff;padding: 0px;">
-	<div class="examleftDiv">
-		<div class="anserClicked">
-			<div ng-repeat="job in questionSet" class="qestioncircule" ng-class="{'done':job.isAnswered == true}">
-				{{$index+1}}
-			</div>
-		</div>
-		<div class="ansercnt">
-			<span>Answered Question :</span> <span>{{cnt}}</span>
-		</div>
-		<div class="ansercnt">
-			<span>Remaining Questions:</span> <span>{{ questionSet.length - cnt}}</span>
-		</div>
-	</div>
-	<div class="examRightDiv">
-			<div ng-repeat="question in questionSet" class="questionAndAnswer">
-				<div class="qusDivData">
-					
-					<div class="questionDivFont">
-						<span>{{$index+1}} ) </span>
-						<span>{{question.question}}</span>
-					</div>
-					<div>
-						
-					</div>
-						<label ng-repeat="option in question.options" ng-click="isAnswered(question)">
-							 <input type="radio" name="{{question.id}}" ng-model="option.b"/>
-							 {{option.opt}}
-						</label>
-						
-					 	
-						
-					
-					<!-- <div class="optionDivFont"  ng-click="isAnswered(question,question.options.b)"  >B) {{question.options.b}}</div>
-					<div class="optionDivFont"  ng-click="isAnswered(question,question.options.c)" >C) {{question.options.c}}</div>
-					<div class="optionDivFont"  ng-click="isAnswered(question,question.options.d)" >D) {{question.options.d}}</div> -->
-											
-					
-				</div>
-				
-			</div>
-	</div>
-</div>

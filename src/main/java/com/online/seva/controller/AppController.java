@@ -21,101 +21,106 @@ import java.util.Optional;
 
 @Controller
 public class AppController {
-    private static final String TEMPLATE_PREFIX = "views/";
-    private static final String ADMIN_PAGE = "admin";
-    private static final String forbidden = "/forbidden";
-    private static final Logger logger = LoggerFactory.getLogger(AppController.class);
-    @Autowired
-    private SessionService sessionService;
-    @Autowired
-    private JobService jobService;
-    @Autowired
-    private FormatDate formatDate;
+	private static final String TEMPLATE_PREFIX = "views/";
+	private static final String ADMIN_PAGE = "admin";
+	private static final String forbidden = "/forbidden";
+	private static final Logger logger = LoggerFactory.getLogger(AppController.class);
+	@Autowired
+	private SessionService sessionService;
+	@Autowired
+	private JobService jobService;
+	@Autowired
+	private FormatDate formatDate;
 
-    @RequestMapping("/")
-    String home(ModelMap modal) {
-        modal.addAttribute("title", "online-seva");
-        return "index";
+	@RequestMapping("/")
+	String home(ModelMap modal) {
+		modal.addAttribute("title", "online-seva");
+		return "index";
 
-    }
+	}
 
-    @RequestMapping("/login")
-    String login(ModelMap modal) {
-        modal.addAttribute("title", "online-seva");
-        return "user_home";
+	@RequestMapping("/login")
+	String login(ModelMap modal) {
+		modal.addAttribute("title", "online-seva");
+		return "user_home";
 
-    }
+	}
 
-    @RequestMapping("/jobs/download/poster/{id}")
-    String downloadPoster(@PathVariable("id") String id, ModelMap modal, HttpServletRequest request, RedirectAttributes redirectAttributes) {
-        User loggedUser = sessionService.getLoggedUser(request);
-        if (null == loggedUser) {
-            redirectAttributes.addFlashAttribute("routed", true);
-            redirectAttributes.addFlashAttribute("logged", false);
-            return "redirect:" + forbidden;
-        }
+	@RequestMapping("/jobs/download/poster/{id}")
+	String downloadPoster(@PathVariable("id") String id, ModelMap modal, HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+		User loggedUser = sessionService.getLoggedUser(request);
+		if (null == loggedUser) {
+			redirectAttributes.addFlashAttribute("routed", true);
+			redirectAttributes.addFlashAttribute("logged", false);
+			return "redirect:" + forbidden;
+		}
 
-        logger.info("Id::::: " + id);
-        Optional<Job> byID = jobService.findByID(id);
-        Job job = byID.get();
-        modal.addAttribute("title", job.getTitle());
-        modal.addAttribute("post", job.getJobSubDetails().getPostName());
-        modal.addAttribute("qualification", job.getJobSubDetails().getEducationalQualifiction());
-        modal.addAttribute("salary", job.getJobSubDetails().getSalaryScale());
-        modal.addAttribute("age", job.getJobSubDetails().getAgeLimit());
-        modal.addAttribute("lastDate", formatDate.getFormatDate(job.getLastDate()));
-        modal.addAttribute("totalPost", job.getTotalPosts());
-        modal.addAttribute("center", loggedUser.getCenterName());
-        modal.addAttribute("contact", loggedUser.getPhone());
-        //image path src="../../../images/banner3.jpg"
-        return "pdf/jobPDF";
+		logger.info("Id::::: " + id);
+		Optional<Job> byID = jobService.findByID(id);
+		Job job = byID.get();
+		modal.addAttribute("title", job.getTitle());
+		modal.addAttribute("post", job.getJobSubDetails().getPostName());
+		modal.addAttribute("qualification", job.getJobSubDetails().getEducationalQualifiction());
+		modal.addAttribute("salary", job.getJobSubDetails().getSalaryScale());
+		modal.addAttribute("age", job.getJobSubDetails().getAgeLimit());
+		modal.addAttribute("lastDate", formatDate.getFormatDate(job.getLastDate()));
+		modal.addAttribute("totalPost", job.getTotalPosts());
+		modal.addAttribute("center", loggedUser.getCenterName());
+		modal.addAttribute("contact", loggedUser.getPhone());
+		// image path src="../../../images/banner3.jpg"
+		return "pdf/jobPDF";
 
-    }
+	}
 
-    @RequestMapping("/chat")
-    public String chat(ModelMap modal, HttpServletRequest request, RedirectAttributes redirectAttributes) {
-        User loggedUser = sessionService.getLoggedUser(request);
-        if (null == loggedUser) {
-            redirectAttributes.addFlashAttribute("routed", true);
-            redirectAttributes.addFlashAttribute("logged", false);
-            return "redirect:" + forbidden;
-        }
-        modal.addAttribute("name", loggedUser.getName());
-        return "views/chat";
+	@RequestMapping("/chat")
+	public String chat(ModelMap modal, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		User loggedUser = sessionService.getLoggedUser(request);
+		if (null == loggedUser) {
+			redirectAttributes.addFlashAttribute("routed", true);
+			redirectAttributes.addFlashAttribute("logged", false);
+			return "redirect:" + forbidden;
+		}
+		modal.addAttribute("name", loggedUser.getName());
+		return "views/chat";
 
-    }
+	}
 
-    @RequestMapping("/pagerouting/{page}")
-    String partialHandler(@PathVariable("page") final String page, HttpServletRequest request, RedirectAttributes redirectAttributes, HttpServletResponse response, Model model) {
-        logger.error("page::" + page);
-        String view = TEMPLATE_PREFIX + page.trim();
-        if (!page.equalsIgnoreCase("login")) {
-            User loggedUser = sessionService.getLoggedUser(request);
-            if (null == loggedUser) {
-                redirectAttributes.addFlashAttribute("routed", true);
-                redirectAttributes.addFlashAttribute("logged", false);
-                return "redirect:" + forbidden;
-            }
-            logger.info("logged User ::: " + loggedUser);
+	@RequestMapping("/pagerouting/{page}")
+	String partialHandler(@PathVariable("page") final String page, HttpServletRequest request,
+			RedirectAttributes redirectAttributes, HttpServletResponse response, Model model) {
+		logger.error("page::" + page);
+		String view = TEMPLATE_PREFIX + page.trim();
+		if (!page.equalsIgnoreCase("login")) {
+			User loggedUser = sessionService.getLoggedUser(request);
+			if (null == loggedUser) {
+				redirectAttributes.addFlashAttribute("routed", true);
+				redirectAttributes.addFlashAttribute("logged", false);
+				return "redirect:" + forbidden;
+			}
+			logger.info("logged User ::: " + loggedUser);
 
-            if (!page.equalsIgnoreCase(ADMIN_PAGE)) {
-                if (page.equals("header")) {
-                    model.addAttribute("loggedUser", loggedUser);
-                }
-                return view;
-            }
+			if (!page.equalsIgnoreCase(ADMIN_PAGE)) {
+				if (page.equals("header")) {
+					model.addAttribute("loggedUser", loggedUser);
+				}
+				return view;
+			}
 
-            if (sessionService.isAdmin(loggedUser))
-                return view;
-            logger.info("not admin");
-            redirectAttributes.addFlashAttribute("logged", true);
-            redirectAttributes.addFlashAttribute("name", loggedUser.getName());
-            return "redirect:/" + "accessDenied";
-        }
-        /*User loggedUser = sessionService.getLoggedUser(request);
-        if (null == loggedUser)
-            return view;*/
+			if (sessionService.isAdmin(loggedUser) || sessionService.isContentAdmin(loggedUser)) {
+				model.addAttribute("loggedUser", loggedUser);
+				return view;
+			}
+			logger.info("not admin");
+			redirectAttributes.addFlashAttribute("logged", true);
+			redirectAttributes.addFlashAttribute("name", loggedUser.getName());
+			return "redirect:/" + "accessDenied";
+		}
+		/*
+		 * User loggedUser = sessionService.getLoggedUser(request); if (null ==
+		 * loggedUser) return view;
+		 */
 
-        return view;
-    }
+		return view;
+	}
 }

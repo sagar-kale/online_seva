@@ -108,7 +108,19 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
        
     };
 
-
+    $scope.options ={
+   	     formatDay: 'd',
+   	         showWeeks: false	
+   }
+  
+     $scope.dt = new Date();
+   
+     $scope.open= function($event){
+   	   $event.preventDefault();
+          $event.stopPropagation();
+          $scope.opened = true;  
+     }
+    
     $scope.districtList = [
         "Ahmednagar",
         "Akola",
@@ -147,5 +159,6 @@ app.controller('logincontroller', ['$scope', '$state', 'apiLink', 'APIService', 
         "Washim",
         "Yavatmal"
     ];
+  
 
 }]);

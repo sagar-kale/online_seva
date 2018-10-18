@@ -2,23 +2,23 @@
     <div class="currentjobsop">Current Job Openings</div>
 
     <div class="JobListTable">
-        <ul class="headerUl" style="    background: #102933;">
+        <ul class="headerUl tsTableUl" style="    background: #102933;">
             <li class="bigColumn">Job Title</li>
             <li class="bigColumn">Sector</li>
             <li>Qualfication</li>
             <li>Last Date</li>
             <li>Action</li>
         </ul>
-        <ul class="evenrow" ng-repeat="job in jobdata">
+        <ul class="evenrow tsTableUl" ng-repeat="job in jobdata">
             <li ng-click="showJobDetails=!showJobDetails" class="linksClass bigColumn">{{job.title}} -{{job.totalPosts}}
                 Posts
             </li>
             <li class="bigColumn">{{job.sector}}</li>
             <li>{{job.qualification}}</li>
-            <li>{{job.lastDate}}</li>
+            <li>{{job.lastDate | date}}</li>
             <li>
-                <button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button>
-                <button ng-show="showJobDetails" ng-click="showJobDetails=!showJobDetails;">Hide Details</button>
+                <button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;" class="jstablebtn">View Details</button>
+                <button ng-show="showJobDetails" ng-click="showJobDetails=!showJobDetails;" class="jstablebtn">Hide Details</button>
             </li>
             <div class="jobdetailsData evenrow" ng-show="showJobDetails">
                 <h2>Job Details:</h2>
@@ -29,11 +29,11 @@
                 <div class="jobInfo">
                     <div>
                         <span class="jobtitletext">Start Date : </span>
-                        <span class="jobTextValue">{{job.startDate}}</span>
+                        <span class="jobTextValue">{{job.startDate | date}}</span>
                     </div>
                     <div>
                         <span class="jobtitletext">Last Date : </span>
-                        <span class="jobTextValue">{{job.lastDate}}</span>
+                        <span class="jobTextValue">{{job.lastDate | date}}</span>
                     </div>
                 </div>
                 <div class="jobInfo">
@@ -74,7 +74,7 @@
                         <span class="jobTextValue">{{job.jobSubDetails.applicationFee}}</span>
                     </div>
 
-                    <div>
+                    <div style="display:none"> 
                         <span class="jobtitletext">How to Apply : </span>
                         <span class="jobTextValue">{{job.jobSubDetails.howToApplay}}</span>
                     </div>

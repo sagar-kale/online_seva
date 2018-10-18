@@ -8,14 +8,14 @@
     border-top: 0px;
 }
 
-.JobListTable ul {
+.JobListTable .tsTableUl {
     margin: 0px;
     padding: 0px;
     float: left;
     width: 100%;
 }
 
-.JobListTable ul li {
+.JobListTable .tsTableUl >li {
     list-style-type: none;
     display: inline-block;
     list-style-type: none;
@@ -98,7 +98,7 @@
     cursor: pointer;
 }
 
-.JobListTable ul li button {
+.JobListTable ul li .jstablebtn {
     border: none;
     height: 36px;
     width: 72%;

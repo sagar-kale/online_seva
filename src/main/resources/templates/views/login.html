@@ -1,3 +1,8 @@
+<style>
+.dropdown-menu li [ng-switch="datepickerMode"] {
+    padding: 0 5px;
+    }
+</style>
 <div style="    background: #242e4cde;    min-height: 100vh;width:100%;">
     <div class="login-wrap" ng-class="{sethieghtToWrapper:!isLoginTab}">
         <div class="login-html">
@@ -93,11 +98,38 @@
                             <span class="invalidtextColor"
                                   ng-show="myForm.contact.$error.required && myForm.contact.$dirty">required</span>
                         </div>
-                        <div class="group">
+                     <div class="group" style="position:relative">
                             <label for="dob" class="label">DOB</label>
-                            <input id="dob" ng-model="formData.dob" type="date" class="input" name="dob" required>
+                            
+							<!--     <span class="input-group-btn">
+							      <button type="button" class="btn btn-primary" ng-click="open($event)">
+							        <i class="glyphicon glyphicon-calendar"></i>
+							      </button>
+							    </span> -->
+							    <input readonly
+							      type="text"
+							      class="form-control"
+							      ng-model="formData.dob"
+							      min-date="'1980-07-01T12:00:00.000Z'"
+							      max-date="'2018-12-31T12:00:00.000Z'"
+							      datepicker-popup="d MMM yyyy"
+							      datepicker-options="{{options1}}"
+							      is-open="opened"
+							      close-text="Close"							   
+							      name="dob"
+							      required/>
+							      
+							      <button type="button" class="btn btn-primary" ng-click="open($event)" style="    position: absolute;
+    right: 8px;
+    top: 29px;">
+							        <i class="glyphicon glyphicon-calendar"></i>
+							      </button>
+					
+                            <!-- <input id="dob" ng-model="formData.dob" type="date" class="input" name="dob" required> -->
                             <span class="invalidtextColor" ng-show="myForm.dob.$error.required && myForm.dob.$dirty">required</span>
                         </div>
+                    
+							
                         <div class="group">
                             <label for="Addhar" class="label">Addhar</label>
                             <input id="Addhar" ng-model="formData.Addhar" name="Addhar" type="number" class="input"

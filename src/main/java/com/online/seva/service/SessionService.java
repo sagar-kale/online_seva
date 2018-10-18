@@ -36,6 +36,16 @@ public class SessionService {
         return isAdmin;
     }
 
+    public boolean isContentAdmin(User loggedUser) {
+        boolean isAdmin = false;
+        User byUsername = userService.findByUsername(loggedUser.getUsername());
+        log.info("User Role::" + byUsername.getRole());
+        if (byUsername.getRole().equalsIgnoreCase("content_admin"))
+            isAdmin = true;
+        log.info("isAdmin ::: " + isAdmin);
+        return isAdmin;
+    }
+
     public boolean checkForSuperAdmin(String username) {
         log.info("checking if any action against super admin::" + username);
         if (username.equalsIgnoreCase("sagark.kale@hotmail.com"))
