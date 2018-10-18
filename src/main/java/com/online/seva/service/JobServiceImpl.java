@@ -58,4 +58,9 @@ public class JobServiceImpl implements JobService {
         jobRepository.deleteInBatch(jobList);
         return true;
     }
+
+    @Override
+    public List<Job> findAll() {
+        return jobRepository.findAll();
+    }
 }

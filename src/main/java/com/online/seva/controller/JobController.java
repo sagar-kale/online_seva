@@ -6,6 +6,7 @@ import com.online.seva.domain.User;
 import com.online.seva.service.JobService;
 import com.online.seva.service.SessionService;
 import com.online.seva.util.AppConstant;
+import com.online.seva.util.JobRemoveScheduler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,8 @@ public class JobController {
     private JobService jobService;
     @Autowired
     private SessionService sessionService;
+    @Autowired
+    private JobRemoveScheduler jobRemoveScheduler;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Job> getAllJobs() {
@@ -81,5 +84,32 @@ public class JobController {
             response.setMsgType(AppConstant.ERROR);
         }
         return response;
+    }
+
+    @RequestMapping(value = "/launch", method = RequestMethod.GET)
+    public Response updateJob(HttpServletRequest request) {
+        Response response = new Response();
+        User loggedUser = sessionService.getLoggedUser(request);
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session Expired .. Please Login...");
+            return response;
+        }
+        if (!sessionService.isAdmin(loggedUser)) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Permission denied,Please contact admin");
+            return response;
+        }
+        boolean toggle = jobRemoveScheduler.toggle();
+        response.setMsgType(AppConstant.SUCCESS);
+        if (toggle) {
+            response.setMessage("Job Activated");
+            log.info("job activated");
+            return response;
+        }
+        log.info("job deactivated..");
+        response.setMessage("Job Deactivated");
+        return response;
+
     }
 }

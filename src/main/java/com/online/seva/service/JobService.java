@@ -15,4 +15,6 @@ public interface JobService {
     Optional<Job> findByID(String id);
 
     boolean deleInBatch(List<Job> jobList);
+
+    List<Job> findAll();
 }

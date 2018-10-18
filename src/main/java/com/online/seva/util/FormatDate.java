@@ -21,7 +21,7 @@ public class FormatDate {
             e.printStackTrace();
         }
         String format = dateFormat.format(date);
-        System.out.println("formatted date : " + format);
+        //System.out.println("formatted date : " + format);
         return format;
     }
 }
