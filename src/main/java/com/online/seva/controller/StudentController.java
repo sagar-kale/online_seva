@@ -2,6 +2,7 @@ package com.online.seva.controller;
 
 import com.online.seva.domain.Response;
 import com.online.seva.domain.Student;
+import com.online.seva.domain.StudentImage;
 import com.online.seva.domain.User;
 import com.online.seva.service.SessionService;
 import com.online.seva.service.StudentService;
@@ -13,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -76,6 +79,45 @@ public class StudentController {
         return response;
     }
 
+    @RequestMapping(value = "/image/upload", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Response uploadStudentImage(StudentImage studentImage, HttpServletRequest request) {
+        Response response = new Response();
+        log.info("Under Student controller :: Student Image Upload");
+        User loggedUser = sessionService.getLoggedUser(request);
+        log.info("checking logged user  ");
+        if (null == loggedUser) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Session expired .. please login again");
+            return response;
+        }
+        log.info("logged user:: true");
+        log.info("Student Email::: " + studentImage.getEmail());
+        if (null == studentImage) {
+            response.setMsgType(AppConstant.ERROR);
+            if (null == studentImage.getEmail())
+                response.setMessage("Student email cant be empty");
+            response.setMessage("Student details empty");
+            return response;
+        }
+        log.info("Fetching student for uploading its image ::: " + studentImage.getEmail());
+        if (!studentService.isExists(studentImage.getEmail())) {
+            response.setMessage("Sorry , we could not able to find given details in our record.");
+            response.setMsgType(AppConstant.ERROR);
+            return response;
+        }
+        Student student = studentService.findByEmail(studentImage.getEmail()).get();
+        studentImage.setStudent(student);
+        StudentImage image = studentService.storeImage(studentImage);
+        if (null == image) {
+            response.setMsgType(AppConstant.ERROR);
+            response.setMessage("Something went wrong while uploading image");
+            return response;
+        }
+        response.setMessage("Image uploaded successfully");
+        response.setMsgType(AppConstant.SUCCESS);
+        return response;
+    }
+
     @RequestMapping(value = "/all", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Response getAllStudent(@RequestBody String username, HttpServletRequest request) {
         Response response = new Response();
@@ -96,7 +138,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public Response fetchStdents(HttpServletRequest request) {
+    public Response fetchStudents(HttpServletRequest request) {
         log.info("fetching all student");
         Response response = new Response();
         User loggedUser = sessionService.getLoggedUser(request);
@@ -182,5 +224,15 @@ public class StudentController {
         response.setMsgType(AppConstant.SUCCESS);
         response.setMessage("Student Removed SuccessFully");
         return response;
+    }
+
+    @RequestMapping(value = "/fetch/image/{id}", method = RequestMethod.GET)
+    public void showImage(@PathVariable String id, HttpServletResponse response, HttpServletRequest request)
+            throws IOException {
+        log.info("fetching image of id:::" + id);
+        StudentImage imageById = studentService.getImageById(id);
+        response.setContentType(imageById.getImageType());
+        response.getOutputStream().write(imageById.getImage());
+        response.getOutputStream().close();
     }
 }

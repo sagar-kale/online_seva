@@ -8,9 +8,16 @@ logging:
     org.hibernate: error
     org.apache.http: error
     com.online.seva: info
+
 email.from: online-seva@hotmail.com
 
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
+      file-size-threshold: 2KB
+      max-request-size: 20MB
   mail:
     default-encoding: UTF-8
     host: smtp-mail.outlook.com
@@ -66,7 +73,7 @@ spring:
 spring:
   profiles: mysql_cloud
   datasource:
-    url: "jdbc:mysql://onlinesevadba.ce6qczkzqui7.ap-south-1.rds.amazonaws.com:3306/online_seva?useUnicode=yes&characterEncoding=UTF-8&verifyServerCertificate=false&useSSL=true"
+    url: "jdbc:mysql://online-seva-db.cqgwhirim9s5.ap-south-1.rds.amazonaws.com:3306/online_seva?useUnicode=yes&characterEncoding=UTF-8&verifyServerCertificate=false&useSSL=true"
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: onlineseva

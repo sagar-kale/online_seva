@@ -1,6 +1,7 @@
 package com.online.seva.service;
 
 import com.online.seva.domain.Student;
+import com.online.seva.domain.StudentImage;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,4 +25,10 @@ public interface StudentService {
     boolean updateStudent(Student student);
 
     boolean updateStudentApproveStatus(String email);
+
+    StudentImage storeImage(StudentImage studentImage);
+
+    StudentImage fetchImage(Student student);
+
+    StudentImage getImageById(String id);
 }

@@ -1,6 +1,7 @@
 package com.online.seva.controller;
 
 import com.online.seva.domain.Student;
+import com.online.seva.domain.StudentImage;
 import com.online.seva.service.SessionService;
 import com.online.seva.service.StudentService;
 import com.online.seva.util.PdfGenaratorUtil;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayInputStream;
 import java.sql.Date;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -46,10 +48,14 @@ public class PdfController {
         if (!byEmail.get().isApproved())
             throw new RuntimeException("You are not authorize to access your doc.");
         Student student = byEmail.get();
+        StudentImage studentImage = studentService.fetchImage(student);
         Map<String, Object> model = new HashMap<>();
         model.put("name", student.getName());
         model.put("course", student.getCourseName());
-        model.put("img", "https://ae01.alicdn.com/kf/HTB1Ihqyacz85uJjSZFoq6xjcpXaS/QUEENS-KISS-Round-Kid-Sunglasses-Children-Boys-Girls-Cute-Mirror-Baby-Circle-Sun-Glasses-Flowers-Frame.jpg_640x640.jpg");
+        String encodedString = Base64.getEncoder().encodeToString(studentImage.getImage());
+        //log.info("image data::" + encodedString + "\nImg type::::" + studentImage.getImageType());
+        model.put("imgType", studentImage.getImageType());
+        model.put("img", encodedString);
         model.put("grade", "71%");
         model.put("date", new Date(System.currentTimeMillis()));
 

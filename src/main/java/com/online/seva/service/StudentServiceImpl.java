@@ -1,13 +1,20 @@
 package com.online.seva.service;
 
 import com.online.seva.domain.Student;
+import com.online.seva.domain.StudentImage;
 import com.online.seva.domain.User;
+import com.online.seva.exception.StorageException;
+import com.online.seva.exception.StorageFileNotFoundException;
 import com.online.seva.repositories.jpa.JpaUserRepository;
+import com.online.seva.repositories.jpa.StudentImageRepository;
 import com.online.seva.repositories.jpa.StudentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +28,9 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
     @Autowired
     private JpaUserRepository jpaUserRepository;
+    @Autowired
+    private StudentImageRepository studentImageRepository;
+
 
     @Override
     public Optional<Student> findByEmail(String email) {
@@ -118,6 +128,45 @@ public class StudentServiceImpl implements StudentService {
         Student save = studentRepository.save(student);
         log.info("updated Student status :::: current status:: " + save.isApproved());
         return true;
+    }
+
+    @Override
+    public StudentImage storeImage(StudentImage studentImage) {
+        MultipartFile multipartFile = studentImage.getFile();
+        // Normalize file name
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+
+        try {
+            // Check if the file's name contains invalid characters
+            if (multipartFile.isEmpty() || fileName.isEmpty()) {
+                //throw new StorageException("Failed to store empty file " + filename);
+                log.error("Failed to store empty file::: " + multipartFile.getSize());
+                log.error("file::: " + multipartFile);
+                log.error("file name::: " + fileName);
+                return null;
+            }
+            if (fileName.contains("..")) {
+                throw new StorageException("Sorry! Filename contains invalid path sequence " + fileName);
+            }
+
+            studentImage.setImageName(fileName);
+            studentImage.setImageType(multipartFile.getContentType());
+            studentImage.setImage(multipartFile.getBytes());
+            return studentImageRepository.save(studentImage);
+        } catch (IOException ex) {
+            throw new StorageException("Could not store file " + fileName + ". Please try again!", ex);
+        }
+
+    }
+
+    @Override
+    public StudentImage fetchImage(Student student) {
+        return studentImageRepository.findByStudent(student);
+    }
+
+    public StudentImage getImageById(String fileId) {
+        return studentImageRepository.findById(fileId)
+                .orElseThrow(() -> new StorageFileNotFoundException("File not found with id " + fileId));
     }
 
 }

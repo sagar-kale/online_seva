@@ -32,7 +32,7 @@ public class PdfGenaratorUtil {
             Template t = freemarkerConfig.getTemplate(templateName);
             String processedHtml = FreeMarkerTemplateUtils.processTemplateIntoString(t, map);
             ConverterProperties converterProperties = new ConverterProperties();
-            converterProperties.setBaseUri("target/classes/templates/pdf/");
+            //converterProperties.setBaseUri("target/classes/templates/pdf/");
             PdfWriter pdfWriter = new PdfWriter(outputStream, new WriterProperties().setFullCompressionMode(true));
             HtmlConverter.convertToPdf(processedHtml, outputStream, converterProperties);
             /*ITextRenderer renderer = new ITextRenderer();
