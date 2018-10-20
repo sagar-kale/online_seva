@@ -133,6 +133,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentImage storeImage(StudentImage studentImage) {
         MultipartFile multipartFile = studentImage.getFile();
+        Optional<StudentImage> byStudent = studentImageRepository.findByStudent(studentImage.getStudent());
         // Normalize file name
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
@@ -152,6 +153,14 @@ public class StudentServiceImpl implements StudentService {
             studentImage.setImageName(fileName);
             studentImage.setImageType(multipartFile.getContentType());
             studentImage.setImage(multipartFile.getBytes());
+            if (byStudent.isPresent()) {
+                log.info("Image already present hence overriding the image...");
+                StudentImage existedStd = byStudent.get();
+                existedStd.setImageName(fileName);
+                existedStd.setImageType(multipartFile.getContentType());
+                existedStd.setImage(multipartFile.getBytes());
+                return studentImageRepository.save(existedStd);
+            }
             return studentImageRepository.save(studentImage);
         } catch (IOException ex) {
             throw new StorageException("Could not store file " + fileName + ". Please try again!", ex);
@@ -161,7 +170,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentImage fetchImage(Student student) {
-        return studentImageRepository.findByStudent(student);
+        return studentImageRepository.findByStudent(student).get();
     }
 
     public StudentImage getImageById(String fileId) {
