@@ -23,8 +23,8 @@ public class JobRemoveScheduler {
 
     private final AtomicBoolean enabled = new AtomicBoolean(false);
 
-    @Scheduled(fixedDelay = 60000)
-    //@Scheduled(cron = "0 0 0 * * *", zone = "Indian/Maldives")
+    //@Scheduled(fixedDelay = 60000)
+    @Scheduled(cron = "0 0 0 * * *", zone = "Indian/Maldives")
     public void executeJob() throws ParseException {
         if (enabled.get()) {
             List<Job> tobeDeleted = new ArrayList<>();

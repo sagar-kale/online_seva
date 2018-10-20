@@ -53,7 +53,7 @@ public class PdfController {
         model.put("name", student.getName());
         model.put("course", student.getCourseName());
         String encodedString = Base64.getEncoder().encodeToString(studentImage.getImage());
-        //log.info("image data::" + encodedString + "\nImg type::::" + studentImage.getImageType());
+        log.info("Img type::::" + studentImage.getImageType());
         model.put("imgType", studentImage.getImageType());
         model.put("img", encodedString);
         model.put("grade", "71%");
