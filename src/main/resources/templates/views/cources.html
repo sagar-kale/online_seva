@@ -17,7 +17,7 @@
                 <li ng-click="toggleForms('Admit Cards')">Check Admit Cards</li>
                 <li ng-click="toggleForms('getAllStd');getAllStudentsList();">All Students</li>
                 <li ng-click="toggleForms('Bonafide')">Generate Bonafide</li>
-                <li ng-click="toggleForms('Learning')"> Learning</li>
+                <li ng-click="toggleForms('Learning');getAllStudentsList();">Edit Student Photo</li>
             </ul>
         </div>
         <div class="corsePageLeftContent" ng-show="selectedDiv == 'Register'">
@@ -181,6 +181,7 @@
                             </div>
                         </div>
                     </div>
+                  
 <!--                    <div class="loading-spiner-holder" data-loading ><div class="loading-spiner">&lt;!&ndash;<img src="..." />&ndash;&gt; Loading...</div></div>-->
                     <button type="btn" ng-click="saveStudent(student)" ng-disabled=" !stdRegForm.$valid"
                             class="saveStdBtn" ng-class="{'activeBtnBg':stdRegForm.$valid}">Save
@@ -262,7 +263,50 @@
             Bonafide
         </div>
         <div class="corsePageLeftContent" ng-show="selectedDiv == 'Learning'">
-            Learning
+        	<div class="searchUser" style="margin-top: 0px;">
+			<div class="searchLableDiv">
+				Edit Student Profile Image
+			</div>
+			<div class="searchtextDiv">
+				<input type="text" name="searchUser" ng-model="stdSearch"><span>Search Here </span> 
+			</div>
+		</div>
+            <table width="100%" cellspacing="0" border="1" style="border-top: solid 1px #fff;position:relative">
+                <thead id="TblHead">
+                <tr class="headerTr">
+                    <td>Student Name</td>
+                    <td>Email</td>
+                    <td>Select Photo</td>
+                    <td>Upload</td>
+                    
+
+
+                </tr>
+                </thead>
+                <tbody>
+               
+                <tr ng-repeat="editStd in stdList.dataList | filter:stdSearch" class="dataTr"
+                    ng-class="{'even':$even,'odd':$odd}">                   
+                    <td>{{editStd.name}}</td> 
+                    <td>{{editStd.email}}</td>
+                    <td>  <input type="file" id="{{'myFile' + $index}}" style="margin-left:20px;"/></td>
+                    <td><button style="width: 110px;background: green;" ng-click="uploadFile1('myFile' + $index,editStd.email)">upload me</button></td>
+                    
+
+                    
+
+ 
+                </tr>
+                <div ng-if="stdList.dataList.length==0" class="emptyImgDiv" style="top:50%;left:50%;s">
+               
+                 <img src="../images/empty.png" ng-if="stdList.dataList.length==0"/>
+                 <div class="nodata">
+              	   No Data Found
+                 </div>
+                
+                </div>
+                </tbody>
+            </table>
         </div>
 
 

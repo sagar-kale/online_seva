@@ -1,4 +1,4 @@
-app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', function ($scope, $state, apiLink, APIService) {
+app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService','fileUpload', function ($scope, $state, apiLink, APIService) {
 
     $scope.listOfCources = ["MSCIT", "DTP", "CCC", "TALLY", "HTML", "CSS", "CPP", "Java"];
     $scope.selectedDiv = "Register";
@@ -134,4 +134,31 @@ app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', fun
     }
 
 
+    
+    $scope.uploadFile1 = function(filename,stdEmail){   
+    	  var formData = new FormData();
+    	  var fileId = '#' + filename;
+    	  var file = $(fileId).get(0).files[0];
+    	  formData.append('file', file);    	
+    	  formData.append('email', stdEmail);
+    	  console.log("file iss",file);
+    	  $.ajax({    	   
+    		  url: '/student/image/upload',
+    		    data: formData,
+    		    cache: false,
+    		    contentType: false,
+    		    processData: false,
+    		    method: 'POST',
+    		    type: 'POST',
+    	    
+    	    success: function (res) {
+    	    	console.log(res);
+    	    	swal(res.msgType, res.message,res.msgType);
+              console.log("FileUloaded Successfully");
+            },
+            error: function (error) {
+            	 console.log("Not able to upload file");
+            },
+    	  })
+    	};
 }]);
