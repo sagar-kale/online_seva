@@ -139,26 +139,65 @@ app.controller('courcesCntrl', ['$scope', '$state', 'apiLink', 'APIService', fun
     	  var formData = new FormData();
     	  var fileId = '#' + filename;
     	  var file = $(fileId).get(0).files[0];
-    	  formData.append('file', file);    	
-    	  formData.append('email', stdEmail);
-    	  console.log("file iss",file);
-    	  $.ajax({    	   
-    		  url: '/student/image/upload',
-    		    data: formData,
-    		    cache: false,
-    		    contentType: false,
-    		    processData: false,
-    		    method: 'POST',
-    		    type: 'POST',
-    	    
-    	    success: function (res) {
-    	    	console.log(res);
-    	    	swal(res.msgType, res.message,res.msgType);
-              console.log("FileUloaded Successfully");
-            },
-            error: function (error) {
-            	 console.log("Not able to upload file");
-            },
-    	  })
+    	  var isValideFile = $scope.validateFile(file);
+    	  if(isValideFile){
+    		  formData.append('file', file);    	
+        	  formData.append('email', stdEmail);
+        	  console.log("file iss",file);
+        	  $.ajax({    	   
+        		  url: '/student/image/upload',
+        		    data: formData,
+        		    cache: false,
+        		    contentType: false,
+        		    processData: false,
+        		    method: 'POST',
+        		    type: 'POST',
+        	    
+        	    success: function (res) {
+        	    	console.log(res);
+        	    	$scope.clearFile(); 
+        	    	swal(res.msgType, res.message,res.msgType);    	    	  
+        	    	console.log("FileUloaded Successfully");
+                },
+                error: function (error) {
+                	$scope.clearFile(); 
+                	 console.log("Not able to upload file");            	 
+                },
+        	  })  
+    	  }
+    	  else{
+    		  swal("","Choose .png, .jpg, .jpeg files only size upto 1 MB","error");    
+    		  $scope.clearFile();
+    	  }
+    	  
+    	
     	};
+    	
+    	$scope.clearFile = function(){
+    		 angular.element("input[type='file']").val(null);
+    	}
+    	
+    	$scope.validateFile = function(file){
+    		
+    		var validExtn = ['jpg','png','jpeg','JPG'];
+    		 var file_extension = file.name.split('.').pop();
+    		 console.log("file.size",file.size);
+    		// $scope.isValidSize = false;
+    		 for(var i = 0; i <= validExtn.length; i++)
+    		  {
+    		      if(validExtn[i]==file_extension.toLowerCase()){
+    		    	
+    		    	  if(file.size <=1000000){
+    		    		//  $scope.isValidSize = true;
+    		    		  return true; 
+    		    	  }
+    		    	
+    		    	 
+    		      }
+    		      
+    		      
+    		  }
+    			
+    		 return false;
+    	}
 }]);

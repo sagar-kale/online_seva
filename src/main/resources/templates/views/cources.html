@@ -289,7 +289,7 @@
                     ng-class="{'even':$even,'odd':$odd}">                   
                     <td>{{editStd.name}}</td> 
                     <td>{{editStd.email}}</td>
-                    <td>  <input type="file" id="{{'myFile' + $index}}" style="margin-left:20px;"/></td>
+                    <td>  <input type="file" class="uploadFileInput" id="{{'myFile' + $index}}" style="margin-left:20px;" ng-click="clearFile();"/></td>
                     <td><button style="width: 110px;background: green;" ng-click="uploadFile1('myFile' + $index,editStd.email)">upload me</button></td>
                     
 
