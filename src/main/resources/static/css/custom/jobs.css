@@ -20,7 +20,7 @@
     display: inline-block;
     list-style-type: none;
     display: inline-block;
-    width: 16.66%;
+    width: 20%;
     padding: 10px;
     /* border-right: solid 1px red; */
     min-height: 73px;
@@ -32,7 +32,7 @@
 }
 
 .bigColumn {
-    width: 25% !important;
+    width: 40% !important;
 }
 
 .headerUl li {

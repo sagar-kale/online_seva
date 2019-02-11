@@ -318,7 +318,28 @@ header .sitelogotext {
 	opacity: 1 !important;
 	background: #a59d9d !important;
 }
-
+.searchBox{
+	float:left;
+	    margin-left: 100px;
+}
+.searchBox input{	
+        float: left;
+    width: 300px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 15px;
+    padding-left: 20px;
+    background-color: transparent;
+    border: solid 1px #d2c9c9;
+    border-radius: 13px;
+    background-image: url(/../images/search.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 10px;
+    padding-right: 20px;
+    padding-left: 41px;
+    color:#fff;
+}
 @media only screen and (max-width: 600px) and (min-width: 400px) {
 	.userUl {
 		display: none;

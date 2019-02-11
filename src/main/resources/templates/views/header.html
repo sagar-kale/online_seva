@@ -12,6 +12,10 @@
             <span class="sitelogotext navbar-brand" ng-click="reDirectTo('header.home')" style="    padding-top: 20px;">ONLINE SEVA</span>
         </div>
         <div class="collapse navbar-collapse">
+               <div class="searchBox">        
+        			<input type="text" ng-model="searchBox" placeholder="search for shops"></input>       
+        
+       			 </div>
         
               <ul class="nav navbar-nav" style="margin-left: 60px;">
            
@@ -19,19 +23,22 @@
             <li  ng-click="reDirectTo('header.home')" ng-class="{'activeLiDiv':state == 'header.home'}">
                 <img src="../images/home.png" style="height: 20px;width: 20px;"/>Home
             </li>
-            <li ng-click="reDirectTo('header.jobs')" ng-class="{'activeLiDiv':state == 'header.jobs'}"><img src="../images/customer.png" />Jobs</li>
-            <li ng-click="reDirectTo('header.cources')" ng-class="{'activeLiDiv':state == 'header.cources'}"><img src="../images/care-about-planet.png" />Students</li>
+           <!--  <li ng-click="reDirectTo('header.jobs')" ng-class="{'activeLiDiv':state == 'header.jobs'}"><img src="../images/customer.png" />Jobs</li>
+            <li ng-click="reDirectTo('header.cources')" ng-class="{'activeLiDiv':state == 'header.cources'}"><img src="../images/care-about-planet.png" />Students</li> -->
              <#if loggedUser??>
             <#if loggedUser.role == 'admin' || loggedUser.role == 'content_admin' >
             <li ng-click="reDirectTo('header.admin')" ng-class="{'activeLiDiv':state == 'header.admin'}"><img src="../images/admin-with-cogwheels.png"/>Admin</li>
         </#if>
     </#if>
-    <li ng-click="reDirectTo('header.contact')" ng-class="{'activeLiDiv':state == 'header.contact'}"><img src="../images/contact.png"/>Contact Us</li>
-     <li ng-click="reDirectTo('header.exam')" ng-class="{'activeLiDiv':state == 'header.exam'}"><img src="../images/contact.png"/>Take Exam</li>
+   <!--  <li ng-click="reDirectTo('header.contact')" ng-class="{'activeLiDiv':state == 'header.contact'}"><img src="../images/contact.png"/>Contact Us</li> -->
+    <!--  <li ng-click="reDirectTo('header.exam')" ng-class="{'activeLiDiv':state == 'header.exam'}"><img src="../images/contact.png"/>Take Exam</li> -->
        <!--      <li ng-click="reDirectTo('header.admin')" ng-class="{'activeLiDiv':state == 'header.contact"'}"><img src="../images/contact.png"/>Contact Us</li>
-            <li ng-class="{'activeLiDiv':state == 'header.admin'}"><img src="../images/contact.png" /><a href="/chat" target="_blank">Chat</a></li> -->
+            -->
+            <li ><img src="../images/contact.png" /><a href="/chat" target="_blank">Chat</a></li> 
            <!--  <li ng-click="logoutApp()"><img src="../images/logout.png"/>Log out</li> -->
         </ul>
+ 
+        
 		<ul class="userUl">
 	        <li style="    display: block;
 	    font-size: 21px;">

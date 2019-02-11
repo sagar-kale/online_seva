@@ -18,7 +18,8 @@ app.controller('jobsController',['$scope', '$state','apiLink','APIService', func
                   });
 		};
 		$scope.loadData();
-		
+		$scope.isposterClciked = false;
+
 		
 	
 }]);

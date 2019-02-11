@@ -1,10 +1,25 @@
+<!-- **********************job pdf data***************** -->
+<style type="text/css">
+		.jobDpf{
+			float:left;
+			width:100%;
+			border:solid 2px red;
+			
+		}
+	</style>
+
+<!-- **********************job pdf data end***************** -->
+
+
 <div class="pgaeContainer">
     <div class="currentjobsop">Current Job Openings</div>
 
-    <div class="JobListTable">
+	
+
+    <div class="JobListTable" id="customers">
         <ul class="headerUl tsTableUl" style="    background: #102933;">
             <li class="bigColumn">Job Title</li>
-            <li class="bigColumn">Sector</li>
+          <!--   <li class="bigColumn">Sector</li> -->
             <li>Qualfication</li>
             <li>Last Date</li>
             <li>Action</li>
@@ -13,7 +28,7 @@
             <li ng-click="showJobDetails=!showJobDetails" class="linksClass bigColumn">{{job.title}} -{{job.totalPosts}}
                 Posts
             </li>
-            <li class="bigColumn">{{job.sector}}</li>
+            <!-- <li class="bigColumn">{{job.sector}}</li> -->
             <li>{{job.qualification}}</li>
             <li>{{job.lastDate | date}}</li>
             <li>
@@ -80,20 +95,30 @@
                     </div>
 
                     <div class="jobInfo">
-                        <div class="jobtitletext">Important links</div>
+                     <!--    <div class="jobtitletext">Important links</div>
                         <a href="https://www.youtube.com/">https://www.youtube.com</a></br>
                         <a href="https://www.youtube.com/">https://www.youtube.com</a></br>
-                        <a href="https://www.youtube.com/">https://www.youtube.com</a>
-							<button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button>
-							<button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button>
-							<button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button>
+                        <a href="https://www.youtube.com/">https://www.youtube.com</a> -->
+							<!-- <button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button> -->
+							<!-- <button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button>
+							<button ng-show="!showJobDetails" ng-click="showJobDetails=!showJobDetails;">View Details</button> -->
                     </div>
                     
                       <div class="jobInfo">                        
-							 <a style="font-size:16px;background: #0a1033;" class="btn btn-primary linkBtn" href="https://www.youtube.com/" >How To Apply</a>
-							 <a style="font-size:16px;background: #0a1033;" class="btn btn-primary linkBtn"  href="{{job.jobSubDetails.pdfLink}}" target="_blank">Download PDF</a>
+							 <a style="font-size:16px;background: #0a1033;" class="btn btn-primary linkBtn" href="{{job.youTubeLink}}">How To Apply</a>
+							 <a style="font-size:16px;background: #0a1033;" class="btn btn-primary linkBtn"  href="{{job.youTubeLink}}" target="_blank">Download PDF</a>
+							<!--  -->
 							 <a style="font-size:16px;background: #0a1033;" class="btn btn-primary linkBtn" href="{{job.jobSubDetails.downloadPoster}}" target="_blank">Download Poster</a>
+						<!-- 	<button class="" ng-click="openJobInPdf(job)">download poster</button> -->
+							  <a style="font-size:16px;background: #0a1033;" class="btn btn-primary linkBtn" href="{{job.youTubeLink}}">Video</a>
                     </div>
+                    <div class="jobDpf" id="jobDpf" ng-show='isposterClciked'>
+							<div class="jobpdfdata">
+								<h1>{{job.title}}</h1>
+								<div class="jobPdfpost">{{job.post}}</div>
+								
+							</div>
+    				</div>
 
 
                 </div>

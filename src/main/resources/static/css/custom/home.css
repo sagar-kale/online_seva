@@ -29,7 +29,7 @@
 	position: relative;
 	float: left;
 	width: 230px;
-	background: #fff;
+	background: #c1c2ca !important;
 	margin-right: 20px;
 	margin-top: 25px;
 	min-height: 308px;
@@ -44,11 +44,12 @@
 	height: 140px;
 	background: #dadada;
 }
+.serviceCard .cardImg {border-radius:5px;}
 
 .bannerDiv {
 	font-size: 18px;
 	margin-top: 28px;
-	color: #fff;
+	
 }
 
 .serviceCard .cardTitle {
@@ -63,7 +64,7 @@
 .serviceCard .decription {
 	font-size: 15px;
 	opacity: 0.8;
-	ss
+	
 }
 
 .serviceIcon {
@@ -89,7 +90,7 @@
 	left: 0;
 	bottom: -1px;
 	width: 100%;
-	background: #e2dcdc61;
+	background: #b2b2b5;
 	height: 60px;
 	text-align: center;
 	border-top: solid 1px #dadada;
@@ -99,7 +100,7 @@
 	border: none;
 	height: 38px;
 	width: 62%;
-	background: #152479;
+	background:#454a63 !important;
 	color: #fff;
 	margin-top: 9px;
 	border-radius: 5px;
