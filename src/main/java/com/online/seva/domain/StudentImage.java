@@ -14,6 +14,7 @@ public class StudentImage {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
+    @Basic(fetch = FetchType.EAGER)
     @Lob
     private byte[] image;
 
