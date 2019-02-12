@@ -1,154 +1,159 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PDF</title>
-	<style type="text/css">
-		
-		.jobDpf{
-			    
-  
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 5px; 
-  
-        width: calc(100% - 20px);
-   
-		}
-        hr{
+    <title>PDF</title>
+    <style type="text/css">
+
+        .jobDpf {
+
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+
+            width: calc(100% - 20px);
+
+        }
+
+        hr {
             background-color: black;
         }
-		.jobpdfInner{
-		
-    width: 100%;
-    border-radius: 5px;
-    text-align: center;
-   
-		}
-		.jobpdfTitle{
-			 font-size: 70px;
-		}
-		.jobPdfpost{
-			    font-size: 51px;
-    margin-top: 20px;
-    font-weight: bold;
-		}
-		.jobpdfBottom{
-			    float: left;
-    width: 100%;
-    margin-top: 30px;
-		}
-		.pdfCriteria{
-			       float: left;
-    text-align: left;
-      width: calc(100% - 411px);
-    padding-left: 20px;
-    padding-right: 20px;
-   
-		}
-		.postCount{
-		    float: left;
-    width: 50%;	
-		}
-		.postCntBox{
-    /* min-height: 140px; */
-    /* min-width: 226px; */
-    /* background: red; */
-    font-size: 54px;
-    border: solid 3px #2b2828;
-    border-radius: 11px;
-    font-weight: bold;
-    width: 300px;
-    height: 300px;
-    float: right;
-    margin-right: 32px;
-    /* padding-top: 56px; */
-    height: 130px;
-    /* padding-top: 27px; */
-    margin-top: 0px;
-    height: 196px;
-		}
-		.postCount .postCntBox span{
-			float: left;
-			width: 100%;
-		}
-		.cruteriaList{
-			    float: left;
-    width: 100%;
-    margin-bottom: 10px;
 
-		}
-		.spanfont{
-			    font-size: 27px;
-                    font-weight: bold;
-		}
-		.spanfont1{
-			    font-size: 27px;
-		}
-		.hrLine{
-			    width: 100%;
-    height: 5px;
-    background-color: #2b2828;
-    float: left;
-		}
-		.appLastDate{
-			    text-align: center;
-    font-size: 35px;
-    font-weight: bold;
-		}
-	</style>
+        .jobpdfInner {
+
+            width: 100%;
+            border-radius: 5px;
+            text-align: center;
+
+        }
+
+        .jobpdfTitle {
+            font-size: 70px;
+        }
+
+        .jobPdfpost {
+            font-size: 51px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .jobpdfBottom {
+            float: left;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .pdfCriteria {
+            float: left;
+            text-align: left;
+            width: calc(100% - 411px);
+            padding-left: 20px;
+            padding-right: 20px;
+
+        }
+
+        .postCount {
+            float: left;
+            width: 50%;
+        }
+
+        .postCntBox {
+            /* min-height: 140px; */
+            /* min-width: 226px; */
+            /* background: red; */
+            font-size: 54px;
+            border: solid 3px #2b2828;
+            border-radius: 11px;
+            font-weight: bold;
+            width: 300px;
+            height: 300px;
+            float: right;
+            margin-right: 32px;
+            /* padding-top: 56px; */
+            height: 130px;
+            /* padding-top: 27px; */
+            margin-top: 0px;
+            height: 196px;
+        }
+
+        .postCount .postCntBox span {
+            float: left;
+            width: 100%;
+        }
+
+        .cruteriaList {
+            float: left;
+            width: 100%;
+            margin-bottom: 10px;
+
+        }
+
+        .spanfont {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .spanfont1 {
+            font-size: 27px;
+        }
+
+        .hrLine {
+            width: 100%;
+            height: 5px;
+            background-color: #2b2828;
+            float: left;
+        }
+
+        .appLastDate {
+            text-align: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-	
-	<div class="jobDpf">
-		<div class="jobpdfInner" style="position: relative;">
-			<div class="jobpdfTitle" style="    padding-top: 40px;font-weight: bold;">${title}</div>
-    		<div class="jobPdfpost">${post}</div>
-    		<div class="jobpdfBottom">
-    			<div class="pdfCriteria">
-    				<div class="cruteriaList">
-    						<span class="spanfont">शैक्षणिक पात्रता : </span>
-    						<span class="spanfont1">${qualification}</span>
-    				</div>
-    				<div class="cruteriaList">
-    						<span class="spanfont">पगार श्रेणी : </span>
-    						<span class="spanfont1">${salary}</span>
-    				</div>
-    				<div class="cruteriaList">
-    						<span class="spanfont">वय मर्यादा : </span>
-    						<span class="spanfont1">${age}</span>
-    				</div>
-    				<hr style="height: 4px;"/>
-    				<div class="cruteriaList appLastDate">
-    					<div>अर्ज सादर करण्याची अंतिम तारीख</div>
-    					<div>${lastDate}</div>
-    				</div>
 
-    			</div>
-    				<div class="postCntBox">
-    					<div style="font-size: 20px;       font-size: 53px;">पद संख्या </div>
-    					<div class="pdCnt" style="        font-size: 119px;">${totalPost}</div>
-    				</div>
-    			
-    		</div>
-    		
-    		<div style="float: left;
+<div class="jobDpf">
+    <div class="jobpdfInner" style="position: relative;">
+        <div class="jobpdfTitle" style="    padding-top: 40px;font-weight: bold;">${title}</div>
+        <div class="jobPdfpost">${post}</div>
+        <div class="jobpdfBottom">
+            <div class="pdfCriteria">
+                <div class="cruteriaList">
+                    <span class="spanfont">वय मर्यादा : </span>
+                    <span class="spanfont1">${age}</span>
+                </div>
+                <hr style="height: 4px;"/>
+                <div class="cruteriaList appLastDate">
+                    <div>अर्ज सादर करण्याची अंतिम तारीख</div>
+                    <div>${lastDate}</div>
+                </div>
+
+            </div>
+            <div class="postCntBox">
+                <div style="font-size: 20px;       font-size: 53px;">पद संख्या</div>
+                <div class="pdCnt" style="        font-size: 119px;">${totalPost}</div>
+            </div>
+
+        </div>
+
+        <div style="float: left;
     padding: 20px;
     width: calc(100% - 40px);
     text-align: left;
     padding-top: 10px;">
-               <hr style="height: 4px;"/>
-    			<img src="../../../images/banner3.jpg" style="       height: 90px;
+            <hr style="height: 4px;"/>
+            <img src="../../../images/banner3.jpg" style="       height: 90px;
     float: left;
     width: 90px;
     border-radius: 5px;">
-                <span style=" float: left;
+            <span style=" float: left;
     margin-left: 20px;
     font-size: 20px;
     font-weight: bold;text-align: left;">
                     ${center}
                 </span><br/>
 
-                <span style="width: 70%;
+            <span style="width: 70%;
     float: left;
     margin-left: 20px;
     font-size: 19px;
@@ -156,14 +161,14 @@
     margin-top: 1px;text-align: left;">
                     Contact :  ${contact}
                 </span>
-    			<span style="float: left;
+            <span style="float: left;
     margin-left: 20px;
    
     font-weight: bold;    margin-top: 8px;    width: 70%;text-align: left;">
                    Visit To : <span style="    text-decoration: underline;">online-seva.com</span>
                 </span>
-    		</div>
-		</div>
+        </div>
     </div>
+</div>
 </body>
 </html>

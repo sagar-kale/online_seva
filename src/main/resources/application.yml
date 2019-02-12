@@ -7,7 +7,7 @@ logging:
     org.springframework.web: error
     org.hibernate: error
     org.apache.http: error
-    com.online.seva: info
+    com.online.seva: error
 
 email.from: online-seva@hotmail.com
 

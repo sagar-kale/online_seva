@@ -8,7 +8,6 @@ import com.online.seva.util.FormatDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
@@ -61,10 +59,23 @@ public class AppController {
         logger.info("Id::::: " + id);
         Optional<Job> byID = jobService.findByID(id);
         Job job = byID.get();
-        modal.addAttribute("title", job.getTitle());
+        int i = 0;
+        StringBuilder stringBuilder = new StringBuilder();
+        if (job.getTitle().contains(" ")) {
+
+            for (String s : job.getTitle().split(" ")) {
+                if (i < 3)
+                    stringBuilder.append(s.concat(" "));
+                i++;
+            }
+        } else {
+            stringBuilder.append(job.getTitle());
+        }
+
+        modal.addAttribute("title", stringBuilder.toString());
         modal.addAttribute("post", "" /*job.getJobSubDetails().getPostName()*/);
-        modal.addAttribute("qualification", ""/*job.getJobSubDetails().getEducationalQualifiction()*/);
-        modal.addAttribute("salary", job.getJobSubDetails().getSalaryScale());
+        /*modal.addAttribute("qualification", ""*//*job.getJobSubDetails().getEducationalQualifiction()*//*);*/
+        /*modal.addAttribute("salary", job.getJobSubDetails().getSalaryScale());*/
         modal.addAttribute("age", job.getJobSubDetails().getAgeLimit());
         modal.addAttribute("lastDate", formatDate.getFormatDate(job.getLastDate()));
         modal.addAttribute("totalPost", job.getTotalPosts());
