@@ -1,12 +1,14 @@
 package com.online.seva.domain;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import java.sql.Timestamp;
 
 @Entity(name = "user_details")
 @Data
@@ -14,6 +16,7 @@ public class User {
     /*@Id
     @Column(length = 40)
     @GeneratedValue(generator = "randomId")
+
     @GenericGenerator(name = "randomId", strategy = "com.online.seva.domain.RandomIdGenerator")
     private String id;*/
     @Id
@@ -34,21 +37,17 @@ public class User {
     private String city;
     private String pincode;
 
-    @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     @Column(columnDefinition = "TIMESTAMP")
-    private Date createdDate;
+    private Timestamp createdDate;
 
-
-    @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP")
-    private Date modifyDate;
+    private Timestamp modifyDate;
 
-    @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP")
-    private Date lastLogin;
+    private Timestamp lastLogin;
     private String role;
 
 /*    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
