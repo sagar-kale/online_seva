@@ -16,7 +16,6 @@ import javax.servlet.ServletContextListener;
 
 
 @SpringBootApplication
-@ComponentScan("com.online.seva")
 @EntityScan("com.online.seva.domain")
 @EnableScheduling
 public class Application {

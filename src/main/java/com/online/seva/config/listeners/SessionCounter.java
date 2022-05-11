@@ -14,8 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SessionCounter implements ServletContextListener, HttpSessionListener, ServletRequestListener {
 
     private static final String ATTRIBUTE_NAME = "com.online-seva.SessionCounter";
-    private Map<HttpSession, String> sessions = new ConcurrentHashMap<>();
-    private Map<HttpSession, String> loggedSessions = new ConcurrentHashMap<>();
+    private final Map<HttpSession, String> sessions = new ConcurrentHashMap<>();
+    private final Map<HttpSession, String> loggedSessions = new ConcurrentHashMap<>();
 
     @Override
     public void contextInitialized(ServletContextEvent event) {
